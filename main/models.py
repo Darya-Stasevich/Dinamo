@@ -2,23 +2,26 @@ from django.db import models
 from django.urls import reverse
 
 
-class Category(models.Model):
-    """Классификация услуг"""
-    title = models.CharField(max_length=50, verbose_name="Категория услуги")
-
-    class Meta:
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
-
-    def __str__(self):
-        return self.title
-
-
 class Contact(models.Model):
     """Контакты организации"""
-    address = models.CharField('Адрес', max_length=250, help_text='Можно использовать тег %br> для переноса текста')
-    number_phone = models.CharField('Номер телефона', max_length=30)
-    email = models.EmailField(blank=False, verbose_name='Электронная почта организации')
+    number_phone_main = models.CharField('Общий номер телефона', max_length=30, blank=False)
+    email_main = models.EmailField(blank=False, verbose_name='Общая электронная почта организации')
+
+    number_phone_reception = models.CharField('Номер приемной', max_length=30, blank=True)
+    email_reception_1 = models.EmailField(blank=True, verbose_name='Электронная почта приемной №1')
+    email_reception_2 = models.EmailField(blank=True, verbose_name='Электронная почта приемной №2')
+    contact_person_reception = models.CharField(max_length=200, verbose_name="Контактное лицо приемная")
+
+    number_phone_ad = models.CharField('Номер отдела рекламы', max_length=30, blank=True)
+    email_ad = models.EmailField(blank=True, verbose_name='Электронная почта отдела рекламы')
+    contact_person_ad = models.CharField(max_length=200, verbose_name="Контактное лицо отдел рекламы")
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+
+class SocialNetwork(models.Model):
     social_TG = models.CharField('Социальная сеть Телеграмм', max_length=250, blank=True, null=True)
     social_Youtube = models.CharField('Социальная сеть YouTube', max_length=250, blank=True, null=True)
     social_Facebook = models.CharField('Социальная сеть Фейсбук', max_length=250, blank=True, null=True)
@@ -27,15 +30,38 @@ class Contact(models.Model):
 
 
     class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
+        verbose_name = 'Соцсеть'
+        verbose_name_plural = 'Соцсети'
 
-    def __str__(self):
-        return self.address
+class PaymentInfo(models.Model):
+    account1 = models.CharField('Р/с бюджет', max_length=50, blank=True, null=True)
+    account2 = models.CharField('Р/с внебюджет', max_length=50, blank=True, null=True)
+    UNP = models.CharField('УНП', max_length=10, blank=True, null=True)
+    OKPO = models.CharField('ОКПО', max_length=10, blank=True, null=True)
+    bank_name = models.CharField('Наименование банка', max_length=50, blank=True, null=True)
+    bank_address = models.CharField('Адрес банка', max_length=70, blank=True, null=True)
+    bank_BIC = models.CharField('BIC банка', max_length=50, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Реквизиты'
+        verbose_name_plural = 'Реквизиты'
 
 
 class Partner(models.Model):
-    image = models.ImageField(upload_to='partners/', verbose_name="Изображение", blank=True)
+    """Партнеры организации"""
+    image = models.ImageField(upload_to='partners_logo/', verbose_name="Изображение", blank=True)
+
+
+class CategoryService(models.Model):
+    """Классификация услуг"""
+    title = models.CharField(max_length=50, verbose_name="Категория услуги")
+
+    class Meta:
+        verbose_name = 'Категория услуги'
+        verbose_name_plural = 'Категории услуг'
+
+    def __str__(self):
+        return self.title
 
 
 class SubService(models.Model):
@@ -80,14 +106,6 @@ class Service(models.Model):
         return reverse('main:service_detail', args=[self.id])
 
 
-class News(models.Model):
-    pass
-
-
-class Event(models.Model):
-    pass
-
-
 class UsersEmail(models.Model):
     """Электронный адрес пользователя, который хочет получать уведомления о новостях"""
     email = models.EmailField(blank=False, verbose_name='Электронная почта клиента')
@@ -108,8 +126,23 @@ class Order(models.Model):
         ('обработана', 'обработана'),
     )
     name = models.CharField(max_length=60,  verbose_name="Имя клиента")
-    number_phone = models.CharField('Номер телефона', max_length=30)
+    phone_number = models.CharField('Номер телефона', max_length=30)
     status = models.CharField('Статус заявки', max_length=20, choices=CHOICES_STATUS, default='новая заявка')
+
+    class Meta:
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
+
+    def __str__(self):
+        return f'{self.name},{self.phone_number}'
+
+
+class News(models.Model):
+    pass
+
+
+class Event(models.Model):
+    pass
 
 
 class Worker(models.Model):
@@ -117,16 +150,55 @@ class Worker(models.Model):
 
 
 class Management(models.Model):
-    pass
+    """Руководство организации"""
+    position = models.CharField(max_length=200, verbose_name="Должность")
+    name = models.CharField(max_length=200, verbose_name="ФИО")
+    description = models.TextField(verbose_name="Биография")
+    phone_number = models.CharField('Номер телефона', max_length=30, blank=True)
+    email = models.EmailField(blank=True, verbose_name='Электронная почта ')
+    email_for_citizens = models.EmailField(blank=True, verbose_name='Электронная почта для обращений граждан')
+    image = models.ImageField(upload_to='management/', verbose_name="Изображение",
+                              blank=True)
+    class Meta:
+        verbose_name = 'Руководство'
+        verbose_name_plural = 'Руководство'
+
+    def __str__(self):
+        return self.name
 
 
 class OpenPosition(models.Model):
     pass
 
 
+class PhotoCategory(models.Model):
+    """Раздел фотоальбома"""
+    title = models.CharField(max_length=200, verbose_name="Рубрика фотографии")
+    cover = models.ImageField(upload_to='photo_library/covers', verbose_name="Изображение", blank=True)
+
+    class Meta:
+        verbose_name = 'Раздел фотоальбома'
+        verbose_name_plural = 'Разделы фотоальбома'
+
+    def __str__(self):
+        return self.title
+
+
 class PhotoLibrary(models.Model):
     pass
 
+
+class VideoCategory(models.Model):
+    """Раздел видеоальбома"""
+    title = models.CharField(max_length=200, unique=True, verbose_name="Рубрика видео")
+    cover = models.ImageField(upload_to='video_library/covers', verbose_name="Обложки для видео", blank=True)
+
+    class Meta:
+        verbose_name = 'Раздел видеоальбома'
+        verbose_name_plural = 'Разделы видеоальбома'
+
+    def __str__(self):
+        return self.title
 
 class VideoLibrary(models.Model):
     pass
