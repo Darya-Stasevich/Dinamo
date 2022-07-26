@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-e@7++zg9_1(4&eou3=gt8t@y3bqleqk8@$(04js5q&&*xmbal$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'dinamo_stadium.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'main/../templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

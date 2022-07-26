@@ -1,0 +1,109 @@
+.show {
+    background: rgba(89, 78, 75, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+}
+.show-media {
+    display: none;
+    position: fixed;
+    width: 60%;
+    height: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 110;
+    top: 10%;
+}
+.show-media__block{
+    padding: 16px 0 24px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 5px rgba(20, 6, 5, 0.1);
+    border-radius: 2px;
+}
+.show-media__img {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 60%;
+    max-height: 567px;
+    & img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.show-media__cross {
+    position: absolute;
+    cursor: pointer;
+    top: 9px;
+    right: 9px;
+    width: 14px;
+    height: 14px;
+    &::before,
+    &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #FFFFFF;
+        z-index: 111;
+    }
+    &::before{
+        bottom: 5px;
+        transform: rotate(45deg);
+    }
+    &::after{
+        bottom: 5px;
+        transform: rotate(-45deg);
+    }
+}
+.show-media__link {
+    background: linear-gradient(180deg, #A23228 0%, #942A21 100%);
+    box-shadow: 3px 3px 0px #761D15;
+    border-radius: 2px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    padding: 16px 40px;
+    &:hover{
+        background: #761D15;
+        box-shadow: none;
+    }
+}
+@media (max-width: 1300px){
+    .show-media{
+        width: 80%;
+    }
+}
+@media (max-width: 992px) {
+    .show-media__img{
+        padding-bottom: 65%;
+    }
+}
+@media (max-width: 768px) {
+    .show-media{
+        width: 96%;
+    }
+    .show-media__img{
+        max-height: 192px;
+    }
+    .show-media__link {
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 16px;
+    }
+}
