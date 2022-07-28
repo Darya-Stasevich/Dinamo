@@ -1,0 +1,31 @@
+.container__stadium-layout {
+    margin-bottom: 104px;
+}
+.container {
+}
+.stadium-layout {
+}
+.stadium-layout__title {
+    font-family: Roboto Condensed;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 47px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.stadium-layout__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 70%;
+    & img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}

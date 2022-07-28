@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for u in services_all %}
+{{ u.title}}<br>
+{{ u.category}}<br>
+{{ u.price_with_VAT }}<br>
+{% endfor %}
+
+{% for cat in category %}
+{% for s in cat.service_set.all %}
+{% if s %}
+{{ s.title }}
+{{ s.brief_description}}
+{{ s.price_with_VAT }}
+{{ s.price_without_VAT }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% for s in services %}
+{% if s %}
+{{s.category}}<br>
+{{s.title}}<br>
+{{ s.brief_description}}<br>
+{{ s.price_with_VAT }}<br>
+{{ s.price_without_VAT }}
+{% endif %}
+{% endfor %}
+</body>
+</html>

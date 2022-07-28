@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'about_stadium/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'about_stadium/css/style.css' %}">
+    <title>О стадионе</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header__additional">
+                <div class="additional">
+                    <div class="container">
+                        <div class="additional__body">
+                            <div class="additional__contacts">
+                                {% for cont in contact %}
+                                <a href="#" class="contacts__telefon">
+                                    {{ cont.number_phone_main }}
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    {{ cont.email_main }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="additional__social">
+                                {% for url in urls %}
+                                <a href="{{ url.social_Instagram }}" class="social__link">
+                                    <img src="{% static 'about_stadium/img/icons/instagram.svg' %}" alt="Instagram">
+                                </a>
+                                <a href="{{ url.social_Facebook }}" class="social__link">
+                                    <img src="{% static 'about_stadium/img/icons/facebook.svg' %}" alt="Facebook">
+                                </a>
+                                <a href="{{ url.social_VK }}" class="social__link">
+                                    <img src="{% static 'about_stadium/img/icons/vk.svg' %}" alt="VK">
+                                </a>
+                                <a href="{{ url.social_Youtube }}" class="social__link">
+                                    <img src="{% static 'about_stadium/img/icons/youtube.svg' %}" alt="YouTube">
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="additional__map">
+                                <a href="#" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header">
+                <div class="container">
+                    <div class="header__body">
+                        <div class="header__logo">
+                            <a href="" class="logo__link">
+                                <img src="img/dinamo__logo.svg" alt="Dinamo">
+                            </a>
+                        </div>
+                        <div class="header__burger">
+                            <span></span>
+                        </div>
+                        <div class="menu__container">
+                            <div class="header__map">
+                                <a href="#" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="header__list">
+                                    <li>
+                                        <a href="#" class="header__link selected">
+                                            Главная
+                                        </a>
+                                    </li>
+                                    <li class="list__item services">
+                                        <div class="item__wrapper">
+                                            <a href="#" class="header__link">
+                                                Услуги
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="services"></span>
+                                        </div>
+                                        <div class="menu-extra__container">
+                                            <div class="menu-extra__block">
+                                                <a href="#" class="menu-extra__link">
+                                                    Футбольное поле
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Организация мероприятий
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Спорт
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Здоровье
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Реклама
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Прочие услуги
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="menu-mobile__container">
+                                            <div>
+                                                <a href="#" class="menu-extra__link">
+                                                    Футбольное поле
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Организация мероприятий
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="#" class="menu-extra__link">
+                                                    Спорт
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Здоровье
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="#" class="menu-extra__link">
+                                                    Реклама
+                                                </a>
+                                                <a href="#" class="menu-extra__link">
+                                                    Прочие услуги
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="header__link">
+                                            Новости
+                                        </a>
+                                    </li>
+                                    <li class="list__item media">
+                                        <div class="item__wrapper">
+                                            <a href="#" class="header__link">
+                                                Медиа
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="media"></span>
+                                        </div>
+                                        <div class="menu-extra__media">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                        <div class="menu-mobile__block">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="list__item-enter">
+                                        <a href="#" class="header__link">
+                                            События
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="header__contacts">
+                                <a href="#" class="contacts__telefon">
+                                    +375 17 243 09 11
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    stadion_dinamo@mail.ru
+                                </a>
+                            </div>
+                            <div class="header__social">
+                                <a href="#" class="social__link">
+                                    <img src="img/icons/icon_inst_mobile.svg" alt="Instagram">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="img/icons/icon_face_mobile.svg" alt="Facebook">
+                                </a>
+                                <a href="" class="social__link">
+                                    <img src="img/icons/icon_vk_mobile.svg" alt="VK">
+                                </a>
+                                <a href="" class="social__link">
+                                    <img src="img/icons/icon_YT_mobile.svg" alt="YouTube">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container__nav">
+                <div class="container">
+                    <div class="main__nav">
+                        <a href="#" class="main__nav-link">
+                            Главная
+                        </a>
+                        <img src="img/main-nav-vector.svg" alt="">
+                        <a href="#" class="main__nav-link">
+                            О стадионе
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container__navigation">
+                <div class="navigation">
+                    <div class="navigation__background">
+                        <div class="container">
+                            <div class="navigation__visual">
+                                <img src="img/navigation.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__about">
+                <div class="container">
+                    <div class="about">
+                        <a href="../history/history.html" class="about__card">
+                            <div class="card__img">
+                                <img src="img/card_img-1.png" alt="">
+                            </div>
+                            <div class="card__title">
+                                История стадиона
+                            </div>
+                        </a>
+                        <a href="../managment/managment.html" class="about__card">
+                            <div class="card__img">
+                                <img src="img/card_img-2.png" alt="">
+                            </div>
+                            <div class="card__title">
+                                Руководство
+                            </div>
+                        </a>
+                        <a href="../News_Dinamo/staff.html" class="about__card">
+                            <div class="card__img">
+                                <img src="img/card_img-3.png" alt="">
+                            </div>
+                            <div class="card__title">
+                                Наши сотрудники
+                            </div>
+                        </a>
+                        <a href="#" class="about__card">
+                            <div class="card__img">
+                                <img src="img/card_img-4.png" alt="">
+                            </div>
+                            <div class="card__title">
+                                Документы
+                            </div>
+                        </a>
+                        <a href="../Vacancy/index.html" class="about__card">
+                            <div class="card__img">
+                                <img src="img/card_img-5.png" alt="">
+                            </div>
+                            <div class="card__title">
+                                Вакансии
+                            </div>
+                        </a>
+                        <p class="about__text">
+                            Национальный олимпийский стадион «Динамо» — многофункциональная арена мирового уровня.
+                        </p>
+                        <p class="about__text about__text-margin">
+                            Сертификат Всемирной легкоатлетической ассоциации первой категории, а также четвертая категория Союза европейских футбольных ассоциаций (УЕФА)
+                            позволяют проводить на стадионе легкоатлетические и футбольные турниры
+                            мирового уровня.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container__stadium-layout">
+                <div class="container">
+                    <div class="stadium-layout">
+                        <div class="stadium-layout__title">
+                            схема секторов
+                        </div>
+                        <div class="stadium-layout__image">
+                            <img src="img/stadium-layout-img.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social">
+                <div class="container">
+                    <div class="head_social">
+                        <div class="title_social_up">
+                            <p class="text_of_title_social_up"><span>Следите за нами в </span> соц.сетях</p>
+                        </div>
+                        <div class="title_social_down">
+                            <p class="text_of_title_social_down">Узнавайте первыми об интересных событиях и акциях!</p>
+                        </div>
+                    </div>
+                    <div class="social_link">
+                        <div class="social_card">
+                            <div class="card">
+                                <div class="block_link">
+                                    <a clas = 'card-link' href="#">
+                                        <div class="card_wrap-img_link">
+                                            <img src="img/social_icon_under/back_inst.png">
+                                            <div class="img-layer_link"></div>
+                                            <div class = 'wrap-icon_link'>
+                                                <img class = 'test-icon_link' src="img/social_icon_under/instagramm.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="block_link">
+                                    <a class = 'card-link' href="#">
+                                        <div class="card_wrap-img_link">
+                                            <img src="img/social_icon_under/back_facebook.png">
+                                            <div class="img-layer_link"></div>
+                                            <div class = 'wrap-icon_link'>
+                                                <img class = 'test-icon_link' src="img/social_icon_under/youtube.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="block_link">
+                                    <a clas = 'card-link' href="#">
+                                        <div class="card_wrap-img_link">
+                                            <img src="img/social_icon_under/back_youtube.png">
+                                            <div class="img-layer_link"></div>
+                                            <div class = 'wrap-icon_link'>
+                                                <img class = 'test-icon_link' src="img/social_icon_under/facebook.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="block_link">
+                                    <a clas = 'card-link' href="#">
+                                        <div class="card_wrap-img_link">
+                                            <img src="img/social_icon_under/back_vk.png">
+                                            <div class="img-layer_link"></div>
+                                            <div class = 'wrap-icon_link'>
+                                                <img class = 'test-icon_link' src="img/social_icon_under/vk.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="block_link">
+                                    <a clas = 'card-link' href="#">
+                                        <div class="card_wrap-img_link">
+                                            <img src="img/social_icon_under/back_vk.png">
+                                            <div class="img-layer_link"></div>
+                                            <div class = 'wrap-icon_link'>
+                                                <img class = 'test-icon_link' src="img/social_icon_under/logos_telegram.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__number">
+                <div class="container">
+                    <div class="number__title">
+                        Стадион «ДИНАМО» <span>в цифрах</span>
+                    </div>
+                    <div class="number__table">
+                        <div class="table__item table__first">
+                            <p class="table__title">
+                                <span>22 246</span>
+                                зрителей
+                            </p>
+                            <p class="table__subtitle">
+                                Вместимость стадиона
+                            </p>
+                        </div>
+                        <div class="table__item table__second">
+                            <p class="table__title">
+                                <span>47 015</span>
+                                м²
+                            </p>
+                            <p class="table__subtitle">
+                                Общая площадь
+                            </p>
+                        </div>
+                        <div class="table__item table__three">
+                            <p class="table__title">
+                                <span>40</span>
+                            </p>
+                            <p class="table__subtitle">
+                                VIP-лож
+                            </p>
+                        </div>
+                        <div class="table__item table__four">
+                            <p class="table__title">
+                                <span>233</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Парковочных места
+                            </p>
+                        </div>
+                        <div class="table__item table__five">
+                            <p class="table__title">
+                                <span>350</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Прожекторов
+                            </p>
+                        </div>
+                        <div class="table__item table__six">
+                            <p class="table__title">
+                                <span>13</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Беговых дорожек
+                            </p>
+                        </div>
+                        <div class="table__item table__seven">
+                            <p class="table__title">
+                                <span>105х68 м</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Размер поля
+                            </p>
+                        </div>
+                        <div class="table__item table__eight">
+                            <p class="table__title">
+                                <span>75%</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Защита трибун козырьком
+                            </p>
+                        </div>
+                        <div class="table__item table__nine">
+                            <p class="table__title">
+                                <span>30</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Количество секторов
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="footer">
+                    <nav class="footer__nav">
+                        <a href="#" class="footer__link footer__text">
+                            Адрес: г. Минск,<br>
+                            ул. Кирова, д. 8, корп. 6
+                        </a>
+                    </nav>
+                    <div class="footer__social">
+                        <p class="footer__social-title footer__text">
+                            Следите за нами в соц.сетях
+                        </p>
+                        <div class="footer__social-block">
+                            <a href="#" class="social-block__link">
+                                <img src="img/footer/instagramm.svg" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="img/footer/facebook.svg" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="img/footer/vk.svg" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="img/footer/youtube.svg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <form action="#" class="footer__form">
+                        <p class="footer__form-title footer__text">
+                            Подписывайтесь на email-рассылку
+                        </p>
+                        <div class="footer__form-block">
+                            <input type="text" class="form-block__input" placeholder="sportsmen228@gmail.com">
+                            <button class="form-block__button footer__text">
+                                Подписаться
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <p class="footer__subtitle">
+                    2021 © Все права защищены
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/header.js"></script>
+</body>
+</html>

@@ -18,11 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from main.views import index
+from main.views import index, about_stadium
+from services.views import show_services_by_category, show_services_all
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('about_stadium/', about_stadium, name='about_stadium'),
+    path('services/', show_services_all, name='show_services_all'),
+    path('services/<slug:category_slug><int:category_id>/', show_services_by_category, name='show_services_by_category'),
+    # path('services/<slug:category_slug><slug:service_slug>/', service_detail, name='service_detail'),
 ]
 
 
