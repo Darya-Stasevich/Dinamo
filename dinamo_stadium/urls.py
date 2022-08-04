@@ -16,10 +16,16 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
+from rest_framework import routers
+from api_dinamo import views
 from main.views import index, about_stadium
 from services.views import show_services_by_category, show_services_all
+
+router = routers.DefaultRouter()
+router.register('services', views.ServiceViewSet)
+router.register('category_services', views.CategoryServiceViewSet)
+router.register('news', views.NewsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +33,7 @@ urlpatterns = [
     path('about_stadium/', about_stadium, name='about_stadium'),
     path('services/', show_services_all, name='show_services_all'),
     path('services/<slug:category_slug><int:category_id>/', show_services_by_category, name='show_services_by_category'),
+    path('api_dinamo/', include(router.urls))
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
 
 
