@@ -24,5 +24,6 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(Attachment)
 admin.site.register(CategoryService, CategoryServiceAdmin)
 admin.site.register(Feedback, FeedbackAdmin)

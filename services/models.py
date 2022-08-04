@@ -37,7 +37,7 @@ class Service(models.Model):
         on_delete=models.PROTECT,
         verbose_name="Категория услуги"
     )
-    title = models.CharField(max_length=200, verbose_name="Название услуги")
+    title = models.CharField(max_length=100, verbose_name="Название услуги")
     slug = models.SlugField(unique=True)
     brief_description = models.CharField(max_length=400, verbose_name="Краткое описание")
     description = models.TextField(verbose_name="Полное описание")
@@ -49,16 +49,20 @@ class Service(models.Model):
                                                     verbose_name="Тариф без НДС для физ.лица", default=0,
                                                     help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
     price_with_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
-                                                 verbose_name="Тариф с НДС для юр.лица", default=0,
-                                                 help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+                                                verbose_name="Тариф с НДС для юр.лица", default=0,
+                                                help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
     price_without_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
-                                                    verbose_name="Тариф без НДС для юр.лица", default=0,
-                                                    help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+                                                   verbose_name="Тариф без НДС для юр.лица", default=0,
+                                                   help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
     notes = models.CharField(max_length=200, verbose_name="Ед.измерения", blank=True, null=True)
     image = models.ImageField(upload_to='services/', blank=True, null=True, verbose_name="Изображение")
     published = models.BooleanField('Добавить на сайт', default=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата добавления услуги")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата редактирования услуги")
+
+    attachment = models.ForeignKey('Attachment', on_delete=models.CASCADE, blank=True, null=True,
+                                   verbose_name='Прикрепленный файл',
+                                   help_text="Если нужно прикрепить доп.информацию по услуге")
 
     class Meta:
         verbose_name = 'Услугу'
@@ -69,6 +73,20 @@ class Service(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse('main:service_detail', args=[self.slug])
+
+
+class Attachment(models.Model):
+    """Прикрепленный файл с информацией об услуге"""
+    file = models.FileField(upload_to="files/", verbose_name="Файл")
+    title = models.CharField(max_length=50, verbose_name="Название файла")
+    description = models.CharField(max_length=100, verbose_name="Краткое описание")
+
+    class Meta:
+        verbose_name = 'Файл для услуги'
+        verbose_name_plural = 'Файлы для услуги'
+
+    def __str__(self):
+        return self.title
 
 
 class Feedback(models.Model):
