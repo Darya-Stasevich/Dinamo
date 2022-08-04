@@ -22,6 +22,10 @@ class Contact(models.Model):
         verbose_name_plural = 'Номера телефонов, эл. почты, контактные лица'
 
 
+    def __str__(self):
+        return 'Контактная информация'
+
+
 class SocialNetwork(models.Model):
     """Социальные сети"""
     social_TG = models.CharField('Ссылка на Телеграм', max_length=250, blank=True, null=True)

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from news.models import News
 from services.models import Service, CategoryService
 
 
@@ -11,8 +12,15 @@ class CategoryServiceSerializer(serializers.ModelSerializer):
 
 
 class ServiceSerializer(serializers.ModelSerializer):
-    """Сериализатор для услуги"""
+    """Сериализатор для отображения услуг на первой странице"""
     class Meta:
         model = Service
-        fields = ('id', 'slug', 'category', 'title', 'image', 'brief_description', 'description', 'price_with_VAT',
-                  'price_without_VAT', 'notes', 'image', 'published')
+        fields = ('id', 'slug', 'title', 'image')
+
+
+class NewsSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения новостей на первой странице"""
+    class Meta:
+        model = News
+        fields = ('id', 'slug', 'title', 'brief_description', 'cover_image')
+

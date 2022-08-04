@@ -27,9 +27,17 @@ urlpatterns = [
     path('about_stadium/', about_stadium, name='about_stadium'),
     path('services/', show_services_all, name='show_services_all'),
     path('services/<slug:category_slug><int:category_id>/', show_services_by_category, name='show_services_by_category'),
-    # path('services/<slug:category_slug><slug:service_slug>/', service_detail, name='service_detail'),
+    # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
+
+
+    # path('api/news_first_page',),   # endpoint для новостей на первой странице
+    # path('api/news/<slug:news_slug><int:news_id>',),  # endpoint для перехода на страницу конретной новости
+    # path('api/services_first_page',),    # endpoint для услуг на первой странице
+    # path('api/services/<slug:category_slug><slug:service_slug><int:service_id>',),   # endpoint для перехода на страницу конкретной услуги
+
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

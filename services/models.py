@@ -4,13 +4,20 @@ from django.urls import reverse
 
 class CategoryService(models.Model):
     """Классификация услуг"""
+    FIELD = 'Футбольное поле'
+    AD = 'Реклама'
+    SPORT = 'Спорт'
+    HEALTH = 'Здоровье'
+    EVENT = 'Организация мероприятий'
+    OTHERS = 'Прочие услуги'
+
     CHOICES_CATEGORY = (
-        ('Футбольное поле', 'Футбольное поле'),
-        ('Реклама', 'Реклама'),
-        ('Спорт', 'Спорт'),
-        ('Здоровье', 'Здоровье'),
-        ('Организация мероприятий', 'Организация мероприятий'),
-        ('Прочие услуги', 'Прочие услуги'),
+        (FIELD, 'Футбольное поле'),
+        (AD, 'Реклама'),
+        (SPORT, 'Спорт'),
+        (HEALTH, 'Здоровье'),
+        (EVENT, 'Организация мероприятий'),
+        (OTHERS, 'Прочие услуги'),
     )
     title = models.CharField('Категория услуги', max_length=40, choices=CHOICES_CATEGORY)
     slug = models.SlugField(unique=True)
@@ -34,8 +41,19 @@ class Service(models.Model):
     slug = models.SlugField(unique=True)
     brief_description = models.CharField(max_length=400, verbose_name="Краткое описание")
     description = models.TextField(verbose_name="Полное описание")
-    price_with_VAT = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Тариф с НДС", default=0)
-    price_without_VAT = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Тариф без НДС", default=0)
+
+    price_with_VAT_for_person = models.CharField(max_length=50, blank=True, null=True,
+                                                 verbose_name="Тариф с НДС для физ.лица", default=0,
+                                                 help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+    price_without_VAT_for_person = models.CharField(max_length=50, blank=True, null=True,
+                                                    verbose_name="Тариф без НДС для физ.лица", default=0,
+                                                    help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+    price_with_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
+                                                 verbose_name="Тариф с НДС для юр.лица", default=0,
+                                                 help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+    price_without_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
+                                                    verbose_name="Тариф без НДС для юр.лица", default=0,
+                                                    help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
     notes = models.CharField(max_length=200, verbose_name="Ед.измерения", blank=True, null=True)
     image = models.ImageField(upload_to='services/', blank=True, null=True, verbose_name="Изображение")
     published = models.BooleanField('Добавить на сайт', default=True)
