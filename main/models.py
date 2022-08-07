@@ -21,7 +21,6 @@ class Contact(models.Model):
         verbose_name = 'Номера телефонов, эл.почты, контактных лиц'
         verbose_name_plural = 'Номера телефонов, эл. почты, контактные лица'
 
-
     def __str__(self):
         return 'Контактная информация'
 
@@ -40,6 +39,35 @@ class SocialNetwork(models.Model):
 
     def __str__(self):
         return 'Ссылки на соцсети'
+
+
+class Video(models.Model):
+    """Видео на первой странице"""
+    url = models.CharField(max_length=100, verbose_name='Видео для главной страницы')
+
+    class Meta:
+        verbose_name = 'Ссылку на видео'
+        verbose_name_plural = 'Ссылки на видео'
+
+    def __str__(self):
+        return 'Ссылки на видео для главной страницы'
+
+
+class VideoAdditional(models.Model):
+    """Дополнительные видео для первой страницы"""
+    urls = models.ForeignKey(
+        Video,
+        on_delete=models.CASCADE,
+        verbose_name='Видео'
+    )
+    video = models.CharField('Ссылка на дополнительное видео', max_length=250, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Ссылку на видео'
+        verbose_name_plural = 'Ссылки на видео'
+
+    def __str__(self):
+        return 'Ссылки на видео для главной страницы'
 
 
 class PaymentInfo(models.Model):
@@ -73,6 +101,7 @@ class Partner(models.Model):
 class UserEmail(models.Model):
     """Электронный адрес пользователя, который хочет получать уведомления о новостях"""
     email = models.EmailField(blank=False, verbose_name='Электронная почта клиента')
+
     # created = models.DateTimeField(auto_now_add=True, verbose_name="Дата получения эл.почты от клиента")
 
     class Meta:
