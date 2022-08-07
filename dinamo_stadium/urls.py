@@ -16,10 +16,16 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
+from rest_framework import routers
+from api_dinamo import views
 from main.views import index, about_stadium
 from services.views import show_services_by_category, show_services_all
+
+router = routers.DefaultRouter()
+router.register('services', views.ServiceViewSet)
+router.register('category_services', views.CategoryServiceViewSet)
+router.register('news', views.NewsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +34,7 @@ urlpatterns = [
     path('services/', show_services_all, name='show_services_all'),
     path('services/<slug:category_slug>/', show_services_by_category, name='show_services_by_category'),
     # path('service_detail/<slug:service_slug>/', service_detail, name='service_detail'),
+    path('api_dinamo/', include(router.urls))
 
 
     # path('api/news_first_page',),   # endpoint для новостей на первой странице
