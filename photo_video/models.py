@@ -8,7 +8,7 @@ class PhotoCategory(models.Model):
 
     class Meta:
         verbose_name = 'Раздел фотоальбома'
-        verbose_name_plural = 'Разделы фотоальбома'
+        verbose_name_plural = 'Разделы фотоальбомов'
 
     def __str__(self):
         return self.title
@@ -32,7 +32,7 @@ class VideoCategory(models.Model):
 
     class Meta:
         verbose_name = 'Раздел видеоальбома'
-        verbose_name_plural = 'Разделы видеоальбома'
+        verbose_name_plural = 'Разделы видеоальбомов'
 
     def __str__(self):
         return self.title
