@@ -22,6 +22,8 @@ from api_dinamo import views
 from main.views import index, about_stadium
 from services.views import show_services_by_category, show_services_all
 from vacancies.views import vacancies_list
+from .yasg import urlpatterns as doc_urls
+
 
 router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
@@ -46,6 +48,7 @@ urlpatterns = [
 
 ]
 
+urlpatterns += doc_urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
