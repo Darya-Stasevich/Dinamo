@@ -17,6 +17,11 @@ class Contact(models.Model):
     contact_person_ad = models.CharField(max_length=200, blank=True, null=True,
                                          verbose_name="Контактное лицо отдел рекламы")
 
+    number_phone_personnel = models.CharField('Номер тел. отдел кадров', max_length=30, blank=True, null=True)
+    email_personnel = models.EmailField(blank=True, null=True, verbose_name='Электронная почта отдел кадров')
+    contact_person_personnel = models.CharField(max_length=200, blank=True, null=True,
+                                         verbose_name="Контактное лицо отдел кадров")
+
     class Meta:
         verbose_name = 'Номера телефонов, эл.почты, контактных лиц'
         verbose_name_plural = 'Номера телефонов, эл. почты, контактные лица'
