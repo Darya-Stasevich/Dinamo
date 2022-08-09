@@ -21,6 +21,9 @@ from rest_framework import routers
 from api_dinamo import views
 from main.views import index, about_stadium
 from services.views import show_services_by_category, show_services_all
+from vacancies.views import vacancies_list
+from .yasg import urlpatterns as doc_urls
+
 
 router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
@@ -32,9 +35,10 @@ urlpatterns = [
     path('', index, name='index'),
     path('about_stadium/', about_stadium, name='about_stadium'),
     path('services/', show_services_all, name='show_services_all'),
-    path('services/<slug:category_slug>/', show_services_by_category, name='show_services_by_category'),
-    # path('service_detail/<slug:service_slug>/', service_detail, name='service_detail'),
-    path('api_dinamo/', include(router.urls))
+    path('services/<slug:category_slug><int:category_id>/', show_services_by_category, name='show_services_by_category'),
+    path('api_dinamo/', include(router.urls)),
+    path('vacancies/', vacancies_list, name='vacancies_list'),
+    # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
 
 
     # path('api/news_first_page',),   # endpoint для новостей на первой странице
@@ -44,6 +48,7 @@ urlpatterns = [
 
 ]
 
+urlpatterns += doc_urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
