@@ -12,7 +12,7 @@ schema_view = get_schema_view(
         linecache=openapi.License(name="BSD License"),
     ),
     public=True,
-    permission_classes=(permissions.AllowAny, ),
+    permission_classes=[permissions.AllowAny],
 )
 
 urlpatterns = [
