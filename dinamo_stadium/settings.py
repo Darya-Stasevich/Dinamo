@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'photo_video',
     'services',
     'api_dinamo',
+    'vacancies',
 
     'rest_framework',
     'corsheaders',

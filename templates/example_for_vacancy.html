@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {% for vacancy in vacancies %}
+    <h2>{{ vacancy.title_of_vacancy }}</h2>
+    <p>{{ vacancy.description|safe }}</p>
+        {% for information in vacancy.maininformationofvacancy_set.all %}
+            <p>{{ information.title|safe }}</p>
+        {% endfor %}
+        {% for requirement in vacancy.vacancyrequirements_set.all %}
+            <h3>{{ requirement.title|safe }}</h3>
+            <ul>
+                {{ requirement.list_of_requirements|safe }}
+            </ul>
+        {% endfor %}
+    <br>
+    <hr>
+    {% endfor %}
+</div>
+</body>
+</html>
