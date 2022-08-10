@@ -35,7 +35,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('about_stadium/', about_stadium, name='about_stadium'),
     path('services/', show_services_all, name='show_services_all'),
-    path('services/<slug:category_slug><int:category_id>/', show_services_by_category, name='show_services_by_category'),
+    path('services/<slug:category_slug>/', show_services_by_category, name='show_services_by_category'),
     path('api_dinamo/', include(router.urls)),
     path('vacancies/', vacancies_list, name='vacancies_list'),
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),

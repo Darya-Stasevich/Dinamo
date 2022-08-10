@@ -103,7 +103,7 @@
                                     <div class="menu-extra__container">
                                         <div class="menu-extra__block">
                                             {% for category in categories %}
-                                            <a href="{% url 'show_services_by_category' category.pk %}"
+                                            <a href="{% url 'show_services_by_category' category.slug %}"
                                                class="menu-extra__link">
                                                 {{ category.title }}
                                             </a>
