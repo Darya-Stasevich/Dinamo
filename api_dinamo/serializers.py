@@ -15,7 +15,7 @@ class ServiceSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения услуг на первой странице"""
     class Meta:
         model = Service
-        fields = ['id', 'slug', 'title', 'image', ]
+        fields = ['id', 'slug', 'title', 'image', 'is_primary_service' ]
 
 
 class NewsSerializer(serializers.ModelSerializer):

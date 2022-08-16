@@ -1,4 +1,5 @@
-from django.db import models
+from django.db import models, transaction
+from django.db.models import UniqueConstraint, Q
 from django.urls import reverse
 
 
@@ -63,6 +64,17 @@ class Service(models.Model):
     attachment = models.ForeignKey('Attachment', on_delete=models.CASCADE, blank=True, null=True,
                                    verbose_name='Прикрепленный файл',
                                    help_text="Если нужно прикрепить доп.информацию по услуге")
+    is_primary_service = models.BooleanField(default=False, verbose_name='Приоритетная услуга для отображения',
+                            help_text='При наличии галочки данная услуга попадет в большой блок ЛУЧШИЕ УСЛУГИ ДЛЯ ВАС')
+
+    def save(self, *args, **kwargs):
+        """Добавление только одной услуги с полем is_primary_service=True"""
+        if not self.is_primary_service:
+            return super(Service, self).save(*args, **kwargs)
+        with transaction.atomic():
+            Service.objects.filter(
+                is_primary_service=True).update(is_primary_service=False)
+            return super(Service, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Услугу'

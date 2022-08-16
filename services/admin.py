@@ -6,9 +6,10 @@ from services.models import *
 class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = (
-    'title', 'category', 'published', 'price_with_VAT_for_person', 'price_with_VAT_for_legal', 'created', 'updated')
-    list_filter = ('category', 'published', 'created')
-    list_editable = ('published',)
+        'title', 'category', 'published', 'is_primary_service', 'price_with_VAT_for_person', 'price_with_VAT_for_legal',
+        'created', 'updated')
+    list_filter = ('category', 'published', 'created', 'is_primary_service')
+    list_editable = ('published', 'is_primary_service')
     search_fields = ('title',)
 
 
