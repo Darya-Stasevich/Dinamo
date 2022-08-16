@@ -29,6 +29,7 @@ router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
 router.register('category_services', views.CategoryServiceViewSet)
 router.register('news', views.NewsViewSet)
+router.register('employee_article', views.EmployeeArticleViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,12 +40,6 @@ urlpatterns = [
     path('api_dinamo/', include(router.urls)),
     path('vacancies/', vacancies_list, name='vacancies_list'),
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
-
-
-    # path('api/news_first_page',),   # endpoint для новостей на первой странице
-    # path('api/news/<slug:news_slug><int:news_id>',),  # endpoint для перехода на страницу конретной новости
-    # path('api/services_first_page',),    # endpoint для услуг на первой странице
-    # path('api/services/<slug:category_slug><slug:service_slug><int:service_id>',),   # endpoint для перехода на страницу конкретной услуги
 
 ]
 

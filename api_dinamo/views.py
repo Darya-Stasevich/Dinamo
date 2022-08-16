@@ -1,12 +1,14 @@
 from rest_framework import viewsets
-from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer
+
+from employees.models import EmployeeArticle
+from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer
 from services.models import Service, CategoryService
 from news.models import News
 
 
 class ServiceViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for Service model """
-    queryset = Service.objects.all()
+    queryset = Service.objects.filter(published=True)
     serializer_class = ServiceSerializer
 
 
@@ -18,5 +20,11 @@ class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for News model """
-    queryset = News.objects.all()
+    queryset = News.objects.filter(published=True)
     serializer_class = NewsSerializer
+
+
+class EmployeeArticleViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for EmployeeArticle model """
+    queryset = EmployeeArticle.objects.filter(published=True)
+    serializer_class = EmployeeArticleSerializer
