@@ -20,7 +20,7 @@ class Contact(models.Model):
     number_phone_personnel = models.CharField('Номер тел. отдел кадров', max_length=30, blank=True, null=True)
     email_personnel = models.EmailField(blank=True, null=True, verbose_name='Электронная почта отдел кадров')
     contact_person_personnel = models.CharField(max_length=200, blank=True, null=True,
-                                         verbose_name="Контактное лицо отдел кадров")
+                                                verbose_name="Контактное лицо отдел кадров")
 
     class Meta:
         verbose_name = 'Номера телефонов, эл.почты, контактных лиц'
@@ -115,3 +115,17 @@ class UserEmail(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Document(models.Model):
+    """Документы для страницы сайта ДОКУМЕНТЫ"""
+    title = models.CharField('Полное наименование документа', max_length=200)
+    file = models.FileField('Документ', upload_to='documents/')
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'Документ'
+        verbose_name_plural = 'Документы'
+
+    def __str__(self):
+        return self.title

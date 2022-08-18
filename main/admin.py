@@ -11,6 +11,10 @@ class VideoAdditionalInline(admin.TabularInline):
 class VideoAdmin(admin.ModelAdmin):
     inlines = (VideoAdditionalInline,)
 
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+
 
 admin.site.register(Contact)
 admin.site.register(SocialNetwork)
@@ -18,3 +22,4 @@ admin.site.register(Video, VideoAdmin)
 admin.site.register(PaymentInfo)
 admin.site.register(Partner)
 admin.site.register(UserEmail)
+admin.site.register(Document, DocumentAdmin)

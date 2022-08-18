@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from employees.models import EmployeeArticle
+from main.models import Partner
 from news.models import News
 from services.models import Service, CategoryService
 
@@ -35,3 +36,11 @@ class EmployeeArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmployeeArticle
         fields = ['id', 'slug', 'name_employee', 'title', 'created', 'cover_image', ]
+
+
+class PartnerSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения логотипов партнеров на главной странице"""
+
+    class Meta:
+        model = Partner
+        fields = ['id', 'image', ]
