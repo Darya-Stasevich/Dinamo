@@ -7,748 +7,526 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'index/css/null_for_templates.css' %}">
     <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
-    <title>Главная</title>
+    <title>Document</title>
 </head>
 <body>
-<div class="wrapper">
-    <div class="show">
-    </div>
-    <header>
-        <div class="header__additional">
-            <div class="additional">
-                <div class="container">
-                    <div class="additional__body">
-                        <div class="additional__contacts">
-                            {% for cont in contact %}
-                            <a href="#" class="contacts__telefon">
-                                {{ cont.number_phone_main }}
-                            </a>
-                            <a href="#" class="contacts__email">
-                                {{ cont.email_main }}
-                            </a>
-                            {% endfor %}
-                        </div>
-                        <div class="additional__social">
-                            {% for url in urls %}
-                            <a href="{{ url.social_Instagram }}" class="social__link">
-                                <img src="{% static 'index/img/icons/instagram.svg' %}" alt="Instagram">
-                            </a>
-                            <a href="{{ url.social_Facebook }}" class="social__link">
-                                <img src="{% static 'index/img/icons/facebook.svg' %}" alt="Facebook">
-                            </a>
-                            <a href="{{ url.social_VK }}" class="social__link">
-                                <img src="{% static 'index/img/icons/vk.svg' %}" alt="VK">
-                            </a>
-                            <a href="{{ url.social_Youtube }}" class="social__link">
-                                <img src="{% static 'index/img/icons/youtube.svg' %}" alt="YouTube">
-                            </a>
-                            <a href="{{ url.social_TG }}" class="social__link">
-                                <img src="{% static 'index/img/icons/telega.svg' %}" alt="">
-                            </a>
-                            {% endfor %}
-                        </div>
-                        <div class="additional__map">
-                            <a href="{% url 'about_stadium' %}" class="map__link">
-                                О стадионе
-                            </a>
-                            <a href="#" class="map__link">
-                                Как добраться
-                            </a>
-                            <a href="#" class="map__link">
-                                Контакты
-                            </a>
+    <div class="wrapper">
+        <div class="show">
+        </div>
+        <header>
+            <div class="header__additional">
+                <div class="additional">
+                    <div class="container">
+                        <div class="additional__body">
+                            <div class="additional__contacts">
+                                {% for cont in contact %}
+                                <a href="#" class="contacts__telefon">
+                                    {{ cont.number_phone_main }}
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    {{ cont.email_main }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="additional__social">
+                                {% for url in urls %}
+                                {% if url.social_Instagram %}
+                                <a href="{{ url.social_Instagram }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/instagram.svg' %}" alt="Instagram">
+                                </a>
+                                {% endif %}
+                                {% if url.social_Facebook %}
+                                <a href="{{ url.social_Facebook }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/facebook.svg'%}" alt="Facebook">
+                                </a>
+                                {% endif %}
+                                {% if url.social_VK %}
+                                <a href="{{ url.social_VK }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/vk.svg' %}" alt="VK">
+                                </a>
+                                {% endif %}
+                                {% if url.social_Youtube %}
+                                <a href="{{ url.social_Youtube }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/youtube.svg' %}" alt="YouTube">
+                                </a>
+                                {% endif %}
+                                {% if url.social_TG %}
+                                <a href="{{ url.social_TG }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/telega.svg' %}" alt="">
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="additional__map">
+                                <a href="#" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="header">
-            <div class="container">
-                <div class="header__body">
-                    <div class="header__logo">
-                        <a href="" class="logo__link">
-                            <img src="{% static 'index/img/dinamo_logo1.png' %}" alt="Dinamo">
-                        </a>
-                    </div>
-                    <div class="header__burger">
-                        <span></span>
-                    </div>
-                    <div class="menu__container">
-                        <div class="header__map">
-                            <a href="{% url 'about_stadium' %}" class="map__link">
-                                О стадионе
-                            </a>
-                            <a href="#" class="map__link">
-                                Как добраться
-                            </a>
-                            <a href="#" class="map__link">
-                                Контакты
+            <div class="header">
+                <div class="container">
+                    <div class="header__body">
+                        <div class="header__logo">
+                            <a href="" class="logo__link">
+                                <img src="{% static 'index/img/dinamo_logo1_RGB%201.png' %}" alt="Dinamo">
                             </a>
                         </div>
-                        <nav class="header__menu">
-                            <ul class="header__list">
-                                <li>
-                                    <a href="{% url 'index' %}" class="header__link selected">
-                                        Главная
-                                    </a>
-                                </li>
-                                <li class="list__item services">
-                                    <div class="item__wrapper">
-                                        <a href="{% url 'show_services_all' %}" class="header__link">
-                                            Услуги
+                        <div class="header__burger">
+                            <span></span>
+                        </div>
+                        <div class="menu__container">
+                            <div class="header__map">
+                                <a href="#" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="header__list">
+                                    <li>
+                                        <a href="#" class="header__link selected">
+                                            Главная
                                         </a>
-                                        <span class="link__line"></span>
-                                        <span class="link__arrow" id="services"></span>
-                                    </div>
-                                    <div class="menu-extra__container">
-                                        <div class="menu-extra__block">
-                                            {% for category in categories %}
-                                            <a href="{% url 'show_services_by_category' category.slug %}"
-                                               class="menu-extra__link">
-                                                {{ category.title }}
+                                    </li>
+                                    <li class="list__item services">
+                                        <div class="item__wrapper">
+                                            <a href="{% url 'show_services_all' %}" class="header__link">
+                                                Услуги
                                             </a>
-                                            {% endfor %}
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Организация мероприятий-->
-                                            <!--                                                </a>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Спорт-->
-                                            <!--                                                </a>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Здоровье-->
-                                            <!--                                                </a>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Реклама-->
-                                            <!--                                                </a>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Прочие услуги-->
-                                            <!--                                                </a>-->
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="services"></span>
                                         </div>
-                                    </div>
-                                    <div class="menu-mobile__container">
-                                        <div>
-                                            {% for category in categories %}
-                                            <a href="{% url 'show_services_by_category' category.slug %}"
-                                               class="menu-extra__link">
-                                                {{ category.title }}
-                                            </a>
-                                            {% endfor %}
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Организация мероприятий-->
-                                            <!--                                                </a>-->
-                                            <!--                                            </div>-->
-                                            <!--                                            <div>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Спорт-->
-                                            <!--                                                </a>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Здоровье-->
-                                            <!--                                                </a>-->
-                                            <!--                                            </div>-->
-                                            <!--                                            <div>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Реклама-->
-                                            <!--                                                </a>-->
-                                            <!--                                                <a href="#" class="menu-extra__link">-->
-                                            <!--                                                    Прочие услуги-->
-                                            <!--                                                </a>-->
+                                        <div class="menu-extra__container">
+                                            <div class="menu-extra__block">
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" class="header__link">
-                                        Новости
-                                    </a>
-                                </li>
-                                <li class="list__item media">
-                                    <div class="item__wrapper">
+                                        <div class="menu-mobile__container">
+                                        </div>
+                                    </li>
+                                    <li>
                                         <a href="#" class="header__link">
-                                            Медиа
+                                            Новости
                                         </a>
-                                        <span class="link__line"></span>
-                                        <span class="link__arrow" id="media"></span>
-                                    </div>
-                                    <div class="menu-extra__media">
-                                        <a href="#" class="menu-extra__link">
-                                            Фотоальбомы
+                                    </li>
+                                    <li class="list__item media">
+                                        <div class="item__wrapper">
+                                            <a href="#" class="header__link">
+                                                Медиа
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="media"></span>
+                                        </div>
+                                        <div class="menu-extra__media">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                        <div class="menu-mobile__block">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="list__item-enter">
+                                        <a href="#" class="header__link">
+                                            События
                                         </a>
-                                        <a href="#" class="menu-extra__link">
-                                            Видеоальбомы
-                                        </a>
-                                    </div>
-                                    <div class="menu-mobile__block">
-                                        <a href="#" class="menu-extra__link">
-                                            Фотоальбомы
-                                        </a>
-                                        <a href="#" class="menu-extra__link">
-                                            Видеоальбомы
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="list__item-enter">
-                                    <a href="#" class="header__link">
-                                        События
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="header__contacts">
-                            {% for con in contact %}
-                            <a href="#" class="contacts__telefon">
-                                {{ con.number_phone_main }}
-                            </a>
-                            <a href="#" class="contacts__email">
-                                {{ con.email_main }}
-                            </a>
-                            {% endfor %}
-                        </div>
-                        <div class="header__social">
-                            {% for url in urls %}
-                            <a href="{{ url.social_Instagram }}" class="social__link">
-                                <img src="{% static 'index/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
-                            </a>
-                            <a href="{{ url.social_Facebook }}" class="social__link">
-                                <img src="{% static 'index/img/icons/icon_face_mobile.svg' %}" alt="Facebook">
-                            </a>
-                            <a href="{{ url.social_VK }}" class="social__link">
-                                <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}" alt="VK">
-                            </a>
-                            <a href="{{ url.social_Youtube }}" class="social__link">
-                                <img src="{% static 'index/img/icons/icon_YT_mobile.svg' %}" alt="YouTube">
-                            </a>
-                            <a href="{{ url.social_TG }}" class="social__link">
-                                <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}" alt="">
-                            </a>
-                            {% endfor %}
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="header__contacts">
+                                {% for cont in contact%}
+                                <a href="#" class="contacts__telefon">
+                                    {{ cont.number_phone_main }}
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    {{ cont.email_main }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="header__social">
+                                {% for url in urls %}
+                                {% if url.social_Instagram %}
+                                <a href="{{ url.social_Instagram }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
+                                </a>
+                                {% endif %}
+                                {% if url.social_Facebook %}
+                                <a href="{{ url.social_Facebook }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/icon_face_mobile.svg' %}" alt="Facebook">
+                                </a>
+                                {% endif %}
+                                {% if url.social_VK %}
+                                <a href="{{ url.social_VK }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}}" alt="VK">
+                                </a>
+                                {% endif %}
+                                {% if url.social_Youtube %}
+                                <a href="{{ url.social_Youtube }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/icon_YT_mobile.svg' %}" alt="YouTube">
+                                </a>
+                                {% endif %}
+                                {% if url.social_TG %}
+                                <a href="{{ url.social_TG }}" class="social__link">
+                                    <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}}" alt="">
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <main>
-        <div class="container__main">
-            <video class="main__video" width="100%" height="auto" autoplay="autoplay" loop muted>
-                <source src="{% static 'index/img/dinamo.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-            </video>
-            <video hidden class="main__video" width="100%" height="auto" autoplay="autoplay" loop muted>
-                <source src="{% static 'index/img/dinamo.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-            </video>
-            <video hidden class="main__video" width="100%" height="auto">
-                <source src="{% static 'index/img/dinamo.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-            </video>
-            <div class="main__background">
-                <div class="main__arrow left"></div>
+        </header>
+        <main>
+            <div class="container__main">
+                <video class="main__video" width="100%" height="auto" autoplay="autoplay" loop muted>
+                    <source src="{% static 'index/img/dinamo.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                </video>
+                <video hidden class="main__video" width="100%" height="auto" autoplay="autoplay" loop muted>
+                    <source src="{% static 'index/img/dinamo.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                </video>
+                <video hidden class="main__video" width="100%" height="auto">
+                    <source src="{% static 'index/img/dinamo.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                </video>
+                <div class="main__background">
+                    <div class="main__arrow left"></div>
+                    <div class="container">
+                        <div class="main__content">
+                            <h1 class="main__title">
+                                Национальный <br> олимпийский <br> стадион «Динамо»
+                            </h1>
+                            <p class="main__subtitle">
+                                Рождён для ярких побед
+                            </p>
+                            <a href="#" class="main__link">
+                                История стадиона
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main__arrow right"></div>
+                </div>
+            </div>
+            <div class="container__news">
                 <div class="container">
-                    <div class="main__content">
-                        <h1 class="main__title">
-                            Национальный <br> олимпийский <br> стадион «Динамо»
-                        </h1>
-                        <p class="main__subtitle">
-                            Рождён для ярких побед
-                        </p>
-                        <a href="#" class="main__link">
-                            История стадиона
+                    <div class="news__flex">
+                        <div class="news__arrow news__left"></div>
+                        <div class="news__arrow news__right"></div>
+                        <div class="news__container">
+                            <div class="news">
+                            </div>
+                        </div>
+                        <a href="#" class="news__link">
+                            Смотреть все новости
                         </a>
                     </div>
                 </div>
-                <div class="main__arrow right"></div>
             </div>
-        </div>
-        <div class="container__news">
-            <div class="container">
-                <div class="news__flex">
-                    <div class="news__arrow news__left"></div>
-                    <div class="news__arrow news__right"></div>
-                    <div class="news__container">
-                        <div class="news">
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
+            <div class="container__service">
+                <div class="container">
+                    <div class="service">
+                        <h2 class="service__title">
+                            Лучшие <span>услуги</span> для Вас
+                        </h2>
+                        <div class="service__wrapper">
+<!--                            <div class="service__rent">-->
+<!--                                <a href="#" class="rent__background">-->
+<!--                                    <p class="rent__text">-->
+<!--                                        Аренда помещений-->
+<!--                                    </p>-->
+<!--                                    <div href="#" class="rent__link">-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                                <a href="#" class="service__link">-->
+<!--                                    Смотреть все услуги-->
+<!--                                </a>-->
+<!--                            </div>-->
+                            <div class="service__commercial-main">
+
                             </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__item">
-                                <div class="item__background">
-                                    <div class="item__block">
-                                        <p class="item__title">
-                                            На "Динамо" идет подготовка поля к первому футбольному матчу сезона 2021
-                                        </p>
-                                        <p class="item__subtitle">
-                                            27 марта национальная сборная по футболу проведет домашний матч против
-                                            эстонцев. Игра начнется в 20:00. Напомним, жребий определил Беларусь в
-                                            отборочную группу Е вместе ...
-                                        </p>
-                                        <a href="#" class="item__link">
-                                            Читать полностью
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="news__link">
-                        Смотреть все новости
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="container__service">
-            <div class="container">
-                <div class="service">
-                    <h2 class="service__title">
-                        Лучшие <span>услуги</span> для Вас
-                    </h2>
-                    <div class="service__wrapper">
-                        <div class="service__rent">
-                            <a href="#" class="rent__background">
-                                <p class="rent__text">
-                                    Аренда помещений
-                                </p>
-                                <div href="#" class="rent__link">
+                            <div class="service__commercial">
+                                <div class="service__commercial-wrapper">
 
                                 </div>
-                            </a>
-                            <a href="{% url 'show_services_all' %}" class="service__link">
+                                <div class="commercial__carousel">
+                                    <div class="carousel__left">
+
+                                    </div>
+                                    <div class="carousel__page">
+                                    </div>
+                                    <div class="carousel__right">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="service__link service__link-mobile">
                                 Смотреть все услуги
                             </a>
                         </div>
-                        <div class="service__commercial">
-                            <div class="commercial__container">
-                                <div class="commercial__block">
-                                    <div class="commercial__background">
-                                        <p class="commercial__text">
-                                            Реклама
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="commercial__block">
-                                    <div class="commercial__background">
-                                        <p class="commercial__text">
-                                            Проведение праздников, банкетов и фуршетов
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="commercial__block">
-                                    <div class="commercial__background">
-                                        <p class="commercial__text">
-                                            Организация бизнес-встреч
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="commercial__block">
-                                    <div class="commercial__background">
-                                        <p class="commercial__text">
-                                            Площадки для игры в футбол, баскетбол, волейб...
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="commercial__carousel">
-                                <div class="carousel__left">
-
-                                </div>
-                                <div class="carousel__page">
-                                    <div class="page"></div>
-                                    <div class="page"></div>
-                                    <div class="page"></div>
-                                    <div class="page"></div>
-                                </div>
-                                <div class="carousel__right">
-
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{% url 'show_services_all' %}" class="service__link service__link-mobile">
-                            Смотреть все услуги
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container__partners">
-            <div class="partners">
+            <div class="container__partners">
+                <div class="partners">
+                    <div class="container">
+                        <div class="partners__column column__left">
+                            <img src="{% static 'index/img/partners_column-left.svg' %}" alt="">
+                        </div>
+                        <div class="partners__column column__right">
+                            <img src="{% static 'index/img/partners_column-right.svg' %}" alt="">
+                        </div>
+                        <div class="partners__content">
+                            <h3 class="partners__title">
+                                Партнёры
+                            </h3>
+                            <div class="partners__wrapper">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__number">
                 <div class="container">
-                    <div class="partners__column column__left">
-                        <img src="{% static 'index/img/partners_column-left.svg' %}" alt="">
+                    <div class="number__title">
+                        Стадион «ДИНАМО» <span>в цифрах</span>
                     </div>
-                    <div class="partners__column column__right">
-                        <img src="{% static 'index/img/partners_column-right.svg' %}" alt="">
-                    </div>
-                    <div class="partners__content">
-                        <h3 class="partners__title">
-                            Партнёры
-                        </h3>
-                        <div class="partners__wrapper">
-                            {% for partner in partners %}
-                            <div class="partners__item">
-                                <img src="{{ partner.image.url }}" alt="">
+                    <div class="number__table">
+                        <div class="table__item table__first">
+                            <p class="table__title">
+                                <span>22 246</span>
+                                зрителей
+                            </p>
+                            <p class="table__subtitle">
+                                Вместимость стадиона
+                            </p>
+                        </div>
+                        <div class="table__item table__second">
+                            <div class="table__item-wrapper">
+                                <p class="table__title">
+                                    <span>47 015</span>
+                                    м²
+                                </p>
+                                <p class="table__subtitle">
+                                    Общая площадь
+                                </p>
                             </div>
-                            {% endfor %}
-                            <!--                                <div class="partners__item">-->
-                            <!--                                    <img src="{% static 'img/logo%204витэкс.svg' %}" alt="">-->
-                            <!--                                </div>-->
-                            <!--                                <div class="partners__item">-->
-                            <!--                                    <img src="{% static 'img/logo%203стратег.svg' %}" alt="">-->
-                            <!--                                </div>-->
-                            <!--                                <div class="partners__item">-->
-                            <!--                                    <img src="{% static 'img/Без%20названия%202атлтант.svg' %}" alt="">-->
-                            <!--                                </div>-->
-                            <!--                                <div class="partners__item">-->
-                            <!--                                    <img src="{% static 'img/165409270564506_page-0001-removebg-preview%201вилинг.svg' %}" alt="">-->
-                            <!--                                </div>-->
+                        </div>
+                        <div class="table__item table__three">
+                            <div class="table__item-wrapper">
+                                <p class="table__title">
+                                    <span>40</span>
+                                </p>
+                                <p class="table__subtitle">
+                                    VIP-лож
+                                </p>
+                            </div>
+                        </div>
+                        <div class="table__item table__four">
+                            <p class="table__title">
+                                <span>233</span>
+                            </p>
+                            <p class="table__subtitle">
+                                Парковочных места
+                            </p>
+                        </div>
+                        <div class="table__item table__five">
+                            <div class="table__item-wrapper">
+                                <p class="table__title">
+                                    <span>350</span>
+                                </p>
+                                <p class="table__subtitle">
+                                    Прожекторов
+                                </p>
+                            </div>
+                        </div>
+                        <div class="table__item table__six">
+                            <div class="table__item-wrapper">
+                                <p class="table__title">
+                                    <span>13</span>
+                                </p>
+                                <p class="table__subtitle">
+                                    Беговых дорожек
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container__number">
-            <div class="container">
-                <div class="number__title">
-                    Стадион «ДИНАМО» <span>в цифрах</span>
-                </div>
-                <div class="number__table">
-                    <div class="table__item table__first">
-                        <p class="table__title">
-                            <span>22 246</span>
-                            зрителей
-                        </p>
-                        <p class="table__subtitle">
-                            Вместимость стадиона
-                        </p>
+            <div class="container__media">
+                <div class="show-media">
+                    <div class="show-media__img">
+                        <img src="{% static 'index/img/media/media_show.png' %}" alt="">
                     </div>
-                    <div class="table__item table__second">
-                        <p class="table__title">
-                            <span>47 015</span>
-                            м²
-                        </p>
-                        <p class="table__subtitle">
-                            Общая площадь
-                        </p>
-                    </div>
-                    <div class="table__item table__three">
-                        <p class="table__title">
-                            <span>40</span>
-                        </p>
-                        <p class="table__subtitle">
-                            VIP-лож
-                        </p>
-                    </div>
-                    <div class="table__item table__four">
-                        <p class="table__title">
-                            <span>233</span>
-                        </p>
-                        <p class="table__subtitle">
-                            Парковочных места
-                        </p>
-                    </div>
-                    <div class="table__item table__five">
-                        <p class="table__title">
-                            <span>350</span>
-                        </p>
-                        <p class="table__subtitle">
-                            Прожекторов
-                        </p>
-                    </div>
-                    <div class="table__item table__six">
-                        <p class="table__title">
-                            <span>13</span>
-                        </p>
-                        <p class="table__subtitle">
-                            Беговых дорожек
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container__media">
-            <div class="show-media">
-                <div class="show-media__img">
-                    <img src="{% static 'index/img/media/media_show.png' %}" alt="">
-                </div>
-                <div class="show-media__cross"></div>
-                <div class="show-media__block">
-                    <a href="#" class="show-media__link">
-                        Смотреть больше фотографий
-                    </a>
-                </div>
-            </div>
-            <div class="container">
-                <div class="media__block-title">
-                    <div class="media__title">
-                        <span>Ценим</span> яркие моменты
-                    </div>
-                    <div class="media__button">
-                        <button class="media__button-foto">
-                            Фото
-                        </button>
-                        <button class="media__button-video">
-                            Видео
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="media__container">
-                    <div class="media__item-left">
-                        <div class="item__left media__backgrond">
-                            <img src="{% static 'index/img/media/layer_left.png' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="media__content">
-                        <div class="media__wrap">
-                            <div class="media-column">
-                                <div class="media__item">
-                                    <img src="{% static 'index/img/media/media_img4.png' %}" alt="">
-                                </div>
-                                <div class="media__item">
-                                    <img src="{% static 'index/img/media/media_img2.png' %}" alt="">
-                                </div>
-                            </div>
-                            <div class="media-column">
-                                <div class="media__item">
-                                    <img src="{% static 'index/img/media/media_img3.png' %}" alt="">
-                                </div>
-                                <div class="media__item">
-                                    <img src="{% static 'index/img/media/media_img1.png' %}" alt="">
-                                </div>
-                            </div>
-                            <div class="media__block">
-                                <div class="media__item">
-                                    <img src="{% static 'index/img/media/media_image.png' %}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="media__link">
+                    <div class="show-media__cross"></div>
+                    <div class="show-media__block">
+                        <a href="#" class="show-media__link">
                             Смотреть больше фотографий
                         </a>
                     </div>
-                    <div class="media__item-right">
-                        <div class="item__right media__backgrond">
-                            <img src="{% static 'index/img/media/layer_right.png' %}" alt="">
+                </div>
+                <div class="container">
+                    <div class="media__block-title">
+                        <div class="media__title">
+                                <span>Ценим</span> яркие моменты
+                        </div>
+                        <div class="media__button">
+                                <button class="media__button-foto">
+                                    Фото
+                                </button>
+                                <button class="media__button-video">
+                                    Видео
+                                </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="media__container">
+                        <div class="media__item-left">
+                            <div class="item__left media__backgrond">
+                                <img src="{% static 'index/img/media/layer_left.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="media__content">
+                            <div class="media__wrap">
+                                <div class="media-column">
+                                    <div class="media__item">
+                                        <img src="{% static 'index/img/media/media_img4.png' %}" alt="">
+                                    </div>
+                                    <div class="media__item">
+                                        <img src="{% static 'index/img/media/media_img2.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="media-column">
+                                    <div class="media__item">
+                                        <img src="{% static 'index/img/media/media_img3.png' %}" alt="">
+                                    </div>
+                                    <div class="media__item">
+                                        <img src="{% static 'index/img/media/media_img1.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="media__block">
+                                        <div class="media__item">
+                                            <img src="{% static 'index/img/media/media_image.png' %}" alt="">
+                                        </div>
+                                </div>
+                            </div>	
+                            <a href="#" class="media__link">
+                                Смотреть больше фотографий
+                            </a>
+                        </div>		
+                        <div class="media__item-right">
+                            <div class="item__right media__backgrond">
+                                <img src="{% static 'index/img/media/layer_right.png' %}" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container__payment">
+            <div class="container__payment">
+                <div class="container">
+                    <div class="payment">
+                        <div class="payment__image">
+                            <img src="{% static 'index/img/payment__mobile.png' %}" alt="">
+                        </div>
+                        <div class="payment__title">
+                            Мы всегда рады осуществлять Ваши желания!
+                        </div>
+                        <a href="#" class="payment__link">
+                            Перейти в каталог услуг
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
             <div class="container">
-                <div class="payment">
-                    <div class="payment__image">
-                        <img src="{% static 'index/img/payment__mobile.png' %}" alt="">
+                <div class="footer">
+                    <nav class="footer__nav">
+                        <a href="#" class="footer__link footer__text">
+                            Адрес: г. Минск,<br>
+                            ул. Кирова, д. 8, корп. 6
+                        </a>
+                    </nav>
+                    <div class="footer__social">
+                        <p class="footer__social-title footer__text">
+                            Следите за нами в соц.сетях
+                        </p>
+                        <div class="footer__social-block">
+                            {% for url in urls %}
+                            {% if url.social_Instagram %}
+                            <a href="{{ url.social_Instagram }}" class="social-block__link">
+                                <img src="{% static 'index/img/footer/instagramm.svg' %}" alt="">
+                            </a>
+                            {% endif %}
+                            {% if url.social_Facebook %}
+                            <a href="{{ url.social_Facebook }}" class="social-block__link">
+                                <img src="{% static 'index/img/footer/facebook.svg' %}" alt="">
+                            </a>
+                            {% endif %}
+                            {% if url.social_VK %}
+                            <a href="{{ url.social_VK }}" class="social-block__link">
+                                <img src="{% static 'index/img/footer/vk.svg' %}" alt="">
+                            </a>
+                            {% endif %}
+                            {% if url.social_Youtube %}
+                            <a href="{{ url.social_Youtube }}" class="social-block__link">
+                                <img src="{% static 'index/img/footer/youtube.svg' %}" alt="">
+                            </a>
+                            {% endif %}
+                            {% if url.social_TG %}
+                            <a href="{{ url.social_TG }}" class="social-block__link">
+                                <img src="{% static 'index/img/icons/logos_telegram%20(1).svg' %}" alt="">
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="payment__title">
-                        Мы всегда рады осуществлять Ваши желания!
-                    </div>
-                    <a href="{% url 'show_services_all' %}" class="payment__link">
-                        Перейти в каталог услуг
-                    </a>
+                    <form action="{% url 'index' %}" class="footer__form" method="post">
+                        {% csrf_token %}
+                        <p class="footer__form-title footer__text">
+                            Подписывайтесь на email-рассылку
+                        </p>
+                        <div class="footer__form-block">
+                            <input type="email" name="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
+                            <button class="form-block__button footer__text">
+                                Подписаться
+                            </button>
+                        </div>
+                    </form>
                 </div>
+                <p class="footer__subtitle">
+                    2022 © Все права защищены
+                </p>
             </div>
-        </div>
-    </main>
-    <footer>
-        <div class="container">
-            <div class="footer">
-                <nav class="footer__nav">
-                    <a href="#" class="footer__link footer__text">
-                        Адрес: г. Минск,<br>
-                        ул. Кирова, д. 8, корп. 6
-                    </a>
-                </nav>
-                <div class="footer__social">
-                    <p class="footer__social-title footer__text">
-                        Следите за нами в соц.сетях
-                    </p>
-                    <div class="footer__social-block">
-                        {% for url in urls %}
-                        <a href="{{ url.social_Instagram }}" class="social-block__link">
-                            <img src="{% static 'index/img/footer/instagramm.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_Facebook }}" class="social-block__link">
-                            <img src="{% static 'index/img/footer/facebook.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_VK }}" class="social-block__link">
-                            <img src="{% static 'index/img/footer/vk.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_Youtube }}" class="social-block__link">
-                            <img src="{% static 'index/img/footer/youtube.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_TG }}" class="social-block__link">
-                            <img src="{% static 'index/img/icons/logos_telegram%20(1).svg' %}" alt="">
-                        </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                <form action="#" class="footer__form" method="post">
-                    {% csrf_token %}
-                    <p class="footer__form-title footer__text">
-                        Подписывайтесь на email-рассылку
-                    </p>
-                    <div class="footer__form-block">
-                        <input type="text" name="email" class="form-block__input" placeholder="sportsmen228@gmail.com">
-                        <button class="form-block__button footer__text">
-                            Подписаться
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <p class="footer__subtitle">
-                2022 © Все права защищены
-            </p>
-        </div>
-    </footer>
-</div>
-<script src="{% static 'index/js/header.js' %}"></script>
-<script src="{% static 'index/js/main__video.js' %}"></script>
-<script src="{% static 'index/js/news_slider.js' %}"></script>
-<script src="{% static 'index/js/show-media.js' %}"></script>
+        </footer>
+    </div>
+    <script src="{% static 'index/js/header.js' %}"></script>
+    <script src="{% static 'index/js/main__video.js' %}"></script>
+    <script src="{% static 'index/js/news_slider.js' %}"></script>
+    <script src="{% static 'index/js/service_slider.js' %}"></script>
+    <script src="{% static 'index/js/show-media.js' %}"></script>
+    <script src="{% static 'index/js/validate.js' %}"></script>
+    <script src="{% static 'index/js/partners.js' %}"></script>
 </body>
 </html>
