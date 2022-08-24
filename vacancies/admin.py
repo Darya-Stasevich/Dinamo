@@ -1,11 +1,5 @@
 from django.contrib import admin
-from vacancies.models import Vacancy, VacancyRequirements, MainInformationOfVacancy
-
-
-class MainInformationOfVacancyInline(admin.StackedInline):
-    model = MainInformationOfVacancy
-    verbose_name_plural = 'Главная информация'
-    verbose_name = 'Главная информация'
+from vacancies.models import Vacancy, VacancyRequirements, FeedbackForVacancy
 
 
 class VacancyRequirementsInline(admin.StackedInline):
@@ -16,7 +10,15 @@ class VacancyRequirementsInline(admin.StackedInline):
 
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ('title_of_vacancy', )
-    inlines = ( MainInformationOfVacancyInline, VacancyRequirementsInline, )
+    inlines = (VacancyRequirementsInline, )
+
+
+class FeedbackForVacancyAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'phone_number', 'status', 'date', 'vacancy')
+    list_filter = ('status', 'date', 'vacancy')
+    list_editable = ('status', )
+    search_fields = ('full_name', 'phone_number')
 
 
 admin.site.register(Vacancy, VacancyAdmin)
+admin.site.register(FeedbackForVacancy, FeedbackForVacancyAdmin)
