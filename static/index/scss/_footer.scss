@@ -35,7 +35,7 @@ footer{
 .footer__social-block {
     display: flex;
     flex-wrap: wrap;
-    //gap: 24px;
+    gap: 24px;
 }
 .footer__form {
 }
@@ -46,6 +46,8 @@ footer{
     display: flex;
 }
 .form-block__input {
+    border: 2px solid #A09999;
+    border-radius: 2px;
     margin-right: 8px;
     width: 324px;
     padding: 16px;

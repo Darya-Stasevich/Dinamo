@@ -19,7 +19,6 @@ def index(request):
         'categories': categories,
         'video': video,
     }
-    print(video)
     if request.method == "POST":
         email = UserEmailForm(request.POST)
         if email.is_valid():

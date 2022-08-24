@@ -26,6 +26,28 @@ let headerMenu = document.querySelector('.menu__container');
         }
 
     };
+let menuExtraBlock = document.querySelector('.menu-extra__block');
+let menuMobileContainer = document.querySelector('.menu-mobile__container');
+function get_category(url){
+    fetch(url)
+        .then(response=>response.json())
+        .then(categories=>{
+            for (let i of categories){
+                menuExtraBlock.innerHTML+=`<a href="#" class="menu-extra__link">${i.title}</a>`
+            }
+        })
+}
+get_category('https://hicnh32749.pythonanywhere.com/api_dinamo/category_services/');
+function get_category_mobile(url) {
+    fetch(url)
+        .then(resp => resp.json())
+        .then(categories => {
+            for (let i=0;i<categories.length;i=i+2){
+                menuMobileContainer.innerHTML += `<div><a href="#" class="menu-extra__link">${categories[i].title}</a><a>${categories[i+1].title}</a></div>`
+            }
+        })
+}
+get_category_mobile('https://hicnh32749.pythonanywhere.com/api_dinamo/category_services/')
 
 
 window.onload = function (){
