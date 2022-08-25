@@ -40,3 +40,16 @@ def about_stadium(request):
             email.save()
     return render(request, 'about_stadium.html', context)
 
+def show_history(request):
+    """Отображение страницы сайта о стадионе"""
+    contact = Contact.objects.all()
+    urls = SocialNetwork.objects.all()
+    context = {
+        'contact': contact,
+        'urls': urls,
+    }
+    if request.method == "POST":
+        email = UserEmailForm(request.POST)
+        if email.is_valid():
+            email.save()
+    return render(request, 'history.html', context)

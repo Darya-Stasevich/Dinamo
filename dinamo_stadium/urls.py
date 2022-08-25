@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from api_dinamo import views
-from main.views import index, about_stadium
+from main.views import index, about_stadium, show_history
 from services.views import show_services_by_category, show_services_all
 from vacancies.views import vacancies_list
 from .yasg import urlpatterns as doc_urls
@@ -40,6 +40,7 @@ urlpatterns = [
     path('services/<slug:category_slug>/', show_services_by_category, name='show_services_by_category'),
     path('api_dinamo/', include(router.urls)),
     path('vacancies/', vacancies_list, name='vacancies_list'),
+    path('history/', show_history, name='history'),
     # path('documents/', documents_list, name='documents_list'),
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
 

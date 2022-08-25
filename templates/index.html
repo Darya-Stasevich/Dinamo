@@ -58,7 +58,7 @@
                                 {% endfor %}
                             </div>
                             <div class="additional__map">
-                                <a href="#" class="map__link">
+                                <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
                                 <a href="#" class="map__link">
@@ -85,7 +85,7 @@
                         </div>
                         <div class="menu__container">
                             <div class="header__map">
-                                <a href="#" class="map__link">
+                                <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
                                 <a href="#" class="map__link">
@@ -178,7 +178,7 @@
                                 {% endif %}
                                 {% if url.social_VK %}
                                 <a href="{{ url.social_VK }}" class="social__link">
-                                    <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}}" alt="VK">
+                                    <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}" alt="VK">
                                 </a>
                                 {% endif %}
                                 {% if url.social_Youtube %}
@@ -188,7 +188,7 @@
                                 {% endif %}
                                 {% if url.social_TG %}
                                 <a href="{{ url.social_TG }}" class="social__link">
-                                    <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}}" alt="">
+                                    <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}" alt="">
                                 </a>
                                 {% endif %}
                                 {% endfor %}

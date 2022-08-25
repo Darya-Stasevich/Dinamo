@@ -14,6 +14,7 @@ def show_services_all(request):
 
 def show_services_by_category(request, category_slug):
     """Функция вывода всех услуг выбранной категории"""
+    print(request)
     services = Service.objects.filter(published=True, category__slug=category_slug).prefetch_related('category')
     context = {
         'services': services,

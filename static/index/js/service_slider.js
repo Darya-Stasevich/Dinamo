@@ -53,22 +53,22 @@ function get_service(url) {
             // -----------------------
             for (let i = 0; i < service.length; i = i + 4){
                 serviceWrapper.innerHTML += `<div class="commercial__container">
-                                                <a href="#" class="commercial__block">
+                                                <a href="" class="commercial__block">
                                                     <div class="commercial__background" style="background: url(${service[i].image}) center/cover no-repeat">
                                                         <p class="commercial__text">${service[i].title}</p>
                                                     </div>
                                                 </a>
-                                                <a href="#" class="commercial__block">
+                                                <a href="" class="commercial__block">
                                                     <div class="commercial__background" style="background: url(${service[i + 1]?service[i + 1].image:''}) center/cover no-repeat">
                                                         <p class="commercial__text">${service[i + 1] ? service[i + 1].title:''}</p>
                                                     </div>
                                                 </a>
-                                                <a href="#" class="commercial__block">
+                                                <a href="" class="commercial__block">
                                                     <div class="commercial__background" style="background: url(${service[i + 1]?service[i + 2].image:''}) center/cover no-repeat">
                                                         <p class="commercial__text">${service[i + 2] ? service[i + 2].title:''}</p>
                                                     </div>
                                                 </a>
-                                                <a href="#" class="commercial__block">
+                                                <a href="" class="commercial__block">
                                                     <div class="commercial__background" style="background: url(${service[i + 1]?service[i + 3].image:''}) center/cover no-repeat">
                                                         <p class="commercial__text">${service[i + 3] ? service[i + 3].title:''}</p>
                                                     </div>
