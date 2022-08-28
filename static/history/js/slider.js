@@ -7,7 +7,7 @@ if(counter == 0){
     sliderPoints[0].classList.add('isActive');
     text[0].classList.add('selected');
     prevArrow.forEach(item => {
-        item.style.background = 'url("../img/icons/left_arrow_button.svg") no-repeat center, #C2A98A'
+        item.style.background = 'url("/static/history/img/icons/left_arrow_button.svg") no-repeat center, #C2A98A'
     })
 }
 nextArrow.forEach(arrow => {
@@ -23,11 +23,11 @@ nextArrow.forEach(arrow => {
             text[counter - 1].classList.remove('selected');
         }
         if (counter == sliderPoints.length - 1){
-            arrow.style.background = 'url("../img/icons/right_arrow_button.svg") no-repeat center, #C2A98A'
+            arrow.style.background = 'url("/static/history/img/icons/right_arrow_button.svg") no-repeat center, #C2A98A'
         }
         if (counter != 0){
             prevArrow.forEach(item => {
-                item.style.background = 'url("../img/icons/left_arrow_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%)';
+                item.style.background = 'url("/static/history/img/icons/left_arrow_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%)';
             })
         }
     })
@@ -47,12 +47,12 @@ prevArrow.forEach(arrow => {
         }
         if (counter != sliderPoints.length - 1){
             nextArrow.forEach(item => {
-                item.style.background = 'url("../img/icons/right_arrow_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%)'
+                item.style.background = 'url("/static/history/img/icons/right_arrow_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%)'
             })
         }
         if (counter == 0){
             prevArrow.forEach(item => {
-                item.style.background = 'url("../img/icons/left_arrow_button.svg") no-repeat center, #C2A98A'
+                item.style.background = 'url("/static/history/img/icons/left_arrow_button.svg") no-repeat center, #C2A98A'
             })
         }
     })

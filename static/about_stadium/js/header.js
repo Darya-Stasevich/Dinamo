@@ -33,7 +33,7 @@ function get_category(url){
         .then(response=>response.json())
         .then(categories=>{
             for (let i of categories){
-                menuExtraBlock.innerHTML+=`<a href="#" class="menu-extra__link">${i.title}</a>`
+                menuExtraBlock.innerHTML+=`<a href="/services/${i.slug}" class="menu-extra__link">${i.title}</a>`
             }
         })
 }
@@ -43,7 +43,7 @@ function get_category_mobile(url) {
         .then(resp => resp.json())
         .then(categories => {
             for (let i=0;i<categories.length;i=i+2){
-                menuMobileContainer.innerHTML += `<div><a href="#" class="menu-extra__link">${categories[i].title}</a><a>${categories[i+1].title}</a></div>`
+                menuMobileContainer.innerHTML += `<div><a href="/services/${categories[i].slug}" class="menu-extra__link">${categories[i].title}</a><a href="/services/${categories[i+1].slug}">${categories[i+1].title}</a></div>`
             }
         })
 }
