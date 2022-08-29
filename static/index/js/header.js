@@ -33,11 +33,12 @@ function get_category(url){
         .then(response=>response.json())
         .then(categories=>{
             for (let i of categories){
-                menuExtraBlock.innerHTML+=`<a href="#" class="menu-extra__link">${i.title}</a>`
+                menuExtraBlock.innerHTML+=`<a href="{% url 'show_services_by_category' ${i.slug} %}" class="menu-extra__link">${i.title}</a>`
+                console.log(i.slug)
             }
         })
 }
-get_category('https://hicnh32749.pythonanywhere.com/api_dinamo/category_services/');
+get_category('http://127.0.0.1:8000/api_dinamo/category_services/');
 function get_category_mobile(url) {
     fetch(url)
         .then(resp => resp.json())
@@ -47,7 +48,7 @@ function get_category_mobile(url) {
             }
         })
 }
-get_category_mobile('https://hicnh32749.pythonanywhere.com/api_dinamo/category_services/')
+get_category_mobile('http://127.0.0.1:8000/api_dinamo/category_services/')
 
 
 window.onload = function (){
