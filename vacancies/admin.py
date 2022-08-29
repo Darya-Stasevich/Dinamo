@@ -9,7 +9,8 @@ class VacancyRequirementsInline(admin.StackedInline):
 
 
 class VacancyAdmin(admin.ModelAdmin):
-    list_display = ('title_of_vacancy', )
+    list_display = ('title_of_vacancy', 'published')
+    list_editable = ('published', )
     inlines = (VacancyRequirementsInline, )
 
 
