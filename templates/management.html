@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'management/css/managment-style.css' %}">
+    <link rel="stylesheet" href="{% static 'management/css/null_for_templates.css' %}">
+    <title>Руководство</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header__additional">
+                <div class="additional">
+                    <div class="container">
+                        <div class="additional__body">
+                            <div class="additional__contacts">
+                                {% for cont in contact %}
+                                <a href="#" class="contacts__telefon">
+                                    {{ cont.number_phone_main }}
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    {{ cont.email_main }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="additional__social">
+                                {% for url in urls %}
+                                <a href="{{ url.social_Instagram }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/instagram.svg' %}" alt="Instagram">
+                                </a>
+                                <a href="{{ url.social_Facebook }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/facebook.svg' %}" alt="Facebook">
+                                </a>
+                                <a href="{{ url.social_VK }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/vk.svg' %}" alt="VK">
+                                </a>
+                                <a href="{{ url.social_Youtube }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/youtube.svg' %}" alt="YouTube">
+                                </a>
+                                <a href="{{ url.social_TG }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/telega.svg' %}" alt="">
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="additional__map">
+                                <a href="{% url 'about_stadium' %}" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header">
+                <div class="container">
+                    <div class="header__body">
+                        <div class="header__logo">
+                            <a href="" class="logo__link">
+                                <img src="{% static 'management/img/dinamo_logo1_RGB1.png' %}" alt="Dinamo">
+                            </a>
+                        </div>
+                        <div class="header__burger">
+                            <span></span>
+                        </div>
+                        <div class="menu__container">
+                            <div class="header__map">
+                                <a href="{% url 'about_stadium' %}" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="header__list">
+                                    <li>
+                                        <a href="{% url 'index' %}" class="header__link selected">
+                                            Главная
+                                        </a>
+                                    </li>
+                                    <li class="list__item services">
+                                        <div class="item__wrapper">
+                                            <a href="{% url 'show_services_all' %}" class="header__link">
+                                                Услуги
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="services"></span>
+                                        </div>
+                                        <div class="menu-extra__container">
+                                            <div class="menu-extra__block">
+                                            </div>
+                                        </div>
+                                        <div class="menu-mobile__container">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="header__link">
+                                            Новости
+                                        </a>
+                                    </li>
+                                    <li class="list__item media">
+                                        <div class="item__wrapper">
+                                            <a href="#" class="header__link">
+                                                Медиа
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="media"></span>
+                                        </div>
+                                        <div class="menu-extra__media">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                        <div class="menu-mobile__block">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="list__item-enter">
+                                        <a href="#" class="header__link">
+                                            События
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="header__contacts">
+                                {% for cont in contact %}
+                                <a href="#" class="contacts__telefon">
+                                    {{ cont.number_phone_main }}
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    {{ cont.email_main }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                            <div class="header__social">
+                                {% for url in urls %}
+                                <a href="{{ url.social_Instagram }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
+                                </a>
+                                <a href="{{ url.social_Facebook }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/icon_face_mobile.svg' %}" alt="Facebook">
+                                </a>
+                                <a href="{{ url.social_VK }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/icon_vk_mobile.svg' %}" alt="VK">
+                                </a>
+                                <a href="{{ url.social_Youtube }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/icon_YT_mobile.svg' %}" alt="YouTube">
+                                </a>
+                                <a href="{{ url.social_TG }}" class="social__link">
+                                    <img src="{% static 'management/img/icons/Vectortelega-mobile.svg' %}" alt="">
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="management__nav">
+                    <a href="{% url 'index' %}" class="management__item">Главная</a>
+                    <img src="{% static 'management/img/icons/Vectorhistory__nav-arrow.svg' %}" alt="">
+                    <a href="{% url 'about_stadium' %}" class="management__item">О стадионе</a>
+                    <img src="{% static 'management/img/icons/Vectorhistory__nav-arrow.svg' %}" alt="">
+                    <a href="{% url 'management' %}" class="management__item-page">Руководство</a>
+                </div>
+                <div class="main__title">
+                    руководство
+                </div>
+                <div class="management__card-wrapper">
+                    {% for manager in managers %}
+                    <div class="management__card">
+                        <div class="management__card-about">
+                            <div class="management__card-title">
+                                {{ manager.position }}
+                            </div>
+                            <div class="management__card-name">
+                                {{ manager.name }}
+                            </div>
+                            <div class="management__card-name-about">
+                                <div class="management__card-name-about-text">
+                                    {{ manager.description_1 }}
+                                </div>
+                                {% if manager.description_2 %}
+                                <div class="management__card-name-about-text">
+                                    {{ manager.description_2 }}
+                                </div>
+                                {% endif %}
+                                {% if manager.description_3 %}
+                                <div class="management__card-name-about-text">
+                                   {{ manager.description_3 }}
+                                </div>
+                                {% endif %}
+                                {% if manager.description_4 %}
+                                <div class="management__card-name-about-text">
+                                   {{ manager.description_4 }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="management__card-contacts">
+                                <div class="management__card-phone">
+                                    Телефон и факс: <span>{{ manager.phone_number }}</span>
+                                </div>
+                                {% if manager.email %}
+                                <div class="management__card-email">
+                                    E-mail:  <span>{{ manager.email }}</span>
+                                </div>
+                                {% endif %}
+                                {% if manager.email_for_citizens %}
+                                <div class="management__card-appeals">
+                                    Электронные обращения граждан принимаются на е-mail: <span>{{ manager.email_for_citizens }}</span>
+                                </div>
+                                {% endif %}
+                                {% if manager.info_visits %}
+                                <div class="management__card-reception">
+                                    Прием по личным вопросам – {{ manager.info_visits }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="management__card-image">
+                            <img src="{{ manager.image.url }}" alt="">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="footer">
+                    <nav class="footer__nav">
+                        <a href="#" class="footer__link footer__text">
+                            Адрес: г. Минск,<br>
+                            ул. Кирова, д. 8, корп. 6
+                        </a>
+                    </nav>
+                    <div class="footer__social">
+                        <p class="footer__social-title footer__text">
+                            Следите за нами в соц.сетях
+                        </p>
+                        <div class="footer__social-block">
+                            {% for url in urls %}
+                            <a href="{{ url.social_Instagram }}" class="social-block__link">
+                                <img src="{% static 'management/img/footer/instagramm.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_Facebook }}" class="social-block__link">
+                                <img src="{% static 'management/img/footer/facebook.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_VK }}" class="social-block__link">
+                                <img src="{% static 'management/img/footer/vk.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_Youtube }}" class="social-block__link">
+                                <img src="{% static 'management/img/footer/youtube.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_TG }}" class="social-block__link">
+                                <img src="{% static 'management/img/icons/logos_telegram1.svg' %}" alt="">
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <form action="#" class="footer__form" method="post">
+                        {% csrf_token %}
+                        <p class="footer__form-title footer__text">
+                            Подписывайтесь на email-рассылку
+                        </p>
+                        <div class="footer__form-block">
+                            <input type="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
+                            <button class="form-block__button footer__text">
+                                Подписаться
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <p class="footer__subtitle">
+                    2022 © Все права защищены
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'management/js/header.js' %}"></script>
+    <script src="{% static 'management/js/validate.js' %}"></script>
+</body>
+</html>

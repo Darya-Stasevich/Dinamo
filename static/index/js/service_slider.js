@@ -34,7 +34,7 @@ function get_service(url) {
                                 <p class="rent__text">${idItem.title}</p>
                                 <div class="rent__link"></div>
                             </a>
-                            <a href="#" class="service__link">
+                            <a href="/services" class="service__link">
                                 Смотреть все услуги
                             </a>
                         </div>`
@@ -45,7 +45,7 @@ function get_service(url) {
                                 <p class="rent__text">${service[0].title}</p>
                                 <div class="rent__link"></div>
                             </a>
-                            <a href="#" class="service__link">
+                            <a href="/services" class="service__link">
                                 Смотреть все услуги
                             </a>
                         </div>`

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="rus">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'history/css/history-style.css' %}">
+    <link rel="stylesheet" href="{% static 'history/css/null_for_templates.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:Roboto+Condensed&subset=cyrillic" rel="stylesheet">
+    <title>История</title>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="header__additional">
+            <div class="additional">
+                <div class="container">
+                    <div class="additional__body">
+                        <div class="additional__contacts">
+                            {% for cont in contact %}
+                            <a href="#" class="contacts__telefon">
+                                {{ cont.number_phone_main }}
+                            </a>
+                            <a href="#" class="contacts__email">
+                                {{ cont.email_main }}
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="additional__social">
+                            {% for url in urls %}
+                            <a href="{{ url.social_Instagram }}" class="social__link">
+                                <img src="{% static 'history/img/icons/instagram.svg' %}" alt="Instagram">
+                            </a>
+                            <a href="{{ url.social_Facebook }}" class="social__link">
+                                <img src="{% static 'history/img/icons/facebook.svg' %}" alt="Facebook">
+                            </a>
+                            <a href="{{ url.social_VK }}" class="social__link">
+                                <img src="{% static 'history/img/icons/vk.svg' %}" alt="VK">
+                            </a>
+                            <a href="{{ url.social_Youtube }}" class="social__link">
+                                <img src="{% static 'history/img/icons/youtube.svg' %}" alt="YouTube">
+                            </a>
+                            <a href="{{ url.social_TG }}" class="social__link">
+                                <img src="{% static 'history/img/icons/telega.svg' %}" alt="">
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="additional__map">
+                            <a href="{% url 'about_stadium' %}" class="map__link">
+                                О стадионе
+                            </a>
+                            <a href="#" class="map__link">
+                                Как добраться
+                            </a>
+                            <a href="#" class="map__link">
+                                Контакты
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="container">
+                <div class="header__body">
+                    <div class="header__logo">
+                        <a href="" class="logo__link">
+                            <img src="{% static 'history/img/dinamo_logo1_RGB1.svg' %}" alt="Dinamo">
+                        </a>
+                    </div>
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
+                    <div class="menu__container">
+                        <div class="header__map">
+                            <a href="{% url 'about_stadium' %}" class="map__link">
+                                О стадионе
+                            </a>
+                            <a href="#" class="map__link">
+                                Как добраться
+                            </a>
+                            <a href="#" class="map__link">
+                                Контакты
+                            </a>
+                        </div>
+                        <nav class="header__menu">
+                            <ul class="header__list">
+                                <li>
+                                    <a href="{% url 'index' %}" class="header__link selected">
+                                        Главная
+                                    </a>
+                                </li>
+                                <li class="list__item services">
+                                    <div class="item__wrapper">
+                                        <a href="{% url 'show_services_all' %}" class="header__link">
+                                            Услуги
+                                        </a>
+                                        <span class="link__line"></span>
+                                        <span class="link__arrow" id="services"></span>
+                                    </div>
+                                    <div class="menu-extra__container">
+                                        <div class="menu-extra__block">
+                                        </div>
+                                    </div>
+                                    <div class="menu-mobile__container">
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#" class="header__link">
+                                        Новости
+                                    </a>
+                                </li>
+                                <li class="list__item media">
+                                    <div class="item__wrapper">
+                                        <a href="#" class="header__link">
+                                            Медиа
+                                        </a>
+                                        <span class="link__line"></span>
+                                        <span class="link__arrow" id="media"></span>
+                                    </div>
+                                    <div class="menu-extra__media">
+                                        <a href="#" class="menu-extra__link">
+                                            Фотоальбомы
+                                        </a>
+                                        <a href="#" class="menu-extra__link">
+                                            Видеоальбомы
+                                        </a>
+                                    </div>
+                                    <div class="menu-mobile__block">
+                                        <a href="#" class="menu-extra__link">
+                                            Фотоальбомы
+                                        </a>
+                                        <a href="#" class="menu-extra__link">
+                                            Видеоальбомы
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list__item-enter">
+                                    <a href="#" class="header__link">
+                                        События
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="header__contacts">
+                            {% for cont in contact %}
+                            <a href="#" class="contacts__telefon">
+                                {{ cont.number_phone_main }}
+                            </a>
+                            <a href="#" class="contacts__email">
+                                {{ cont.email_main }}
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="header__social">
+                            {% for url in urls %}
+                            <a href="{{ url.social_Instagram }}" class="social__link">
+                                <img src="{% static 'history/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
+                            </a>
+                            <a href="{{ url.social_Facebook }}" class="social__link">
+                                <img src="{% static 'history/img/icons/icon_face_mobile.svg' %}" alt="Facebook">
+                            </a>
+                            <a href="{{ url.social_VK }}" class="social__link">
+                                <img src="{% static 'history/img/icons/icon_vk_mobile.svg' %}" alt="VK">
+                            </a>
+                            <a href="{{ url.social_Youtube }}" class="social__link">
+                                <img src="{% static 'history/img/icons/icon_YT_mobile.svg' %}" alt="YouTube">
+                            </a>
+                            <a href="{{ url.social_TG }}" class="social__link">
+                                <img src="{% static 'history/img/icons/Vectortelega-mobile.svg' %}" alt="">
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main__wrapper">
+            <div class="container">
+                <div class="history__nav">
+                    <a href="{% url 'index' %}" class="history__nav-text">
+                        Главная
+                    </a>
+                    <img src="{% static 'history/img/icons/history__nav-arrow.svg' %}" alt="">
+                    <a href="{% url 'about_stadium' %}" class="history__nav-text">
+                        О стадионе
+                    </a>
+                    <img src="{% static 'history/img/icons/history__nav-arrow.svg' %}" alt="">
+                    <p class="history__nav-text-active">
+                        История стадиона
+                    </p>
+                </div>
+                <div class="history__title">
+                    История стадиона. Интересные факты
+                </div>
+                <div class="main__content-wrapper">
+                    <div class="main__content-aside">
+                        <ul class="aside__list">
+                            <li class="aside__list-item">Общая информация</li>
+                            <li class="aside__list-item">Цифры</li>
+                            <li class="aside__list-item">1934 начало</li>
+                            <li class="aside__list-item">Реконструкции</li>
+                            <li class="aside__list-item">Церемония открытия после реконструкции 2012-2018</li>
+                            <li class="aside__list-item">Голос стадиона</li>
+                            <li class="aside__list-item">Интересные факты</li>
+                            <li class="aside__list-item">Интересные статьи о стадионе</li>
+                        </ul>
+                    </div>
+                    <div class="main__content">
+                        <div class="general__information-wrapper" id="#general__information">
+                            <div class="general__information title">
+                                Общая информация
+                            </div>
+                            <div class="general__information-text-wrapper">
+                                <div class="general__information-text text">
+                                    Национальный олимпийский стадион «Динамо» – многофункциональная арена мирового уровня.
+                                </div>
+                                <div class="general__information-text text">
+                                    21 июня 2018 года стадиону присвоен Сертификат Всемирной легкоатлетической ассоциации первой категории.
+
+                                </div>
+                                <div class="general__information-text text">
+                                    В октябре 2018 столичная арена получила высшую, четвертую категорию Союза европейских футбольных ассоциаций (УЕФА).
+                                </div>
+                                <div class="general__information-text text">
+                                    На стадионе уложена самая современная легкоатлетическая дорожка итальянской компании "Mondo". Поле покрыто натуральным газоном и позволяет проводить на стадионе футбольные матчи. На обновленном "Динамо" предусмотрены секторы для прыжков в длину, в высоту, с шестом, а также для тройного прыжка, толкания ядра, метания копья, диска и молота.
+                                </div>
+                                <div class="general__information-text text">
+                                    Торжественная церемония открытия стадиона "Динамо" состоялась 12 июня 1934 года. Эта дата считается Днем рождения арены.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change__appearance-wrapper" id="#change__appearence">
+                            <div class="change__appearance title">
+                                С тех пор легендарный менял свой облик 5 раз:
+                            </div>
+                            <ul class="change__appearance-list">
+                                <li class="change__appearance-list-item">
+                                    1937-1939
+                                </li>
+                                <li class="change__appearance-list-item">
+                                    1946-1954
+                                </li>
+                                <li class="change__appearance-list-item">
+                                    1978-1980
+                                </li>
+                                <li class="change__appearance-list-item">
+                                    1999
+                                </li>
+                                <li class="change__appearance-list-item">
+                                    2012-2018
+                                </li>
+                            </ul>
+                            <div class="change__appearance-text text">
+                                Открытие стадиона после самой масштабной, пятой реконструкции, состоялось 21 июня 2018 года.
+                            </div>
+                        </div>
+                        <div class="history__numbers-wrapper" id="#history__numbers">
+                            <div class="history__numbers title">
+                                Цифры
+                            </div>
+                            <div class="history__main-numbers-wrapper">
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Возраст
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>85</span>лет
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Общая площадь стадиона
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>47 015</span>м²
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Вместимость стадиона
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>22 246</span>зрителей
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Размер поля
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>105х68</span>м
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Защита трибун козырьком
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>75%</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество реконструкций
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>5</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество трибун
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество секторов
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>30</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество уровней-этажей
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>7</span>(3 из них – подземные)
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Комментаторские позиции
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>141</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Конференц-зал
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>230</span> мест, <span>6</span>кабинок для переводчиков-синхронистов
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Газон с системой подогрева
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        Расположен на глубине <span>20 см</span>, под газоном – около <span>30 км</span> труб
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество беговых дорожек в чаше стадиона
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>9</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество беговых дорожек на запасном поле
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Мачты
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>4</span>, на двух – по <span>98</span> прожекторов, на двух – по <span>96</span>, каждая мачта высотой <span>68м</span> и весом <span>120т</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Козырек арены
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>350</span>прожекторов
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Количество VIP-лож
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>40</span>
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Паркинг
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>140</span>мест
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Открытая стоянка
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        <span>300</span>мест
+                                    </div>
+                                </div>
+                                <div class="history__main-numbers">
+                                    <div class="main__numbers-head">
+                                        Система видеонаблюдения
+                                    </div>
+                                    <div class="main__numbers-sub-head">
+                                        Более<span>400</span>камер
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main__content-start-wrapper" id="#content__start">
+                            <div class="main__content-start title">
+                                1934 начало
+                            </div>
+                            <div class="main__content-start-text text">
+                                В 1923 г. по инициативе Ф.Э. Дзержинского в СССР были созданы два общества "Динамо": спортивно-стрелковое и физкультурно-спортивное. Принадлежали эти общества органам внутренних дел. "Белорусское пролетарское спортивное общество "Динамо" было организовано в марте 1925 года, а его отделения были созданы во всех окружных городах Беларуси. В то время в молодой советской стране повсеместно возводились спортивные сооружения.
+                            </div>
+                            <div class="main__content-start-image">
+                                <img src="{% static 'history/img/album/photo_of_album1.png' %}" alt="">
+                            </div>
+                            <div class="main__content-start-image-title">
+                                Стадион "Динамо", 1930-е
+                            </div>
+                            <div class="main__content-start-text text">
+                                Идея строительства стадиона в Минске исходила от руководителей ОГПУ (Объединенного главного политического управления). Решено было строить его в центре города, недалеко от вокзала – на территории старейшего в Минске еврейского кладбища.
+                            </div>
+                            <div class="main__content-start-image">
+                                <img src="{% static 'history/img/history_album/photo2.png' %}" alt="">
+                            </div>
+                            <div class="main__content-start-image-title">
+                                Вид с волейбольной площадки перед западным входом, 1933 год © БГАКФФД
+                            </div>
+                            <div class="main__content-start-texts text">
+                                Торжественное открытие стадиона "Динамо" состоялось 12 июня 1934 г. Для минчан это было важное событие. Каждый член всесоюзного физкультурно-спортивного общества "Динамо" отработал на стройке 100 часов! "Динамовцами" были сотрудники ОГПУ (милиционеры, пограничники и чекисты), а также тысячи простых горожан, увлекающихся спортом. Причем главным видом был футбол. Минской дружине "Динамо" нужна была своя арена. Поэтому труд во благо родной команды считался делом чести и многие перевыполнили план.
+                            </div>
+                            <div class="main__content-start-image">
+                                <img src="{% static 'history/img/history_album/photo3.png' %}" alt="">
+                            </div>
+                            <div class="main__content-start-image-title">
+                                Стадион "Динамо", 1934 год
+                            </div>
+                            <div class="main__content-start-text text">
+                                Вскоре выяснилось, что для столицы стадион маловат. Первозданная вместимость арены под открытым небом составляла 10 тысяч человек. А болельщиков на игры с участием любимой команды приходило куда больше. В этой связи в 1937 году началась первая реконструкция.
+                            </div>
+                        </div>
+                        <div class="main__content-reconstruction-wrapper" id="#reconstruction">
+                            <div class="main__content-reconstruction title">
+                                Реконструкции
+                            </div>
+                            <div class="main__content-reconstruction-slider-wrapper">
+                                <div class="slider-wrapper-left-arrow">
+                                </div>
+                                <div class="slider__points-wrapper">
+                                    <div class="slider__points">
+                                        <div class="slider__point"></div>
+                                    </div>
+                                    <div class="slider__point-line"></div>
+                                    <div class="slider__points">
+                                        <div class="slider__point"></div>
+                                    </div>
+                                    <div class="slider__point-line"></div>
+                                    <div class="slider__points">
+                                        <div class="slider__point"></div>
+                                    </div>
+                                    <div class="slider__point-line"></div>
+                                    <div class="slider__points">
+                                        <div class="slider__point"></div>
+                                    </div>
+                                    <div class="slider__point-line"></div>
+                                    <div class="slider__points">
+                                        <div class="slider__point"></div>
+                                    </div>
+                                </div>
+                                <div class="slider-wrapper-right-arrow">
+                                </div>
+                            </div>
+                            <div class="slider__arrow-mobile">
+                                <div class="slider-wrapper-left-arrow"></div>
+                                <div class="slider-wrapper-right-arrow"></div>
+                            </div>
+                            <div class="main__content-reconstruction-about-wrapper">
+                                <div class="main__content-reconstruction-about">
+                                    <div class="main__content-reconstruction-about-title">
+                                        I реконструкция
+                                    </div>
+                                    <div class="reconstruction__about-wrapper">
+                                        <div class="first__reconstruction">
+                                            <div class="reconstruction__text text">
+                                                1937-1939 года
+                                            </div>
+                                            <div class="reconstruction__text text">
+                                                Десятитысячные трибуны перестали вмещать всех желающих. И их решили расширить. Так на "Динамо" появились дополнительные трибуны, и его вместимость выросла до 12 тысяч.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main__content-reconstruction-about">
+                                    <div class="main__content-reconstruction-about-title">
+                                        II реконструкция
+                                    </div>
+                                    <div class="reconstruction__about-wrapper">
+                                        <div class="first__reconstruction">
+                                            <div class="reconstruction__text text">
+                                                1946-1954 года
+                                            </div>
+                                            <div class="reconstruction__text text">
+                                                Во время Великой Отечественной войны стадион «Динамо» разбомбили. Сохранились лишь остатки трибун.
+                                                Из архивных документов мы знаем: "24 и 25 июня 1941 года вражеские эскадрильи во время налета фугасными и зажигательными бомбами подожгли стадион. А также склады магазина спортивного общества "Динамо". Во время пожара все материальные ценности общества были полностью уничтожены. Нанесен ущерб на 70 000 советских рублей".
+                                                Было принято решение построить стадион заново. За основу взяли проект академика-архитектора Н. Колли (в разработке проекта принимал участие коллектив арх. Н. Колли, В. Вольфензон, Н. Шмидт, М. Парусников, С. Сатунц, Е. Шаркова).
+                                                Газета "Советская Белоруссия" 26 октября 1946 г. писала: "Весной этого года в Минске началось строительство стадиона "Динамо" по проекту, разработанному в мастерской архитектора академика Колли. Стадион "Динамо" будет представлять собой первоклассное спортивное сооружение, занимающее площадь в 16 гектаров между улицами Кирова, Почтовой и другими. Вдоль улицы Кирова отведен участок под парк. Центр парка украсит искусственное озеро. Прямые аллеи декоративных деревьев, фонтаны, различные скульптуры превратят это место в живописный уголок. Нижнее плато, идущее до Почтовой улицы, займет футбольное поле. На искусственном откосе будут расположены теннисные, волейбольные и баскетбольные площадки, спортивные городки, детские площадки, двухэтажный павильон с гимнастическим залом, душевыми и другими комнатами. На естественном откосе будет построена центральная трибуна на 13 000 зрителей, на противоположной стороне – малая трибуна на 3000 зрителей. На стадионе будет оборудован бассейн. На строительстве стадиона "Динамо" уже выполнено 95 процентов земляных работ. В октябре началась закладка будущего парка. Высаживаются липы, каштаны и другие породы деревьев и кустарников. Строительство стадиона "Динамо" будет окончено в 1947 г.".
+                                                После разбора завалов зрительскую трибуну оборудовали на естественном склоне холма. Благодаря этому большой футбол вернулся на арену в день рождения стадиона – 12 июня 1948 г.
+                                                Время было тяжелое, поэтому реконструкция длилась еще 6 лет. Закончилась при Хрущеве.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main__content-reconstruction-about">
+                                    <div class="main__content-reconstruction-about-title">
+                                        III реконструкция
+                                    </div>
+                                    <div class="reconstruction__about-wrapper">
+                                        <div class="first__reconstruction">
+                                            <div class="reconstruction__text text">
+                                                1978-1980 года
+                                            </div>
+                                            <div class="reconstruction__text text">
+                                                Спустя четверть века, когда линию партии и правительства уже олицетворял Леонид Ильич, стадион морально устарел. Отчетливо понять это помогла Олимпиада-1980, которая проходила в Москве, но несколько футбольных матчей доверили Минску. Игры обязывали ко многому, потому после реконструкции "Динамо" обновился грандиозно.
+                                                В ходе преобразований над западной трибуной возвели второй ярус, так называемый козырек. Под трибунами разместились залы для спортивных игр, борьбы, бокса, помещение для допинг-контроля, комнаты для прессы, появились комментаторские кабины.
+                                                Также были установлены гигантские мачты освещения и новое (венгерского производства) электронное табло. Вместимость стадиона возросла до 50 050 человек.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main__content-reconstruction-about">
+                                    <div class="main__content-reconstruction-about-title">
+                                        IV реконструкция
+                                    </div>
+                                    <div class="reconstruction__about-wrapper">
+                                        <div class="first__reconstruction">
+                                            <div class="reconstruction__text text">
+                                                1999 года
+                                            </div>
+                                            <div class="reconstruction__text text">
+                                                К концу 20-го века деревянные скамейки на футбольных стадионах окончательно стали архаикой. В 1999 году, согласно веяниям моды и велениям международных стандартов, на "Динамо" были установлены пластиковые сиденья. За это удобство арене пришлось заплатить вместительностью. Наблюдать за матчами с трибун могли лишь 34 тысячи болельщиков вместо прежних 50 тысяч.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main__content-reconstruction-about">
+                                    <div class="main__content-reconstruction-about-title">
+                                        V реконструкция
+                                    </div>
+                                    <div class="reconstruction__about-wrapper">
+                                        <div class="first__reconstruction">
+                                            <div class="reconstruction__text text">
+                                                2012-2018 года
+                                            </div>
+                                            <div class="reconstruction__text text">
+                                                Сейчас в облике Национального олимпийского стадиона "Динамо" соединяются история и современность. Сохранены самые узнаваемые элементы послевоенного времени: входная арка со стороны улицы Кирова, скульптура "Бег", исторический фасад вдоль улицы Ульяновской, чаша олимпийского огня. Остальные элементы созданы заново с использованием современных технологий и материалов.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main__ceremony-wrapper" id="#ceremony">
+                            <div class="main__ceremony title">
+                                Церемония открытия обновлённого «Динамо»
+                            </div>
+                            <div class="main__ceremony-text-wrapper">
+                                <div class="main__ceremony-text text">
+                                    21 июня 2018 года, ровно за год до начала II Европейских игр, в Минске состоялось торжественное открытие обновленного стадиона "Динамо".
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    За несколько минут до начала церемонии из динамиков зазвучал голос Леонида Бондаровича – человека, который долгие годы был бессменным диктором стадиона "Динамо".
+
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    На поле вышел Александр Лукашенко. Президент заявил, что счастлив снова находиться в этом легендарном для города месте и понимать, что сегодня еще живы многие звезды и поклонники арены. Отметил он и работу строителей, которые, по его словам, сумели сохранить историческую основу стадиона, использовав современные технологии.
+                                </div>
+                            </div>
+                            <div class="main__ceremony-video">
+                                <img src="{% static 'history/img/background_video.png' %}" alt="">
+                                <div class="main__ceremony-play-wrapper">
+                                    <div class="main__ceremony-play">
+                                        <a href="#"><img src="{% static 'history/img/icons/play.svg' %}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main__ceremony-text-wrapper">
+                                <div class="main__ceremony-text text">
+                                    После выступления Президент вручил символический ключ от стадиона белорусским спортсменам и запустил табло с обратным отсчетом до начала II Европейских игр, которые через год прошли в Минске с 21 по 30 июня 2019 года.
+
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    После приветственной речи и выступления белорусских артистов на сцену вышел президент Всемирной легкоатлетической ассоциации Себастьян Коу.
+
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    Спорт лежит в сердце этого города, – сказал сэр Коу и добавил, что нет ничего лучше, чем рев болельщиков, который эхом прокатывается по всему городу. Себастьян Коу дал старт первой за долгие годы эстафеты на этом стадионе.
+
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    Мероприятие завершилось игрой сборной "Динамо" (Минск) и "Динамо" (Брест) против сборной клубов чемпионата Беларуси. Товарищеский матч закончился со счетом 4:3 в пользу сборной "Динамо".
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    С момента открытия стадиона "Динамо" после реконструкции 2012-2018 здесь состоялись такие масштабные мероприятия как:
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    Международный матч по легкой атлетике между сборными Беларуси, Балканских стран, Прибалтики и Украины (22 июня 2018)
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    Лига наций УЕФА-2018: дебютный матч в группе 2 дивизиона D сборной Беларуси против команды Сан-Марино (8 сентября 2018)
+
+                                </div>
+                                <div class="main__ceremony-text text">
+                                    II Европейские игры 2019 года: церемония открытия (21 июня 2019) и церемония закрытия (30 июня), легкоатлетический турнир (23-28 июня 2019)
+                                    Легкоатлетический матч Европа-США (9-10 сентября 2019)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main__stadium-voice-wrapper" id="#voice">
+                            <div class="main__stadium-voice title">
+                                Голос стадиона
+                            </div>
+                            <div class="main__stadium-voice-text-wrapper">
+                                <div class="main__stadium-voice-text text">
+                                    С 1996 года и до самого закрытия в 2012-м объявления на стадионе неизменно делал диктор Леонид Георгиевич Бондарович. Его называли "голосом стадиона "Динамо". Он родился и вырос в доме по улице Кирова, как раз напротив центральной арки "Динамо". Измерял расстояние шагами – ровно 45, как и количество минут одного тайма. Его родители постоянно гуляли с ним в коляске рядом со стадионом, поэтому "Динамо" – его колыбель в буквальном смысле слова.
+                                </div>
+                                <div class="main__stadium-voice-text text">
+                                    Диктором стал почти случайно: пришлось подменить заболевшего штатного, да так и закрепился.
+                                </div>
+                            </div>
+                            <div class="main__stadium-voice-photo-wrapper">
+                                <img src="{% static 'history/img/history_album/photo4.png' %}" alt="">
+                            </div>
+                            <div class="main__stadium-voice-text text">
+                                Леонид Георгиевич произнес первые слова на открытии стадиона. "Вы не представляете, какое это удовольствие и счастье – слышать свой голос над родным "Динамо". Тем более, когда аппаратура новенькая, звук объемный, чистый", – поделился своими впечатлениями Бондарович после церемонии открытия обновленной арены 21 июня 2018 года.
+                            </div>
+                        </div>
+                        <div class="main__interesting-facts-wrapper" id="#facts">
+                            <div class="main__interesting-facts title">
+                                Интересные факты
+                            </div>
+                            <div class="main__interesting-facts-sub-title">
+                                Фуражка цанавы
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    История "Динамо" тесно связана с именем министра госбезопасности БССР Лаврентия Цанавы. Он лично контролировал послевоенное восстановление арены.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Одна из городских легенд гласит, что на здании КГБ специально для него была построена башенка, дабы Лаврентий Фомич мог оттуда в бинокль следить за перипетиями футбольных баталий. Красивая легенда, но не более. Вездесущие журналисты побывали в этой башенке (уже в наше время) и лично убедились, что игрового поля стадиона оттуда не видно.
+                                </div>
+                            </div>
+                            <div class="main__interesting-facts-photo-wrapper">
+                                <img src="{% static 'history/img/history_album/photo5.png' %}" alt="">
+                            </div>
+                            <div class="main__interesting-facts-photo-title">
+                                "Башня Цанавы", с которой нарком внутренних дел БССР якобы наблюдал за футбольными матчами
+                                <br>
+                                © Sputnik, Андрей Киреев
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Цанава любил футбол, был неистовым болельщиком и редко пропускал матчи. Он сидел в ложе для высокопоставленных гостей. Когда его подопечные забивали, вскакивал, аплодировал, даже запускал в небо фуражку. Она непременно возвращалась к нему со зрительских трибун. Да и рискнул бы кто-то не вернуть…
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Цанава пожелал позаимствовать с тбилисского стадиона архитектурную идею главной ложи. Там во время важных матчей сидело руководство БССР, а на самом почетном месте – Лаврентий Фомич.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Как писал белорусский журналист Василий Сарычев, "после гола в ворота соперников болельщики центральной трибуны разворачивали головы назад, чтобы не пропустить ритуал: Лаврентий Фомич в ложе вскакивал и по-мальчишески запускал в воздух фуражку, которая неизменно к нему возвращалась (попробовал бы кто-нибудь ее прибрать). А поражения хозяин переносил тяжело, и тогда футболистам предстояло пережить маленькую бурю".
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                1940-1950-е
+                            </div>
+                            <div class="main__interesting-facts-sub-title">
+                                "Злая шутка"
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Во время реконструкции 1946-1954г.г. для значительной экономии времени и средств была разработана новая планировка, согласно которой центральную трибуну разместили на естественном склоне, а спортивное поле – в низине. Однако то, что спортивная арена разместилась в низине, недалеко от русла Свислочи, сыграло однажды злую шутку.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    На одном из матчей конца 1950-х годов прямо во время игры провалился кусок поля. Естественно, встреча была остановлена. На ремонт обвала было привезено несколько машин песка, посажен новый дерн.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    В послевоенном Минске стадион с футболом был самым интересным местом.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    "Все это был целый мир, особым каким–то образом переделанный для себя в фантазиях, наконец, просто придуманный. Наверное, тот мир тогда был необходим — ведь нужно же было что–то любить, чему–то отдавать безотчетные симпатии, привязанности. Вот тут, среди разрухи, скудости, убожества минских послевоенных лет, и бросилось в глаза все это необычное, цветное: футбол и стадионы, игроки местные и из чужих, неведомых краев, огромные скопления людей и конная милиция, гудящий Вавилон трибун", - вспоминает о том времени писатель Александр Станюта.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Входная арка "Динамо" знакома каждому жителю нашего города. Долгое время она являлась символом стадиона. Однако не все знают, что у нее есть двойник… в городе Днепродзержинске. Отличие – в скульптурах, которые украшают украинскую арку.
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                1950-1960-е
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    "Динамо" – площадка для прогулок и отдыха
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    В 1950-60-е годы стадион и прилегающие к нему улицы и скверы постепенно превратились в площадку для прогулок, веселья, беззаботности и отдыха. Местом сбора тогда была танцевальная веранда на стадионе. Днем там тренировались динамовские боксеры.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Зимой в те годы на "Динамо" заливались все пешеходные дорожки и площадка у главного входа. Для спортсменов готовились высококлассные беговые ледовые дорожки вокруг стадиона. Здесь под музыку и при вечернем освещении можно было весело провести время. Детвора и взрослые катались на самодельных полозьях, "снегурках", "канадах" и "хоккеях".
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Марш М. Блантера
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    В конце 1950-х любому матчу отечественного чемпионата обязательно предшествовало исполнение футбольного марша М. Блантера. Несмотря на то, что марш этот был без слов, и исполняли его исключительно музыкальные инструменты, он всегда придавал некую особую торжественность началу любого матча чемпионата.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    С просьбой о написании марша к Матвею Блантеру обратился комментатор Вадим Синявский. До этого советские футболисты выходили на поле стадиона без музыки, сопровождаемые лишь шумом трибун. Необходимо было добавить за счет музыки торжественности футбольному зрелищу. И великий композитор с удовольствием взялся за это непростое задание. Созданный в 1938 г. гениальным композитором марш на протяжении более чем 70 лет сопровождал начало любого матча отечественного чемпионата, и его исполнение было доброй традицией.
+
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                1960-1970-е
+                            </div>
+                            <div class="main__interesting-facts-texts text">
+                                Аллеи вокруг сквера в 1960-70-е гг. украшали скульптуры на спортивные темы.
+                            </div>
+                            <div class="main__interesting-facts-photo-wrappers">
+                                <img src="{% static 'history/img/history_album/photo6.png' %}" alt="">
+                            </div>
+                            <div class="main__interesting-facts-photo-title">
+                                Скульптурная группа – футболисты в борьбе за мяч. Находилась в сквере, прилегающем к стадиону. Фото середины 1960-х г. Фото: tut.by.
+                            </div>
+                            <div class="main__interesting-facts-text-one text">
+                                На стадионе, кроме спортивных, проводились и общественно-политические мероприятия.
+                            </div>
+                            <div class="main__interesting-facts-photo-wrapper">
+                                <img src="{% static 'history/img/history_album/photo7.png' %}" alt="">
+                            </div>
+                            <div class="main__interesting-facts-photo-title">
+                                Фото: minsknews.by
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Для учащихся близлежащих к стадиону школ на нем проводились уроки физкультуры.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    23 июля 1973 года на минском стадионе "Динамо" состоялось торжественное открытие международного легкоатлетического матча между сборными командами СССР и США.
+                                </div>
+                            </div>
+                            <div class="main__interesting-facts-photo-wrapper">
+                                <img src="{% static 'history/img/history_album/photo8.png' %}" alt="">
+                            </div>
+                            <div class="main__interesting-facts-photo-title">
+                                Фото: belta.by
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                Олимпийские игры 1980
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Во время реконструкции "Динамо" к Олимпиаде-1980 оборудование и материалы поставляли более чем 250 городов Советского Союза. Многое приходилось добывать с боем. Руководители предприятий в первую очередь спешили доставить все необходимое для реконструкции стадионов в Москве и Ленинграде, отодвигая Минск на второй план.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Огонь зажег Медведь
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    20 июля 1980 года на стадионе состоялось грандиозное событие – зажжение олимпийского огня. Финальную часть ритуала исполнил выдающийся борец современности, трехкратный чемпион Олимпийских игр, семикратный чемпион мира, почетный гражданин города Минска Александр Васильевич Медведь.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    "Конечно, я волновался. Когда на стадионе появляется спортсмен с огнем, все встают, приветствуют, к тебе приковано всеобщее внимание. Так что старался выполнить свою миссию с достоинством", – вспоминал потом Александр Васильевич.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Тот самый факел долгие годы хранился дома у Медведя, коллекционеры пытались выкупить раритет, но Александр Васильевич передал его музею Национального олимпийского комитета Беларуси.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Монументальная композиция «Бег»
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Преодолевающие входную арку, словно барьер, спортсмены появились на "Динамо" перед Олимпиадой 1980 года. Ее автор – Валентин Занкович.
+                                </div>
+                            </div>
+                            <div class="main__interesting-facts-photo-wrapper">
+                                <img src="{% static 'history/img/history_album/photo9.png' %}" alt="">
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Арку со стороны Ульяновской изначально хотели украсить орнаментом, однако у Валентина Павловича возник более интересный и масштабный план:
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    –Если на стадионе велись масштабные работы, то и к украшению арки нужно подходить масштабно. Крутились мысли, что над арками принято ставить какую-нибудь колесницу, но в итоге я понял, что нужно делать скульптуру спортсменов-бегунов. Причем не просто бегунов, а прыгающих через препятствие, которым и являлась арка. Сама архитектура мне подсказала это решение. За пару дней я сделал макет и пригласил отвечавшего за реконструкцию "Динамо" архитектора Сергея Ботковского. Он пришел в мастерскую, увидел проект и сказал: "Слушай, ну ты гений! Эту арку вообще хотели снести, а ты на нее еще и скульптуру поставил! " Он так разволновался, что сразу позвонил главному архитектору города Юрию Григорьеву. Тот сразу же приехал и сообщил: "Годится".
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Договориться с утверждавшим любые архитектурные элементы худсоветом оказалось сложнее. В промежуточных концепциях по арке на "Динамо" скакали куницы и белки, появлялись корабли и самолеты, но в итоге бегунов отвоевали. Позировал для фото, с которого в итоге изготавливалась скульптура, сам автор. Материалом была выбрана медь. Ковали бегунов на полигоне скульптурного цеха возле современного музея Заира Азгура.
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                КОНЕЦ 1980-х-1990-е
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Стадион – большой вещевой рынок, а также концертная площадка
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Разительные изменения произошли с "Динамо" в конце 1980-х. Спортивная арена все чаще стала выполнять функции концертной площадки. На ней выступали группы "Ласковый май", "Кино", "ДДТ", другие известные музыканты.
+                                </div>
+                            </div>
+                            <div class="main__interesting-facts-photo-wrapper">
+                                <img src="{% static 'history/img/history_album/photo10.png' %}" alt="">
+                            </div>
+                            <div class="main__interesting-facts-photo-title">
+                                Выступает популярная рок-группа "Кино". Солист Виктор Цой. 1989 год, belta.by
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    В августе 1989 г. Алла Пугачева дала на "Динамо" восемь сольных концертов. Послушать ее в общей сложности пришли 400 тыс. зрителей. На каждом выступлении был аншлаг.
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    А в 1990-е годы стадион снискал славу главного вещевого рынка столицы. Там можно было купить практически все, начиная от дорогой электроники, натуральных шуб и заканчивая ширпотребом. Одно время за вход на рынок даже взимали плату. Это никого не останавливало. Ведь именно на "Динамо" торговали в том числе и настоящими брендовыми вещами.
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                Лига чемпионов
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Первая арена Беларуси, принявшая матчи Лиги чемпионов
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    В 2008 году БАТЭ впервые в истории белорусского футбола пробился в групповую стадию Лиги чемпионов, для домашних матчей был выбран стадион "Динамо".
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Исторический матч состоялся 30 сентября 2008 года – БАТЭ сыграл вничью 2:2 с "Ювентусом".
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    В течение пяти лет стадион "Динамо" принимал матчи групповых раундов Лиги чемпионов (сезоны 2008/2009, 2011/2012 и 2012/2013) и Лиги Европы (2009/2010, 2010/2011). Здесь играли многие гранды – "Ювентус", "Милан", "Реал", "Барселона", "Валенсия", "Бавария", "ПСЖ", "Эвертон".
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="main__interesting-facts-sub-title">
+                                Реконструкция 2012-2018
+                            </div>
+                            <div class="main__interesting-facts-text-wrapper">
+                                <div class="main__interesting-facts-text text">
+                                    Во время этой реконструкции на территории стадиона обнаружили 76-миллиметровый артиллерийский снаряд со взрывателем времен войны. Никто не пострадал. Снаряд изъяли и взорвали на полигоне.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Новый облик арены
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Очередную масштабную реконструкцию стадиона выполнил минский "Стройтрест №1". Проектное решение принадлежит специалистам предприятия "Минскпроект".
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Самая большая сложность заключалась в сохранении облика арены. Проще было бы снести старые конструкции и возвести на их месте новый ультрасовременный объект, но "Динамо" – это часть истории города, страны, ее людей, это нечто большее, чем просто кирпич, металл и стекло.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Реставраторам пришлось изрядно потрудиться, чтобы сохранить стену (аркаду), которая казалась "живой", но выяснилось, что она серьезно разрушена временем и погодой. Под стадионом обнаружили подземные ходы, старые фундаменты, бетонные укрытия. Пришлось демонтировать, вывозить тонны мусора, восстанавливать.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Реставрация композиции "Бег"
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Генеральный директор "Белреставрации" Владимир Змушко:
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    –Демонтировали бегунов не мы – доверили подрядной организации. После уже своими силами погрузили на специальный длинномерный лафет и вывезли на базу в Колядичи. Там на протяжении двух лет занимались реставрацией. Почему так долго? Это ведь реставрация. Целый комплекс работ, итогом которого должно стать воссоздание идентичного изначальному облика. На скульптуре, изготовленной методом выколотки из достаточно тонкой меди на каркасе из труб, было порядка 80 вмятин, которые нужно было вытянуть до ровной поверхности. Понятно, что для изготовления композиции потребовалось несколько листов меди, и потому стыки пришлось восстанавливать, местами переваривать заново. Да и вариант зачистить наждачкой в нашем случае тоже не проходил. Методом вытравливания была полностью очищена вся поверхность. Далее был восстановлен первоначальный тон, после чего скульптура была покрыта специальным воском. При этом над бегунами работала целая бригада: специалисты по выколотке, тонировке. Даже для очистки требуются определенные навыки, реактивы и технологии. В итоге композиции полностью вернули первоначальный облик, и она еще долго будет украшать обновленную арену.
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Разноцветные сиденья на секторах
+
+                                </div>
+                                <div class="main__interesting-facts-text text">
+                                    Так сделали, чтобы создавался эффект присутствия.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main__interesting-articles-wrapper" id="#articles">
+                            <div class="main__interesting-articles title">
+                                Ссылки на интересные статьи о стадионе
+                            </div>
+                            <div class="main__interesting-articles-links-wrapper">
+                                <a href="#" class="main__interesting-articles-link">
+                                    Стадион "Динамо". Каким он был, каким он будет?
+                                </a>
+                                <a href="#" class="main__interesting-articles-link">
+                                    ДОСЬЕ: Стадиону "Динамо" – 85 лет
+                                </a>
+                                <a href="#" class="main__interesting-articles-link">
+                                    Кто и как создавал и восстанавливал исторический облик стадиона "Динамо"
+                                </a>
+                                <a href="#" class="main__interesting-articles-link">
+                                    Вадим Девятовский: "Освещение на обновленном стадионе "Динамо" – это световое шоу"
+                                </a>
+                                <a href="#" class="main__interesting-articles-link">
+                                    РЕПОРТАЖ: Обновленный стадион "Динамо" в ожидании первых соревнований
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer">
+                <nav class="footer__nav">
+                    <a href="#" class="footer__link footer__text">
+                        Адрес: г. Минск,<br>
+                        ул. Кирова, д. 8, корп. 6
+                    </a>
+                </nav>
+                <div class="footer__social">
+                    <p class="footer__social-title footer__text">
+                        Следите за нами в соц.сетях
+                    </p>
+                    <div class="footer__social-block">
+                        {% for url in urls %}
+                        <a href="{{ url.social_Instagram }}" class="social-block__link">
+                            <img src="{% static 'history/img/footer/instagramm.svg' %}" alt="">
+                        </a>
+                        <a href="{{ url.social_Facebook }}" class="social-block__link">
+                            <img src="{% static 'history/img/footer/facebook.svg' %}" alt="">
+                        </a>
+                        <a href="{{ url.social_VK }}" class="social-block__link">
+                            <img src="{% static 'history/img/footer/vk.svg' %}" alt="">
+                        </a>
+                        <a href="{{ url.social_Youtube }}" class="social-block__link">
+                            <img src="{% static 'history/img/footer/youtube.svg' %}" alt="">
+                        </a>
+                        <a href="{{ url.social_TG }}" class="social-block__link">
+                            <img src="{% static 'history/img/icons/logos_telegram1.svg' %}" alt="">
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <form action="#" class="footer__form" method="post">
+                    {% csrf_token %}
+                    <p class="footer__form-title footer__text">
+                        Подписывайтесь на email-рассылку
+                    </p>
+                    <div class="footer__form-block">
+                        <input type="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
+                        <button class="form-block__button footer__text">
+                            Подписаться
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <p class="footer__subtitle">
+                2022 © Все права защищены
+            </p>
+        </div>
+    </footer>
+</div>
+<script src="{% static 'history/js/header.js' %}"></script>
+<script src="{% static 'history/js/aside.js' %}"></script>
+<script src="{% static 'history/js/slider.js' %}"></script>
+<script src="{% static 'history/js/validate.js' %}"></script>
+</body>
+</html>

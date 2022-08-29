@@ -5,13 +5,15 @@ class Management(models.Model):
     """Руководство организации"""
     position = models.CharField(max_length=200, verbose_name="Должность")
     name = models.CharField(max_length=200, verbose_name="ФИО")
-    description = models.TextField(blank=True, null=True, verbose_name="Биография")
-    phone_number = models.CharField(max_length=30, blank=True, null=True, verbose_name='Номер телефона для связи')
+    description_1 = models.TextField(verbose_name="Биография, абзац 1")
+    description_2 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 2")
+    description_3 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 3")
+    description_4 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 4")
+    phone_number = models.CharField(max_length=30, verbose_name='Номер телефона для связи')
     email = models.EmailField(blank=True, null=True, verbose_name='Электронная почта сотрудника')
     email_for_citizens = models.EmailField(blank=True, null=True,
                                            verbose_name='Электронная почта для обращений граждан')
-    image = models.ImageField(upload_to='management/', verbose_name="Фотография",
-                              blank=True, null=True)
+    image = models.ImageField(upload_to='management/', verbose_name="Фотография")
     info_visits = models.CharField(blank=True, null=True, max_length=200,
                                    verbose_name="Информация о времени приема граждан",
                                    help_text='Пример: каждый четверг с 18.00 до 20.00')
@@ -57,6 +59,3 @@ class ArticleAdditionalImage(models.Model):
     class Meta:
         verbose_name = 'Дополнительное изображение'
         verbose_name_plural = 'Дополнительные изображения'
-
-# class Vacancy(models.Model):
-#     pass

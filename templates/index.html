@@ -58,7 +58,7 @@
                                 {% endfor %}
                             </div>
                             <div class="additional__map">
-                                <a href="#" class="map__link">
+                                <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
                                 <a href="#" class="map__link">
@@ -77,7 +77,7 @@
                     <div class="header__body">
                         <div class="header__logo">
                             <a href="" class="logo__link">
-                                <img src="{% static 'index/img/dinamo_logo1_RGB%201.png' %}" alt="Dinamo">
+                                <img src="{% static 'index/img/dinamo_logo1_RGB1.png' %}" alt="Dinamo">
                             </a>
                         </div>
                         <div class="header__burger">
@@ -85,7 +85,7 @@
                         </div>
                         <div class="menu__container">
                             <div class="header__map">
-                                <a href="#" class="map__link">
+                                <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
                                 <a href="#" class="map__link">
@@ -178,7 +178,7 @@
                                 {% endif %}
                                 {% if url.social_VK %}
                                 <a href="{{ url.social_VK }}" class="social__link">
-                                    <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}}" alt="VK">
+                                    <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}" alt="VK">
                                 </a>
                                 {% endif %}
                                 {% if url.social_Youtube %}
@@ -188,7 +188,7 @@
                                 {% endif %}
                                 {% if url.social_TG %}
                                 <a href="{{ url.social_TG }}" class="social__link">
-                                    <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}}" alt="">
+                                    <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}" alt="">
                                 </a>
                                 {% endif %}
                                 {% endfor %}
@@ -219,7 +219,7 @@
                             <p class="main__subtitle">
                                 Рождён для ярких побед
                             </p>
-                            <a href="#" class="main__link">
+                            <a href="{% url 'history' %}" class="main__link">
                                 История стадиона
                             </a>
                         </div>
@@ -279,7 +279,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="service__link service__link-mobile">
+                            <a href="{% url 'show_services_all' %}" class="service__link service__link-mobile">
                                 Смотреть все услуги
                             </a>
                         </div>
@@ -452,7 +452,7 @@
                         <div class="payment__title">
                             Мы всегда рады осуществлять Ваши желания!
                         </div>
-                        <a href="#" class="payment__link">
+                        <a href="{% url 'show_services_all' %}" class="payment__link">
                             Перейти в каталог услуг
                         </a>
                     </div>
@@ -496,7 +496,7 @@
                             {% endif %}
                             {% if url.social_TG %}
                             <a href="{{ url.social_TG }}" class="social-block__link">
-                                <img src="{% static 'index/img/icons/logos_telegram%20(1).svg' %}" alt="">
+                                <img src="{% static 'index/img/icons/logos_telegram1.svg' %}" alt="">
                             </a>
                             {% endif %}
                             {% endfor %}

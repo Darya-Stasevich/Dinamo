@@ -17,6 +17,7 @@
 }
 .navigation__visual {
     position: relative;
+    display: none;
     cursor: pointer;
     & img{
         position: absolute;
