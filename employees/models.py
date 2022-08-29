@@ -59,6 +59,3 @@ class ArticleAdditionalImage(models.Model):
     class Meta:
         verbose_name = 'Дополнительное изображение'
         verbose_name_plural = 'Дополнительные изображения'
-
-# class Vacancy(models.Model):
-#     pass

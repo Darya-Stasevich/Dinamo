@@ -68,3 +68,18 @@ def show_management(request):
         if email.is_valid():
             email.save()
     return render(request, 'management.html', context)
+
+
+def show_documents(request):
+    """Отображение страницы сайта документы"""
+    contact = Contact.objects.all()
+    urls = SocialNetwork.objects.all()
+    context = {
+        'contact': contact,
+        'urls': urls,
+    }
+    if request.method == "POST":
+        email = UserEmailForm(request.POST)
+        if email.is_valid():
+            email.save()
+    return render(request, 'documents.html', context)

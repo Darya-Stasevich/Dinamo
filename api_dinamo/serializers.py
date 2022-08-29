@@ -1,9 +1,10 @@
 from rest_framework import serializers
 
 from employees.models import EmployeeArticle
-from main.models import Partner
+from main.models import Partner, Document
 from news.models import News
 from services.models import Service, CategoryService
+from vacancies.models import Vacancy, VacancyRequirements
 
 
 class CategoryServiceSerializer(serializers.ModelSerializer):
@@ -44,3 +45,30 @@ class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
         fields = ['id', 'image', ]
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения документов"""
+
+    class Meta:
+        model = Document
+        fields = ['id', 'title', 'file', ]
+
+class VacancyRequirementsSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения требований к вакансии"""
+
+    class Meta:
+        model = VacancyRequirements
+        fields = ['id', 'title', 'list_of_requirements',  ]
+
+
+class VacancySerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения вакансий"""
+    vacancyrequirements_set = VacancyRequirementsSerializer(many=True)
+
+    class Meta:
+        model = Vacancy
+        fields = ['id', 'title_of_vacancy', 'salary', 'experience', 'employment', 'vacancyrequirements_set', ]
+
+
+
