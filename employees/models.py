@@ -5,7 +5,7 @@ class Management(models.Model):
     """Руководство организации"""
     position = models.CharField(max_length=200, verbose_name="Должность")
     name = models.CharField(max_length=200, verbose_name="ФИО")
-    description_1 = models.TextField(verbose_name="Биография, абзац 1", default='lol')
+    description_1 = models.TextField(verbose_name="Биография, абзац 1")
     description_2 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 2")
     description_3 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 3")
     description_4 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 4")
