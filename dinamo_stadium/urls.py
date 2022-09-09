@@ -19,7 +19,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from api_dinamo import views
-from main.views import index, about_stadium, show_history, show_management, show_documents
+from employees.views import show_employee_articles, show_management
+from history.views import show_history
+from main.views import index, about_stadium, show_documents
 from services.views import show_services_by_category, show_services_all
 from vacancies.views import vacancies_list
 from .yasg import urlpatterns as doc_urls
@@ -29,6 +31,7 @@ router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
 router.register('category_services', views.CategoryServiceViewSet)
 router.register('news', views.NewsViewSet)
+router.register('news_all', views.NewsAllViewSet)
 router.register('employee_article', views.EmployeeArticleViewSet)
 router.register('partners', views.PartnerViewSet)
 router.register('documents', views.DocumentViewSet)
@@ -45,6 +48,7 @@ urlpatterns = [
     path('history/', show_history, name='history'),
     path('management/', show_management, name='management'),
     path('documents/', show_documents, name='documents'),
+    # path('employee_articles/', show_employee_articles, name='employee_articles'),
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
 
 ]

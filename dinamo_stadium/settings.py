@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'services',
     'api_dinamo',
     'vacancies',
+    'history',
 
     'rest_framework',
     'corsheaders',

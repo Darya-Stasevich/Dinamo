@@ -4,7 +4,7 @@ from employees.models import EmployeeArticle
 from main.models import Partner, Document
 from vacancies.models import Vacancy
 from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
-    PartnerSerializer, DocumentSerializer, VacancySerializer
+    PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer
 from services.models import Service, CategoryService
 from news.models import News
 
@@ -22,9 +22,15 @@ class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
-    """ API for News model """
+    """ API for News model (main page)"""
     queryset = News.objects.filter(published=True)
     serializer_class = NewsSerializer
+
+
+class NewsAllViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for News model (for page with all news)"""
+    queryset = News.objects.filter(published=True)
+    serializer_class = NewsAllSerializer
 
 
 class EmployeeArticleViewSet(viewsets.ReadOnlyModelViewSet):

@@ -268,7 +268,7 @@
                                         Возраст
                                     </div>
                                     <div class="main__numbers-sub-head">
-                                        <span>85</span>лет
+                                        <span>{{ numbers.age }}</span>лет
                                     </div>
                                 </div>
                                 <div class="history__main-numbers">
@@ -920,21 +920,11 @@
                                 Ссылки на интересные статьи о стадионе
                             </div>
                             <div class="main__interesting-articles-links-wrapper">
-                                <a href="#" class="main__interesting-articles-link">
-                                    Стадион "Динамо". Каким он был, каким он будет?
+                                {% for article in history_articles %}
+                                <a href="{{ article.url }}" class="main__interesting-articles-link">
+                                    {{ article.title }}
                                 </a>
-                                <a href="#" class="main__interesting-articles-link">
-                                    ДОСЬЕ: Стадиону "Динамо" – 85 лет
-                                </a>
-                                <a href="#" class="main__interesting-articles-link">
-                                    Кто и как создавал и восстанавливал исторический облик стадиона "Динамо"
-                                </a>
-                                <a href="#" class="main__interesting-articles-link">
-                                    Вадим Девятовский: "Освещение на обновленном стадионе "Динамо" – это световое шоу"
-                                </a>
-                                <a href="#" class="main__interesting-articles-link">
-                                    РЕПОРТАЖ: Обновленный стадион "Динамо" в ожидании первых соревнований
-                                </a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -981,7 +971,7 @@
                         Подписывайтесь на email-рассылку
                     </p>
                     <div class="footer__form-block">
-                        <input type="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
+                        <input type="email"  name="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
                         <button class="form-block__button footer__text">
                             Подписаться
                         </button>

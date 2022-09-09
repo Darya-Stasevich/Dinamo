@@ -30,6 +30,12 @@ class NewsSerializer(serializers.ModelSerializer):
         model = News
         fields = ['id', 'slug', 'title', 'brief_description', 'cover_image', ]
 
+class NewsAllSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения новостей на странице со всеми новостями"""
+
+    class Meta:
+        model = News
+        fields = ['id', 'slug', 'cover_image', 'title', 'created', 'time_for_reading',]
 
 class EmployeeArticleSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения статей про сотрудников на странице НАШИ СОТРУДНИКИ"""
