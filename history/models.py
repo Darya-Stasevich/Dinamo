@@ -10,7 +10,7 @@ class History(models.Model):
         verbose_name_plural = 'Возраст стадиона'
 
     def __str__(self):
-        return "Возарст стадиона на странице 'История стадиона'"
+        return "Возраст стадиона на странице 'История стадиона'"
 
 
 class HistoryArticle(models.Model):
