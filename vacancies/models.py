@@ -2,10 +2,11 @@ from django.db import models
 
 
 class Vacancy(models.Model):
-    title_of_vacancy = models.CharField(max_length=100, verbose_name='Название вакансии', unique=True)
+    title_of_vacancy = models.CharField(max_length=100, verbose_name='Название вакансии')
     salary = models.CharField(max_length=50, verbose_name='Зарплата', help_text='')
     experience = models.CharField(max_length=50, verbose_name='Опыт работы', help_text='')
     employment = models.CharField(max_length=50, verbose_name='Занятость', help_text='')
+    published = models.BooleanField(verbose_name='Опубликовать на сайте', default=False)
 
     class Meta:
         verbose_name_plural = 'Вакансии'
@@ -34,12 +35,12 @@ class FeedbackForVacancy(models.Model):
 
     full_name = models.CharField(max_length=150, verbose_name='ФИО')
     phone_number = models.CharField(max_length=15, verbose_name='Номер телефона')
-    resume_file = models.FileField(verbose_name='Файл резюме', upload_to='./resumes/')
-    url_of_resume = models.CharField(max_length=250, verbose_name='ссылка на резюме')
+    resume_file = models.FileField(verbose_name='Файл резюме', upload_to='./resumes/', blank=True, null=True)
+    url_of_resume = models.CharField(max_length=250, verbose_name='ссылка на резюме', blank=True, null=True)
     status = models.CharField(max_length=15, choices=STATUS, default='in_process',
                               verbose_name='Статус заявки')
     date = models.DateTimeField(auto_now_add=True)
-    vacancy = models.ForeignKey('Vacancy', verbose_name='Вакансия', on_delete=models.CASCADE)
+    vacancy = models.ForeignKey('Vacancy', verbose_name='Вакансия', on_delete=models.PROTECT)
 
     def __str__(self):
         return f''

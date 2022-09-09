@@ -9,11 +9,11 @@ class Management(models.Model):
     description_2 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 2")
     description_3 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 3")
     description_4 = models.TextField(blank=True, null=True, verbose_name="Биография, абзац 4")
-    phone_number = models.CharField(max_length=30, verbose_name='Номер телефона для связи')
+    phone_number = models.CharField(max_length=30, verbose_name='Номер телефона для связи', blank=True, null=True,)
     email = models.EmailField(blank=True, null=True, verbose_name='Электронная почта сотрудника')
     email_for_citizens = models.EmailField(blank=True, null=True,
                                            verbose_name='Электронная почта для обращений граждан')
-    image = models.ImageField(upload_to='management/', verbose_name="Фотография")
+    image = models.ImageField(upload_to='management/', verbose_name="Фотография", blank=True, null=True,)
     info_visits = models.CharField(blank=True, null=True, max_length=200,
                                    verbose_name="Информация о времени приема граждан",
                                    help_text='Пример: каждый четверг с 18.00 до 20.00')

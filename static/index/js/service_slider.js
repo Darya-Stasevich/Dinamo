@@ -53,7 +53,7 @@ function get_service(url) {
             // -----------------------
             for (let i = 0; i < service.length; i = i + 4){
                 serviceWrapper.innerHTML += `<div class="commercial__container">
-                                                <a href="#" class="commercial__block">
+                                                <a href="{% url 'show_services_by_category' ${service[i].slug} %}" class="commercial__block">
                                                     <div class="commercial__background" style="background: url(${service[i].image}) center/cover no-repeat">
                                                         <p class="commercial__text">${service[i].title}</p>
                                                     </div>

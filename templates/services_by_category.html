@@ -5,31 +5,33 @@
     <title>Title</title>
 </head>
 <body>
+<h1>We are HERE</h1>
 {% for u in services_all %}
-{{ u.title}}<br>
-{{ u.category}}<br>
-{{ u.price_with_VAT_for_person }}<br>
+{{ u }}
+<!--{{ u.title}}<br>-->
+<!--{{ u.category}}<br>-->
+<!--{{ u.price_with_VAT_for_person }}<br>-->
 {% endfor %}
 
-{% for cat in category %}
-{% for s in cat.service_set.all %}
-{% if s %}
-{{ s.title }}
-{{ s.brief_description}}
-{{ s.price_with_VAT_for_person }}
-{{ s.price_without_VAT_for_person }}
-{% endif %}
-{% endfor %}
-{% endfor %}
+<!--{% for cat in category %}-->
+<!--{% for s in cat.service_set.all %}-->
+<!--{% if s %}-->
+<!--{{ s.title }}-->
+<!--{{ s.brief_description}}-->
+<!--{{ s.price_with_VAT_for_person }}-->
+<!--{{ s.price_without_VAT_for_person }}-->
+<!--{% endif %}-->
+<!--{% endfor %}-->
+<!--{% endfor %}-->
 
-{% for s in services %}
-{% if s %}
-{{s.category}}<br>
-{{s.title}}<br>
-{{ s.brief_description}}<br>
-{{ s.price_with_VAT_for_person }}<br>
-{{ s.price_without_VAT_for_person }}
-{% endif %}
-{% endfor %}
+<!--{% for s in services %}-->
+<!--{% if s %}-->
+<!--{{s.category}}<br>-->
+<!--{{s.title}}<br>-->
+<!--{{ s.brief_description}}<br>-->
+<!--{{ s.price_with_VAT_for_person }}<br>-->
+<!--{{ s.price_without_VAT_for_person }}-->
+<!--{% endif %}-->
+<!--{% endfor %}-->
 </body>
 </html>

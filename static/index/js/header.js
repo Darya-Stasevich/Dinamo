@@ -31,6 +31,17 @@ let menuMobileContainer = document.querySelector('.menu-mobile__container');
 
 function get_category(url) {
     fetch(url)
+<<<<<<< HEAD
+        .then(response=>response.json())
+        .then(categories=>{
+            for (let i of categories){
+                menuExtraBlock.innerHTML+=`<a href="{% url 'show_services_by_category' ${i.slug} %}" class="menu-extra__link">${i.title}</a>`
+                console.log(i.slug)
+            }
+        })
+}
+get_category('http://127.0.0.1:8000/api_dinamo/category_services/');
+=======
         .then(response => response.json())
         .then(categories => {
             for (let i of categories) {
@@ -41,6 +52,7 @@ function get_category(url) {
 
 get_category('https://hicnh32749.pythonanywhere.com/api_dinamo/category_services/');
 
+>>>>>>> 51ddcdc0d5d2d9d7ac6aea0358859e505720ca2b
 function get_category_mobile(url) {
     fetch(url)
         .then(resp => resp.json())
@@ -50,8 +62,12 @@ function get_category_mobile(url) {
             }
         })
 }
+<<<<<<< HEAD
+get_category_mobile('http://127.0.0.1:8000/api_dinamo/category_services/')
+=======
 
 get_category_mobile('https://hicnh32749.pythonanywhere.com/api_dinamo/category_services/')
+>>>>>>> 51ddcdc0d5d2d9d7ac6aea0358859e505720ca2b
 
 
 window.onload = function () {
