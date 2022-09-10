@@ -221,7 +221,7 @@
                             Руководство
                         </div>
                     </a>
-                    <a href="" class="about__card">
+                    <a href="#"" class="about__card">
                         <div class="card__img">
                             <img src="{% static 'about_stadium/img/card_img-3.png' %}" alt="">
                         </div>
@@ -521,11 +521,12 @@
                     </div>
                 </div>
                 <form action="#" class="footer__form">
+                    {% csrf_token %}
                     <p class="footer__form-title footer__text">
                         Подписывайтесь на email-рассылку
                     </p>
                     <div class="footer__form-block">
-                        <input type="email" class="form-block__input" placeholder="sportsmen228@gmail.com">
+                        <input type="email" name="email"  class="form-block__input" placeholder="sportsmen228@gmail.com">
                         <button class="form-block__button footer__text">
                             Подписаться
                         </button>
