@@ -3,6 +3,7 @@ from rest_framework import serializers
 from employees.models import EmployeeArticle
 from main.models import Partner, Document
 from news.models import News
+from photo_video.models import PhotoLibrary, PhotoCategory
 from services.models import Service, CategoryService
 from vacancies.models import Vacancy, VacancyRequirements
 
@@ -30,12 +31,14 @@ class NewsSerializer(serializers.ModelSerializer):
         model = News
         fields = ['id', 'slug', 'title', 'brief_description', 'cover_image', ]
 
+
 class NewsAllSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения новостей на странице со всеми новостями"""
 
     class Meta:
         model = News
-        fields = ['id', 'slug', 'cover_image', 'title', 'created', 'time_for_reading',]
+        fields = ['id', 'slug', 'cover_image', 'title', 'created', 'time_for_reading', ]
+
 
 class EmployeeArticleSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения статей про сотрудников на странице НАШИ СОТРУДНИКИ"""
@@ -60,12 +63,13 @@ class DocumentSerializer(serializers.ModelSerializer):
         model = Document
         fields = ['id', 'title', 'file', ]
 
+
 class VacancyRequirementsSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения требований к вакансии"""
 
     class Meta:
         model = VacancyRequirements
-        fields = ['id', 'title', 'list_of_requirements',  ]
+        fields = ['id', 'title', 'list_of_requirements', ]
 
 
 class VacancySerializer(serializers.ModelSerializer):
@@ -77,4 +81,19 @@ class VacancySerializer(serializers.ModelSerializer):
         fields = ['id', 'title_of_vacancy', 'salary', 'experience', 'employment', 'vacancyrequirements_set', ]
 
 
+class PhotoLibrarySerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения фотографий конкретного альбома"""
+
+    class Meta:
+        model = PhotoLibrary
+        fields = ['id', 'image', ]
+
+
+class PhotoCategorySerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения альбомов с фотографиями"""
+    photolibrary_set = PhotoLibrarySerializer(many=True)
+
+    class Meta:
+        model = PhotoCategory
+        fields = ['id', 'slug', 'title', 'cover', 'photolibrary_set', ]
 
