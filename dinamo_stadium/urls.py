@@ -36,6 +36,8 @@ router.register('employee_article', views.EmployeeArticleViewSet)
 router.register('partners', views.PartnerViewSet)
 router.register('documents', views.DocumentViewSet)
 router.register('vacancies', views.VacancyViewSet)
+router.register('photo_album', views.PhotosViewSet)
+# router.register('photo_album_pictures', views.PhotoCategoryDetailViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,6 +50,7 @@ urlpatterns = [
     path('history/', show_history, name='history'),
     path('management/', show_management, name='management'),
     path('documents/', show_documents, name='documents'),
+    # path('api_dinamo/photo_detailed/<int:pk>/', PhotoCategoryDetailed.as_view()),
     # path('employee_articles/', show_employee_articles, name='employee_articles'),
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
 
