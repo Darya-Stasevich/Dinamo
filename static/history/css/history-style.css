@@ -1166,6 +1166,9 @@ html {
   .main__content-aside {
     display: none;
   }
+  .history__nav {
+    margin-top: 90px;
+  }
   .main__content {
     display: flex;
     flex-direction: column;
@@ -1209,6 +1212,10 @@ html {
   }
   .history__title {
     display: none;
+  }
+  .history__nav {
+    margin-top: 55px;
+    margin-bottom: 24px;
   }
   .text {
     font-family: "Roboto";
