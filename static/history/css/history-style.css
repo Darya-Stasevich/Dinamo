@@ -855,25 +855,25 @@ html {
 .slider-wrapper-left-arrow {
   width: 40px;
   height: 40px;
-  background: url("../img/icons/left_arrow_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%);
+  background: url("../img/icons/arrow_left_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%);
   box-shadow: 0px 1px 4px rgba(34, 34, 34, 0.3);
   border-radius: 2px;
   cursor: pointer;
 }
 .slider-wrapper-left-arrow:hover {
-  background: url("../img/icons/left_arrow_button.svg") no-repeat center, #9E6D2F;
+  background: url("../img/icons/arrow_left_button.svg") no-repeat center, #9E6D2F;
 }
 
 .slider-wrapper-right-arrow {
   width: 40px;
   height: 40px;
-  background: url("../img/icons/right_arrow_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%);
+  background: url("../img/icons/arrow_right_button.svg") no-repeat center, linear-gradient(180deg, #C89555 0%, #9E6D2F 100%);
   box-shadow: 0px 1px 4px rgba(34, 34, 34, 0.3);
   border-radius: 2px;
   cursor: pointer;
 }
 .slider-wrapper-right-arrow:hover {
-  background: url("../img/icons/right_arrow_button.svg") no-repeat center, #9E6D2F;
+  background: url("../img/icons/arrow_right_button.svg") no-repeat center, #9E6D2F;
 }
 
 .slider__arrow-mobile {
