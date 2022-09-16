@@ -17,17 +17,14 @@
                 <div class="container">
                     <div class="additional__body">
                         <div class="additional__contacts">
-                            {% for cont in contact %}
                             <a href="#" class="contacts__telefon">
-                                {{ cont.number_phone_main }}
+                                {{ contact.number_phone_main }}
                             </a>
                             <a href="#" class="contacts__email">
-                                {{ cont.email_main }}
+                                {{ contact.email_main }}
                             </a>
-                            {% endfor %}
                         </div>
                         <div class="additional__social">
-                            {% for url in urls %}
                             <a href="{{ url.social_Instagram }}" class="social__link">
                                 <img src="{% static 'about_stadium/img/icons/instagram.svg' %}" alt="Instagram">
                             </a>
@@ -43,13 +40,12 @@
                             <a href="{{ url.social_TG }}" class="social__link">
                                 <img src="{% static 'about_stadium/img/icons/telega.svg' %}" alt="YouTube">
                             </a>
-                            {% endfor %}
                         </div>
                         <div class="additional__map">
                             <a href="{% url 'about_stadium' %}" class="map__link">
                                 О стадионе
                             </a>
-                            <a href="#" class="map__link">
+                            <a href="{% url 'how_to_get' %}" class="map__link">
                                 Как добраться
                             </a>
                             <a href="#" class="map__link">
@@ -76,7 +72,7 @@
                             <a href="{% url 'about_stadium' %}" class="map__link">
                                 О стадионе
                             </a>
-                            <a href="#" class="map__link">
+                            <a href="{% url 'how_to_get' %}" class="map__link">
                                 Как добраться
                             </a>
                             <a href="#" class="map__link">
@@ -144,17 +140,14 @@
                             </ul>
                         </nav>
                         <div class="header__contacts">
-                            {% for cont in contact %}
                             <a href="#" class="contacts__telefon">
-                                {{ cont.number_phone_main }}
+                                {{ contact.number_phone_main }}
                             </a>
                             <a href="#" class="contacts__email">
-                                {{ cont.email_main }}
+                                {{ contact.email_main }}
                             </a>
-                            {% endfor %}
                         </div>
                         <div class="header__social">
-                            {% for url in urls %}
                             <a href="{{ url.social_Instagram }}" class="social__link">
                                 <img src="{% static 'about_stadium/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
                             </a>
@@ -170,7 +163,6 @@
                              <a href="{{ url.social_TG }}" class="social__link">
                                 <img src="{% static 'about_stadium/img/icons/Vectortelega-mobile.svg' %}" alt="YouTube">
                             </a>
-                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -221,7 +213,7 @@
                             Руководство
                         </div>
                     </a>
-                    <a href="#"" class="about__card">
+                    <a href="{% url 'employee_articles' %}" class="about__card">
                         <div class="card__img">
                             <img src="{% static 'about_stadium/img/card_img-3.png' %}" alt="">
                         </div>
@@ -229,7 +221,7 @@
                             Наши сотрудники
                         </div>
                     </a>
-                    <a href="#" class="about__card">
+                    <a href="{% url 'documents' %}" class="about__card">
                         <div class="card__img">
                             <img src="{% static 'about_stadium/img/card_img-4.png' %}" alt="">
                         </div>
@@ -280,7 +272,6 @@
                     </div>
                 </div>
                 <div class="social_link">
-                    {% for url in urls %}
                     <div class="social_card">
                         <div class="card">
                             <div class="block_link">
@@ -358,7 +349,6 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -501,7 +491,6 @@
                         Следите за нами в соц.сетях
                     </p>
                     <div class="footer__social-block">
-                        {% for url in urls %}
                         <a href="{{ url.social_Instagram }}" class="social-block__link">
                             <img src="{% static 'about_stadium/img/footer/instagramm.svg' %}" alt="">
                         </a>
@@ -517,7 +506,6 @@
                         <a href="{{ url.social_TG }}" class="social-block__link">
                             <img src="{% static 'about_stadium/img/icons/logos_telegram1.svg' %}" alt="">
                         </a>
-                        {% endfor %}
                     </div>
                 </div>
                 <form action="#" class="footer__form">

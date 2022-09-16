@@ -3,7 +3,7 @@ from rest_framework import serializers
 from employees.models import EmployeeArticle
 from main.models import Partner, Document
 from news.models import News
-from photo_video.models import PhotoLibrary, PhotoCategory
+from photo_video.models import PhotoLibrary, PhotoCategory, VideoLibrary, VideoCategory
 from services.models import Service, CategoryService
 from vacancies.models import Vacancy, VacancyRequirements
 
@@ -91,9 +91,25 @@ class PhotoLibrarySerializer(serializers.ModelSerializer):
 
 class PhotoCategorySerializer(serializers.ModelSerializer):
     """Сериализатор для отображения альбомов с фотографиями"""
-    photolibrary_set = PhotoLibrarySerializer(many=True)
+    photos = PhotoLibrarySerializer(many=True)
 
     class Meta:
         model = PhotoCategory
-        fields = ['id', 'slug', 'title', 'cover', 'photolibrary_set', ]
+        fields = ['id', 'slug', 'title', 'cover', 'photos', ]
 
+
+class VideoLibrarySerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения видео конкретного альбома"""
+
+    class Meta:
+        model = VideoLibrary
+        fields = ['id', 'path', ]
+
+
+class VideoCategorySerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения альбомов с видео"""
+    videos = VideoLibrarySerializer(many=True)
+
+    class Meta:
+        model = VideoCategory
+        fields = ['id', 'slug', 'title', 'cover', 'videos', ]

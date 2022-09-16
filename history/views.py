@@ -7,13 +7,13 @@ from main.models import Contact, SocialNetwork
 
 def show_history(request):
     """Отображение страницы сайта об истории стадионе"""
-    contact = Contact.objects.all()
-    urls = SocialNetwork.objects.all()
+    contact = Contact.objects.last()
+    url = SocialNetwork.objects.last()
     numbers = History.objects.last()
     history_articles = HistoryArticle.objects.all()
     context = {
         'contact': contact,
-        'urls': urls,
+        'url': url,
         'numbers': numbers,
         'history_articles': history_articles,
     }

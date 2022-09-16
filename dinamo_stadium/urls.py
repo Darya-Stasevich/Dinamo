@@ -21,7 +21,7 @@ from rest_framework import routers
 from api_dinamo import views
 from employees.views import show_employee_articles, show_management
 from history.views import show_history
-from main.views import index, about_stadium, show_documents
+from main.views import index, about_stadium, show_documents, how_to_get
 from services.views import show_services_by_category, show_services_all
 from vacancies.views import vacancies_list
 from .yasg import urlpatterns as doc_urls
@@ -36,8 +36,8 @@ router.register('employee_article', views.EmployeeArticleViewSet)
 router.register('partners', views.PartnerViewSet)
 router.register('documents', views.DocumentViewSet)
 router.register('vacancies', views.VacancyViewSet)
-router.register('photo_album', views.PhotosViewSet)
-# router.register('photo_album_pictures', views.PhotoCategoryDetailViewSet)
+router.register('photo_album', views.PhotoViewSet)
+router.register('video_album', views.VideoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,8 +50,12 @@ urlpatterns = [
     path('history/', show_history, name='history'),
     path('management/', show_management, name='management'),
     path('documents/', show_documents, name='documents'),
-    # path('api_dinamo/photo_detailed/<int:pk>/', PhotoCategoryDetailed.as_view()),
-    # path('employee_articles/', show_employee_articles, name='employee_articles'),
+    path('how_to_get/', how_to_get, name='how_to_get'),
+    path('employee_articles/', show_employee_articles, name='employee_articles'),
+    # path('video/', show_video, name='video'),
+    # path('video/<slug:category_slug>/', show_video_by_category, name='video_by_category'),
+    # path('photo/', show_photo, name='photo'),
+    # path('photo/<slug:category_slug>/', show_photo_by_category, name='photo_by_category'),
     # path('services/<slug:category_slug><slug:service_slug><int:service_id>/', service_detail, name='service_detail'),
 
 ]

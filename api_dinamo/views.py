@@ -2,10 +2,11 @@ from rest_framework import viewsets, generics
 
 from employees.models import EmployeeArticle
 from main.models import Partner, Document
-from photo_video.models import PhotoCategory
+from photo_video.models import PhotoCategory, VideoCategory
 from vacancies.models import Vacancy
 from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
-    PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer
+    PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer, \
+    VideoCategorySerializer
 from services.models import Service, CategoryService
 from news.models import News
 
@@ -58,7 +59,13 @@ class VacancyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = VacancySerializer
 
 
-class PhotosViewSet(viewsets.ReadOnlyModelViewSet):
+class PhotoViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for PhotoCategory model """
     queryset = PhotoCategory.objects.all()
     serializer_class = PhotoCategorySerializer
+
+
+class VideoViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for PhotoCategory model """
+    queryset = VideoCategory.objects.all()
+    serializer_class = VideoCategorySerializer

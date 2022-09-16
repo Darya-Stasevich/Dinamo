@@ -17,17 +17,14 @@
                     <div class="container">
                         <div class="additional__body">
                             <div class="additional__contacts">
-                                {% for cont in contact %}
                                 <a href="#" class="contacts__telefon">
-                                    {{ cont.number_phone_main }}
+                                    {{ contact.number_phone_main }}
                                 </a>
                                 <a href="#" class="contacts__email">
-                                    {{ cont.email_main }}
+                                    {{ contact.email_main }}
                                 </a>
-                                {% endfor %}
                             </div>
                             <div class="additional__social">
-                                {% for url in urls %}
                                 <a href="{{ url.social_Instagram }}" class="social__link">
                                     <img src="{% static 'management/img/icons/instagram.svg' %}" alt="Instagram">
                                 </a>
@@ -43,13 +40,12 @@
                                 <a href="{{ url.social_TG }}" class="social__link">
                                     <img src="{% static 'management/img/icons/telega.svg' %}" alt="">
                                 </a>
-                                {% endfor %}
                             </div>
                             <div class="additional__map">
                                 <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
-                                <a href="#" class="map__link">
+                                <a href="{% url 'how_to_get' %}" class="map__link">
                                     Как добраться
                                 </a>
                                 <a href="#" class="map__link">
@@ -64,7 +60,7 @@
                 <div class="container">
                     <div class="header__body">
                         <div class="header__logo">
-                            <a href="" class="logo__link">
+                            <a href="{% url 'index' %}" class="logo__link">
                                 <img src="{% static 'management/img/dinamo_logo1_RGB1.png' %}" alt="Dinamo">
                             </a>
                         </div>
@@ -76,7 +72,7 @@
                                 <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
-                                <a href="#" class="map__link">
+                                <a href="{% url 'how_to_get' %}" class="map__link">
                                     Как добраться
                                 </a>
                                 <a href="#" class="map__link">
@@ -143,17 +139,14 @@
                                 </ul>
                             </nav>
                             <div class="header__contacts">
-                                {% for cont in contact %}
                                 <a href="#" class="contacts__telefon">
-                                    {{ cont.number_phone_main }}
+                                    {{ contact.number_phone_main }}
                                 </a>
                                 <a href="#" class="contacts__email">
-                                    {{ cont.email_main }}
+                                    {{ contact.email_main }}
                                 </a>
-                                {% endfor %}
                             </div>
                             <div class="header__social">
-                                {% for url in urls %}
                                 <a href="{{ url.social_Instagram }}" class="social__link">
                                     <img src="{% static 'management/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
                                 </a>
@@ -169,7 +162,6 @@
                                 <a href="{{ url.social_TG }}" class="social__link">
                                     <img src="{% static 'management/img/icons/Vectortelega-mobile.svg' %}" alt="">
                                 </a>
-                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -221,9 +213,11 @@
                                 {% endif %}
                             </div>
                             <div class="management__card-contacts">
+                                {% if manager.phone_number %}
                                 <div class="management__card-phone">
                                     Телефон и факс: <span>{{ manager.phone_number }}</span>
                                 </div>
+                                {% endif %}
                                 {% if manager.email %}
                                 <div class="management__card-email">
                                     E-mail:  <span>{{ manager.email }}</span>
@@ -242,7 +236,9 @@
                             </div>
                         </div>
                         <div class="management__card-image">
+                            {% if manager.image %}
                             <img src="{{ manager.image.url }}" alt="">
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
@@ -263,7 +259,6 @@
                             Следите за нами в соц.сетях
                         </p>
                         <div class="footer__social-block">
-                            {% for url in urls %}
                             <a href="{{ url.social_Instagram }}" class="social-block__link">
                                 <img src="{% static 'management/img/footer/instagramm.svg' %}" alt="">
                             </a>
@@ -279,7 +274,6 @@
                             <a href="{{ url.social_TG }}" class="social-block__link">
                                 <img src="{% static 'management/img/icons/logos_telegram1.svg' %}" alt="">
                             </a>
-                            {% endfor %}
                         </div>
                     </div>
                     <form action="#" class="footer__form" method="post">
