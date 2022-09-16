@@ -1,4 +1,5 @@
 from rest_framework import viewsets, generics
+from rest_framework.pagination import PageNumberPagination
 
 from employees.models import EmployeeArticle
 from main.models import Partner, Document
@@ -35,10 +36,18 @@ class NewsAllViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = NewsAllSerializer
 
 
+class EmployeeArticleViewSetPagination(PageNumberPagination):
+    """Пагинация для  страницы НАШИ СОТРУДНИКИ"""
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
 class EmployeeArticleViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for EmployeeArticle model """
     queryset = EmployeeArticle.objects.filter(published=True)
     serializer_class = EmployeeArticleSerializer
+    pagination_class = EmployeeArticleViewSetPagination
 
 
 class PartnerViewSet(viewsets.ReadOnlyModelViewSet):
