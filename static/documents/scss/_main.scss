@@ -1,0 +1,102 @@
+.page__nav-wrapper{
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 56px;
+}
+.page__nav-item{
+  border-bottom: 1px solid #594E4B;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #594E4B;
+}
+.page__nav-item-active{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A09999;
+}
+.main__title{
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+  text-transform: uppercase;
+  margin-bottom: 56px;
+}
+.documents__block-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 120px;
+}
+.documents__block{
+  max-width: 705px;
+  padding: 24px 16px 24px 24px;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 5px rgba(20, 6, 5, 0.1);
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.documents__block-download-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  & span {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #594E4B;
+  }
+}
+.documents__block-title{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #594E4B;
+}
+@media (max-width: 768px) {
+  .page__nav-wrapper{
+    margin-top: 0;
+    padding-top: 60px;
+    margin-bottom: 32px;
+  }
+  .main__title{
+    margin-bottom: 32px;
+    font-family: 'Roboto Condensed';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 130%;
+    text-transform: uppercase;
+  }
+  .documents__block-wrapper{
+    gap: 16px;
+  }
+  .documents__block-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #594E4B;
+  }
+  .documents__block-download-wrapper{
+    & span{
+      display: none;
+    }
+  }
+}

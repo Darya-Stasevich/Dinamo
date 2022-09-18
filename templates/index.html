@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'index/css/null_for_templates.css' %}">
     <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
-    <title>Document</title>
+    <title>Главная страница</title>
 </head>
 <body>
     <div class="wrapper">
@@ -19,49 +19,35 @@
                     <div class="container">
                         <div class="additional__body">
                             <div class="additional__contacts">
-                                {% for cont in contact %}
                                 <a href="#" class="contacts__telefon">
-                                    {{ cont.number_phone_main }}
+                                    {{ contact.number_phone_main }}
                                 </a>
                                 <a href="#" class="contacts__email">
-                                    {{ cont.email_main }}
+                                    {{ contact.email_main }}
                                 </a>
-                                {% endfor %}
                             </div>
                             <div class="additional__social">
-                                {% for url in urls %}
-                                {% if url.social_Instagram %}
                                 <a href="{{ url.social_Instagram }}" class="social__link">
                                     <img src="{% static 'index/img/icons/instagram.svg' %}" alt="Instagram">
                                 </a>
-                                {% endif %}
-                                {% if url.social_Facebook %}
                                 <a href="{{ url.social_Facebook }}" class="social__link">
                                     <img src="{% static 'index/img/icons/facebook.svg'%}" alt="Facebook">
                                 </a>
-                                {% endif %}
-                                {% if url.social_VK %}
                                 <a href="{{ url.social_VK }}" class="social__link">
                                     <img src="{% static 'index/img/icons/vk.svg' %}" alt="VK">
                                 </a>
-                                {% endif %}
-                                {% if url.social_Youtube %}
                                 <a href="{{ url.social_Youtube }}" class="social__link">
                                     <img src="{% static 'index/img/icons/youtube.svg' %}" alt="YouTube">
                                 </a>
-                                {% endif %}
-                                {% if url.social_TG %}
                                 <a href="{{ url.social_TG }}" class="social__link">
                                     <img src="{% static 'index/img/icons/telega.svg' %}" alt="">
                                 </a>
-                                {% endif %}
-                                {% endfor %}
                             </div>
                             <div class="additional__map">
                                 <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
-                                <a href="#" class="map__link">
+                                <a href="{% url 'how_to_get' %}" class="map__link">
                                     Как добраться
                                 </a>
                                 <a href="#" class="map__link">
@@ -76,7 +62,7 @@
                 <div class="container">
                     <div class="header__body">
                         <div class="header__logo">
-                            <a href="" class="logo__link">
+                            <a href="{% url 'index' %}" class="logo__link">
                                 <img src="{% static 'index/img/dinamo_logo1_RGB1.png' %}" alt="Dinamo">
                             </a>
                         </div>
@@ -88,7 +74,7 @@
                                 <a href="{% url 'about_stadium' %}" class="map__link">
                                     О стадионе
                                 </a>
-                                <a href="#" class="map__link">
+                                <a href="{% url 'how_to_get' %}" class="map__link">
                                     Как добраться
                                 </a>
                                 <a href="#" class="map__link">
@@ -98,7 +84,7 @@
                             <nav class="header__menu">
                                 <ul class="header__list">
                                     <li>
-                                        <a href="#" class="header__link selected">
+                                        <a href="{% url 'index' %}" class="header__link selected">
                                             Главная
                                         </a>
                                     </li>
@@ -155,43 +141,29 @@
                                 </ul>
                             </nav>
                             <div class="header__contacts">
-                                {% for cont in contact%}
                                 <a href="#" class="contacts__telefon">
-                                    {{ cont.number_phone_main }}
+                                    {{ contact.number_phone_main }}
                                 </a>
                                 <a href="#" class="contacts__email">
-                                    {{ cont.email_main }}
+                                    {{ contact.email_main }}
                                 </a>
-                                {% endfor %}
                             </div>
                             <div class="header__social">
-                                {% for url in urls %}
-                                {% if url.social_Instagram %}
                                 <a href="{{ url.social_Instagram }}" class="social__link">
                                     <img src="{% static 'index/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
                                 </a>
-                                {% endif %}
-                                {% if url.social_Facebook %}
                                 <a href="{{ url.social_Facebook }}" class="social__link">
                                     <img src="{% static 'index/img/icons/icon_face_mobile.svg' %}" alt="Facebook">
                                 </a>
-                                {% endif %}
-                                {% if url.social_VK %}
                                 <a href="{{ url.social_VK }}" class="social__link">
                                     <img src="{% static 'index/img/icons/icon_vk_mobile.svg' %}" alt="VK">
                                 </a>
-                                {% endif %}
-                                {% if url.social_Youtube %}
                                 <a href="{{ url.social_Youtube }}" class="social__link">
                                     <img src="{% static 'index/img/icons/icon_YT_mobile.svg' %}" alt="YouTube">
                                 </a>
-                                {% endif %}
-                                {% if url.social_TG %}
                                 <a href="{{ url.social_TG }}" class="social__link">
                                     <img src="{% static 'index/img/icons/Vectortelega-mobile.svg' %}" alt="">
                                 </a>
-                                {% endif %}
-                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -473,33 +445,21 @@
                             Следите за нами в соц.сетях
                         </p>
                         <div class="footer__social-block">
-                            {% for url in urls %}
-                            {% if url.social_Instagram %}
                             <a href="{{ url.social_Instagram }}" class="social-block__link">
                                 <img src="{% static 'index/img/footer/instagramm.svg' %}" alt="">
                             </a>
-                            {% endif %}
-                            {% if url.social_Facebook %}
                             <a href="{{ url.social_Facebook }}" class="social-block__link">
                                 <img src="{% static 'index/img/footer/facebook.svg' %}" alt="">
                             </a>
-                            {% endif %}
-                            {% if url.social_VK %}
                             <a href="{{ url.social_VK }}" class="social-block__link">
                                 <img src="{% static 'index/img/footer/vk.svg' %}" alt="">
                             </a>
-                            {% endif %}
-                            {% if url.social_Youtube %}
                             <a href="{{ url.social_Youtube }}" class="social-block__link">
                                 <img src="{% static 'index/img/footer/youtube.svg' %}" alt="">
                             </a>
-                            {% endif %}
-                            {% if url.social_TG %}
                             <a href="{{ url.social_TG }}" class="social-block__link">
                                 <img src="{% static 'index/img/icons/logos_telegram1.svg' %}" alt="">
                             </a>
-                            {% endif %}
-                            {% endfor %}
                         </div>
                     </div>
                     <form action="{% url 'index' %}" class="footer__form" method="post">

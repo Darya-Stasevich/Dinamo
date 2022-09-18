@@ -1,0 +1,25 @@
+.main__employers-nav{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 43px;
+}
+.main__employers-nav-item{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #594E4B;
+  border-bottom: 1px solid #594E4B;
+}
+.main__employers-nav-item-active{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A09999;
+
+}
