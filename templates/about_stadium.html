@@ -491,30 +491,32 @@
                         Следите за нами в соц.сетях
                     </p>
                     <div class="footer__social-block">
+                        {% for url in urls %}
                         <a href="{{ url.social_Instagram }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/instagramm.svg' %}" alt="">
+                            <img src="{% static 'history/img/footer/instagramm.svg' %}" alt="">
                         </a>
                         <a href="{{ url.social_Facebook }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/facebook.svg' %}" alt="">
+                            <img src="{% static 'history/img/footer/facebook.svg' %}" alt="">
                         </a>
                         <a href="{{ url.social_VK }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/vk.svg' %}" alt="">
+                            <img src="{% static 'history/img/footer/vk.svg' %}" alt="">
                         </a>
                         <a href="{{ url.social_Youtube }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/youtube.svg' %}" alt="">
+                            <img src="{% static 'history/img/footer/youtube.svg' %}" alt="">
                         </a>
                         <a href="{{ url.social_TG }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/icons/logos_telegram1.svg' %}" alt="">
+                            <img src="{% static 'history/img/icons/logos_telegram1.svg' %}" alt="">
                         </a>
+                        {% endfor %}
                     </div>
                 </div>
-                <form action="#" class="footer__form">
+                <form action="#" class="footer__form" method="post">
                     {% csrf_token %}
                     <p class="footer__form-title footer__text">
                         Подписывайтесь на email-рассылку
                     </p>
                     <div class="footer__form-block">
-                        <input type="email" name="email"  class="form-block__input" placeholder="sportsmen228@gmail.com">
+                        <input type="email"  name="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
                         <button class="form-block__button footer__text">
                             Подписаться
                         </button>

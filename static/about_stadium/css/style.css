@@ -1316,11 +1316,8 @@ footer {
   .footer__form-block {
     flex-direction: column;
   }
-  .social-block__link {
-    margin-right: 14px;
-  }
-  .social-block__link:last-child {
-    margin-right: 0;
+  .footer__social-block {
+    gap: 14px;
   }
   .footer__form-block {
     width: 100%;
@@ -1331,15 +1328,12 @@ footer {
     margin-bottom: 16px;
   }
 }
-@media (max-width: 576px) {
-  .footer {
-    justify-content: space-between;
-  }
-  .footer__social-title {
-    max-width: 172px;
-  }
+@media (max-width: 768px) {
   .footer__nav {
     max-width: 148px;
+  }
+  .footer__social {
+    max-width: 172px;
   }
 }
 
