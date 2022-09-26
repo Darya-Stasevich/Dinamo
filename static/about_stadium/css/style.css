@@ -1208,6 +1208,7 @@ footer {
 .footer {
   display: flex;
   margin-bottom: 40px;
+  justify-content: space-between;
 }
 
 .footer__text {
@@ -1241,13 +1242,8 @@ footer {
 
 .footer__social-block {
   display: flex;
-}
-
-.social-block__link {
-  margin-right: 24px;
-}
-.social-block__link:last-child {
-  margin-right: 0;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
 .footer__form-title {
@@ -1259,6 +1255,8 @@ footer {
 }
 
 .form-block__input {
+  border: 2px solid #A09999;
+  border-radius: 2px;
   margin-right: 8px;
   width: 324px;
   padding: 16px;
@@ -1268,7 +1266,6 @@ footer {
   font-size: 16px;
   line-height: 19px;
   color: #140605;
-  border: 1px solid gray;
 }
 .form-block__input::placeholder {
   color: #A09999;
