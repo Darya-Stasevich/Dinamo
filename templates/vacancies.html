@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'vacancies/css/null_for_templates.css' %}">
+    <link rel="stylesheet" href="{% static 'vacancies/css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container__background">
+        </div>
+        <header>
+            <div class="header__additional">
+                <div class="additional">
+                    <div class="container">
+                        <div class="additional__body">
+                            <div class="additional__contacts">
+                                <a href="#" class="contacts__telefon">
+                                    +375 17 243 09 11
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    stadion_dinamo@mail.ru
+                                </a>
+                            </div>
+                            <div class="additional__social">
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/instagram.svg' %}" alt="Instagram">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/facebook.svg' %}" alt="Facebook">
+                                </a>
+                                <a href="" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/vk.svg' %}" alt="VK">
+                                </a>
+                                <a href="" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/youtube.svg' %}" alt="YouTube">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/telega.svg' %}" alt="">
+                                </a>
+                            </div>
+                            <div class="additional__map">
+                                <a href="#" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header">
+                <div class="container">
+                    <div class="header__body">
+                        <div class="header__logo">
+                            <a href="" class="logo__link">
+                                <img src="{% static 'vacancies/img/dinamo_logo1.png' %}" alt="Dinamo">
+                            </a>
+                        </div>
+                        <div class="header__burger">
+                            <span></span>
+                        </div>
+                        <div class="menu__container">
+                            <div class="header__map">
+                                <a href="#" class="map__link">
+                                    О стадионе
+                                </a>
+                                <a href="#" class="map__link">
+                                    Как добраться
+                                </a>
+                                <a href="#" class="map__link">
+                                    Контакты
+                                </a>
+                            </div>
+                            <nav class="header__menu">
+                                <ul class="header__list">
+                                    <li>
+                                        <a href="#" class="header__link selected">
+                                            Главная
+                                        </a>
+                                    </li>
+                                    <li class="list__item services">
+                                        <div class="item__wrapper">
+                                            <a href="#" class="header__link">
+                                                Услуги
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="services"></span>
+                                        </div>
+                                        <div class="menu-extra__container">
+                                            <div class="menu-extra__block">
+                                            </div>
+                                        </div>
+                                        <div class="menu-mobile__container">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="header__link">
+                                            Новости
+                                        </a>
+                                    </li>
+                                    <li class="list__item media">
+                                        <div class="item__wrapper">
+                                            <a href="#" class="header__link">
+                                                Медиа
+                                            </a>
+                                            <span class="link__line"></span>
+                                            <span class="link__arrow" id="media"></span>
+                                        </div>
+                                        <div class="menu-extra__media">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                        <div class="menu-mobile__block">
+                                            <a href="#" class="menu-extra__link">
+                                                Фотоальбомы
+                                            </a>
+                                            <a href="#" class="menu-extra__link">
+                                                Видеоальбомы
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="list__item-enter">
+                                        <a href="#" class="header__link">
+                                            События
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="header__contacts">
+                                <a href="#" class="contacts__telefon">
+                                    +375 17 243 09 11
+                                </a>
+                                <a href="#" class="contacts__email">
+                                    stadion_dinamo@mail.ru
+                                </a>
+                            </div>
+                            <div class="header__social">
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/icon_face_mobile.svg' %}" alt="Facebook">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/icon_vk_mobile.svg' %}" alt="VK">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/icon_YT_mobile.svg' %}" alt="YouTube">
+                                </a>
+                                <a href="#" class="social__link">
+                                    <img src="{% static 'vacancies/img/icons/Vectortelega-mobile.svg' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container__vacancy">
+                <div class="container">
+                    <div class="vacancy">
+                        <div class="vacancy__nav">
+                            <a href="#" class="vacancy__link">
+                                Главная
+                            </a>
+                            <div class="vacancy__nav-img">
+                                <img src="{% static 'vacancies/img/vacancy_nav_vektor.svg' %}" alt="">
+                            </div>
+                            <a href="#" class="vacancy__link">
+                                О стадионе
+                            </a>
+                            <div class="vacancy__nav-img">
+                                <img src="{% static 'vacancies/img/vacancy_nav_vektor.svg' %}" alt="">
+                            </div>
+                            <a href="#" class="vacancy__link link__color">
+                                Вакансии
+                            </a>
+                        </div>
+                        <h2>
+                            Вакансии национального олимпийстого стадиона «Динамо»
+                        </h2>
+                        <div class="vacancy__contact">
+                            <div class="vacancy__mail">
+                                <p class="contact__title">
+                                    Электронный адрес для резюме:
+                                </p>
+                                <p class="contact__subtitle">
+                                    Если вы хотите у нас работать, но не нашли подходящей вакансии, отправьте свое резюме либо напишите о себе на почту
+                                </p>
+                                <a href="#" class="contact__subtitle-red">
+                                    kadry@stadium-dinamo.by
+                                </a>
+                            </div>
+                            <div class="vacancy__telefon">
+                                <p class="contact__title">
+                                    Капшина Алена Александровна, начальник отдела правовой и кадровой работы:
+                                </p>
+                                <a href="#" class="contact__subtitle-red">
+                                    +375 (17) 243 01 59
+                                </a>
+                            </div>
+                        </div>
+                        <div class="vacancy__block-wrapper">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__respond">
+                <div class="respond__cross">
+                    <img src="{% static 'vacancies/img/vector_cross.svg' %}" alt="">
+                </div>
+                <h2 class="respond__title">
+                    Откликнуться на вакансию : <span id="respond__title"></span>
+                </h2>
+                <p class="respond__subtitle">
+                    Расскажите нам о себе и мы обязательно свяжемся с вами
+                </p>
+                <form action="#" class="respond__form">
+                    <p class="form__text">
+                        ФИО
+                    </p>
+                    <input type="text" class="input__text" placeholder="Иванов Иван Иванович">
+                    <p class="form__text">
+                        Номер телефона
+                    </p>
+                    <input type="tel" class="input__tel" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _ ">
+                    <div class="input__wrapper">
+                        <input name="file" type="file" name="file" id="input__file" class="input input__file" multiple>
+                        <label for="input__file" class="input__file-button">
+                            <p class="form__text input__file-text">
+                                Перетащите или <span>загрузите файл</span> резюме
+                            </p>
+                            <p class="input__file-subtext">
+                                (.doc, .pdf, .docx, .rtf)
+                            </p>
+                        </label>
+                    </div>
+                    <p class="form__text">
+                        Или вставьте ссылку на hh.ru или superjob.ru
+                    </p>
+                    <input type="text" class="input__link" placeholder="ссылка на hh.ru или superjob.ru">
+                    <button class="form__button">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+            <div class="container__send">
+                <div class="send__cross">
+                    <img src="{% static 'vacancies/img/vector_cross.svg' %}" alt="">
+                </div>
+                <div class="send__image">
+                    <img src="{% static 'vacancies/img/vector_send.svg' %}" alt="">
+                </div>
+                <div class="send__title">
+                    Ваш отклик отправлен
+                </div>
+                <div class="send__subtitle">
+                    Мы свяжемся с Вами в ближайшее время
+                </div>
+                <button class="send__button">
+                    Окей, жду
+                </button>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="footer">
+                    <nav class="footer__nav">
+                        <a href="#" class="footer__link footer__text">
+                            Адрес: г. Минск,<br>
+                            ул. Кирова, д. 8, корп. 6
+                        </a>
+                    </nav>
+                    <div class="footer__social">
+                        <p class="footer__social-title footer__text">
+                            Следите за нами в соц.сетях
+                        </p>
+                        <div class="footer__social-block">
+                            <a href="#" class="social-block__link">
+                                <img src="{% static 'vacancies/img/footer/instagramm.svg' %}" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="{% static 'vacancies/img/footer/facebook.svg' %}" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="{% static 'vacancies/img/footer/vk.svg' %}" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="{% static 'vacancies/img/footer/youtube.svg' %}" alt="">
+                            </a>
+                            <a href="#" class="social-block__link">
+                                <img src="{% static 'vacancies/img/icons/logos_telegram1.svg' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <form action="#" class="footer__form">
+                        <p class="footer__form-title footer__text">
+                            Подписывайтесь на email-рассылку
+                        </p>
+                        <div class="footer__form-block">
+                            <input type="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
+                            <button class="form-block__button footer__text">
+                                Подписаться
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <p class="footer__subtitle">
+                    2022 © Все права защищены
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/header.js"></script>
+    <script src="js/block__about.js"></script>
+</body>
+</html>

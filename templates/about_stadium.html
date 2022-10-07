@@ -229,7 +229,7 @@
                             Документы
                         </div>
                     </a>
-                    <a href="" class="about__card">
+                    <a href="{% url 'vacancies_list' %}" class="about__card">
                         <div class="card__img">
                             <img src="{% static 'about_stadium/img/card_img-5.png' %}" alt="">
                         </div>
@@ -480,47 +480,47 @@
     <footer>
         <div class="container">
             <div class="footer">
-                <nav class="footer__nav">
-                    <a href="#" class="footer__link footer__text">
-                        Адрес: г. Минск,<br>
-                        ул. Кирова, д. 8, корп. 6
-                    </a>
-                </nav>
-                <div class="footer__social">
-                    <p class="footer__social-title footer__text">
-                        Следите за нами в соц.сетях
-                    </p>
-                    <div class="footer__social-block">
-                        <a href="{{ url.social_Instagram }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/instagramm.svg' %}" alt="">
+                    <nav class="footer__nav">
+                        <a href="#" class="footer__link footer__text">
+                            Адрес: г. Минск,<br>
+                            ул. Кирова, д. 8, корп. 6
                         </a>
-                        <a href="{{ url.social_Facebook }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/facebook.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_VK }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/vk.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_Youtube }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/footer/youtube.svg' %}" alt="">
-                        </a>
-                        <a href="{{ url.social_TG }}" class="social-block__link">
-                            <img src="{% static 'about_stadium/img/icons/logos_telegram1.svg' %}" alt="">
-                        </a>
+                    </nav>
+                    <div class="footer__social">
+                        <p class="footer__social-title footer__text">
+                            Следите за нами в соц.сетях
+                        </p>
+                        <div class="footer__social-block">
+                            <a href="{{ url.social_Instagram }}" class="social-block__link">
+                                <img src="{% static 'about_stadium/img/footer/instagramm.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_Facebook }}" class="social-block__link">
+                                <img src="{% static 'about_stadium/img/footer/facebook.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_VK }}" class="social-block__link">
+                                <img src="{% static 'about_stadium/img/footer/vk.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_Youtube }}" class="social-block__link">
+                                <img src="{% static 'about_stadium/img/footer/youtube.svg' %}" alt="">
+                            </a>
+                            <a href="{{ url.social_TG }}" class="social-block__link">
+                                <img src="{% static 'about_stadium/img/icons/logos_telegram1.svg' %}" alt="">
+                            </a>
+                        </div>
                     </div>
+                    <form action="{% url 'index' %}" class="footer__form" method="post">
+                        {% csrf_token %}
+                        <p class="footer__form-title footer__text">
+                            Подписывайтесь на email-рассылку
+                        </p>
+                        <div class="footer__form-block">
+                            <input type="email" name="email" class="form-block__input" placeholder="sportsmen228@gmail.com" >
+                            <button class="form-block__button footer__text">
+                                Подписаться
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <form action="#" class="footer__form">
-                    {% csrf_token %}
-                    <p class="footer__form-title footer__text">
-                        Подписывайтесь на email-рассылку
-                    </p>
-                    <div class="footer__form-block">
-                        <input type="email" name="email"  class="form-block__input" placeholder="sportsmen228@gmail.com">
-                        <button class="form-block__button footer__text">
-                            Подписаться
-                        </button>
-                    </div>
-                </form>
-            </div>
             <p class="footer__subtitle">
                 2022 © Все права защищены
             </p>

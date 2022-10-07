@@ -130,7 +130,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
+.*/migrations/
 #PyCharm
 .idea/
 © 2022 GitHub, Inc.
