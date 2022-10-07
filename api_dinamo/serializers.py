@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from employees.models import EmployeeArticle
-from main.models import Partner, Document
+from main.models import Partner, Document, SocialNetwork, Contact
 from news.models import News
 from photo_video.models import PhotoLibrary, PhotoCategory, VideoLibrary, VideoCategory
 from services.models import Service, CategoryService
@@ -14,6 +14,25 @@ class CategoryServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = CategoryService
         fields = ['id', 'slug', 'title', ]
+
+
+class ContactSerializer(serializers.ModelSerializer):
+    """Сериализатор для контактов в футер"""
+
+    class Meta:
+        model = Contact
+        fields = ['number_phone_main', 'email_main', ]
+
+
+
+
+
+class SocialNetworkSerializer(serializers.ModelSerializer):
+    """Сериализатор для социальных сетей"""
+
+    class Meta:
+        model = SocialNetwork
+        fields = ['social_TG', 'social_Youtube', 'social_Facebook', 'social_Instagram', 'social_VK']
 
 
 class ServiceSerializer(serializers.ModelSerializer):

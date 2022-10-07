@@ -30,14 +30,16 @@ from .yasg import urlpatterns as doc_urls
 router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
 router.register('category_services', views.CategoryServiceViewSet)
+router.register('contact', views.ContactViewSet)
 router.register('news', views.NewsViewSet)
-router.register('news_all', views.NewsAllViewSet)
+router.register('news_all', views.NewsAllViewSet, basename='news_all')
 router.register('employee_article', views.EmployeeArticleViewSet)
 router.register('partners', views.PartnerViewSet)
 router.register('documents', views.DocumentViewSet)
 router.register('vacancies', views.VacancyViewSet)
 router.register('photo_album', views.PhotoViewSet)
 router.register('video_album', views.VideoViewSet)
+router.register('social_links', views.SocialNetworkViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

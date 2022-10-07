@@ -2,12 +2,12 @@ from rest_framework import viewsets, generics
 from rest_framework.pagination import PageNumberPagination
 
 from employees.models import EmployeeArticle
-from main.models import Partner, Document
+from main.models import Partner, Document, SocialNetwork, Contact
 from photo_video.models import PhotoCategory, VideoCategory
 from vacancies.models import Vacancy
 from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
     PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer, \
-    VideoCategorySerializer
+    VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer
 from services.models import Service, CategoryService
 from news.models import News
 
@@ -22,6 +22,18 @@ class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for CategoryService model """
     queryset = CategoryService.objects.all()
     serializer_class = CategoryServiceSerializer
+
+
+class ContactViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for Contact model"""
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+
+
+class SocialNetworkViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for SocialNetwork model"""
+    queryset = SocialNetwork.objects.all()
+    serializer_class = SocialNetworkSerializer
 
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
