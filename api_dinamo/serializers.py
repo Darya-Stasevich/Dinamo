@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from employees.models import EmployeeArticle
-from main.models import Partner, Document, SocialNetwork, Contact
+from main.models import Partner, Document, SocialNetwork, Contact, UserEmail
 from news.models import News
 from photo_video.models import PhotoLibrary, PhotoCategory, VideoLibrary, VideoCategory
 from services.models import Service, CategoryService
@@ -23,8 +23,12 @@ class ContactSerializer(serializers.ModelSerializer):
         model = Contact
         fields = ['number_phone_main', 'email_main', ]
 
+class UserEmailSerializer(serializers.ModelSerializer):
+    """Сериализатор для формы email в футер"""
 
-
+    class Meta:
+        model = UserEmail
+        fields = ['email',]
 
 
 class SocialNetworkSerializer(serializers.ModelSerializer):

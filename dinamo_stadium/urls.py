@@ -40,6 +40,8 @@ router.register('vacancies', views.VacancyViewSet)
 router.register('photo_album', views.PhotoViewSet)
 router.register('video_album', views.VideoViewSet)
 router.register('social_links', views.SocialNetworkViewSet)
+router.register('email_form', views.UserEmailViewSet)
+# router.register('email_form', views.UserEmailViewSet.as_view({'post': 'create'}), basename='email')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

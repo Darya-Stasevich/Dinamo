@@ -1,13 +1,14 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, mixins
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.viewsets import GenericViewSet
 
 from employees.models import EmployeeArticle
-from main.models import Partner, Document, SocialNetwork, Contact
+from main.models import Partner, Document, SocialNetwork, Contact, UserEmail
 from photo_video.models import PhotoCategory, VideoCategory
 from vacancies.models import Vacancy
 from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
     PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer, \
-    VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer
+    VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer, UserEmailSerializer
 from services.models import Service, CategoryService
 from news.models import News
 
@@ -28,6 +29,12 @@ class ContactViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for Contact model"""
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+
+
+class UserEmailViewSet(mixins.CreateModelMixin, GenericViewSet):
+    """ API for UserEmail model"""
+    queryset = UserEmail.objects.all()
+    serializer_class = UserEmailSerializer
 
 
 class SocialNetworkViewSet(viewsets.ReadOnlyModelViewSet):
