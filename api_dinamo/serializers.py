@@ -30,7 +30,7 @@ class DepartmentContactsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DepartmentContacts
-        exlude = ['id',]
+        exclude = ['id',]
 
 
 class PaymentInfoSerializer(serializers.ModelSerializer):
