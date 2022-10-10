@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from news.models import NewsAdditionalImage, News
+from news.models import NewsAdditionalImage, News, Event
 
 
 class NewsAdditionalImageInline(admin.TabularInline):
@@ -18,3 +18,4 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(News, NewsAdmin)
+admin.site.register(Event)

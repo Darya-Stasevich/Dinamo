@@ -1,11 +1,12 @@
 from rest_framework import serializers
 
-from employees.models import EmployeeArticle
-from main.models import Partner, Document, SocialNetwork, Contact, UserEmail
-from news.models import News
+from employees.models import EmployeeArticle, Management
+from history.models import HistoryArticle
+from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo
+from news.models import News, Event
 from photo_video.models import PhotoLibrary, PhotoCategory, VideoLibrary, VideoCategory
-from services.models import Service, CategoryService
-from vacancies.models import Vacancy, VacancyRequirements
+from services.models import Service, CategoryService, Feedback
+from vacancies.models import Vacancy, VacancyRequirements, FeedbackForVacancy
 
 
 class CategoryServiceSerializer(serializers.ModelSerializer):
@@ -23,12 +24,28 @@ class ContactSerializer(serializers.ModelSerializer):
         model = Contact
         fields = ['number_phone_main', 'email_main', ]
 
+
+class DepartmentContactsSerializer(serializers.ModelSerializer):
+    """Сериализатор для контактов на странице контакты"""
+
+    class Meta:
+        model = DepartmentContacts
+        exlude = ['id',]
+
+
+class PaymentInfoSerializer(serializers.ModelSerializer):
+    """Сериализатор для реквизитов оплаты"""
+
+    class Meta:
+        model = PaymentInfo
+        exclude = ['id', ]
+
 class UserEmailSerializer(serializers.ModelSerializer):
     """Сериализатор для формы email в футер"""
 
     class Meta:
         model = UserEmail
-        fields = ['email',]
+        fields = ['email', ]
 
 
 class SocialNetworkSerializer(serializers.ModelSerializer):
@@ -39,12 +56,35 @@ class SocialNetworkSerializer(serializers.ModelSerializer):
         fields = ['social_TG', 'social_Youtube', 'social_Facebook', 'social_Instagram', 'social_VK']
 
 
+class ManagementSerializer(serializers.ModelSerializer):
+    """Сериализатор для руководства"""
+
+    class Meta:
+        model = Management
+        exclude = ['id', ]
+
+
+class HistoryArticleSerializer(serializers.ModelSerializer):
+    """Сериализатор для ссылок на исторические статьи"""
+
+    class Meta:
+        model = HistoryArticle
+        fields = ['id', 'title', 'url', ]
+
+
 class ServiceSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения услуг на ГЛАВНОЙ странице"""
 
     class Meta:
         model = Service
-        fields = ['id', 'slug', 'title', 'image', 'is_primary_service']
+        fields = ['id', 'slug', 'title', 'image', 'is_primary_service',]
+
+class ServicesAllSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения услуг на странице ВСЕХ УСЛУГ"""
+
+    class Meta:
+        model = Service
+        fields = ['id', 'slug', 'category', 'title', 'image', 'brief_description', 'price_with_VAT_for_person']
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -97,11 +137,26 @@ class VacancyRequirementsSerializer(serializers.ModelSerializer):
 
 class VacancySerializer(serializers.ModelSerializer):
     """Сериализатор для отображения вакансий"""
-    vacancyrequirements_set = VacancyRequirementsSerializer(many=True)
+    requirements = VacancyRequirementsSerializer(many=True)
 
     class Meta:
         model = Vacancy
-        fields = ['id', 'title_of_vacancy', 'salary', 'experience', 'employment', 'vacancyrequirements_set', ]
+        fields = ['id', 'title_of_vacancy', 'salary', 'experience', 'employment', 'requirements', ]
+
+class FeedbackForVacancySerializer(serializers.ModelSerializer):
+    """Сериализатор для формы заявка на вакансию"""
+
+    class Meta:
+        model = FeedbackForVacancy
+        fields = ['full_name', 'phone_number', 'resume_file', 'url_of_resume', 'vacancy', ]
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    """Сериализатор для формы заявка перезвонить"""
+
+    class Meta:
+        model = Feedback
+        fields = ['name', 'phone_number', ]
 
 
 class PhotoLibrarySerializer(serializers.ModelSerializer):
@@ -136,3 +191,11 @@ class VideoCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoCategory
         fields = ['id', 'slug', 'title', 'cover', 'videos', ]
+
+
+class EventSerializer(serializers.ModelSerializer):
+    """Сериализатор для событий"""
+
+    class Meta:
+        model = Event
+        fields = ['id', 'brief_description', 'date', 'image', ]

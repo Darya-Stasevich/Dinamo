@@ -2,21 +2,38 @@ from rest_framework import viewsets, generics, mixins
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import GenericViewSet
 
-from employees.models import EmployeeArticle
-from main.models import Partner, Document, SocialNetwork, Contact, UserEmail
+from employees.models import EmployeeArticle, Management
+from history.models import HistoryArticle
+from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo
 from photo_video.models import PhotoCategory, VideoCategory
-from vacancies.models import Vacancy
+from vacancies.models import Vacancy, FeedbackForVacancy
 from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
     PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer, \
-    VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer, UserEmailSerializer
-from services.models import Service, CategoryService
-from news.models import News
+    VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer, UserEmailSerializer, ManagementSerializer, \
+    HistoryArticleSerializer, DepartmentContactsSerializer, PaymentInfoSerializer, EventSerializer, \
+    FeedbackForVacancySerializer, FeedbackSerializer, ServicesAllSerializer
+from services.models import Service, CategoryService, Feedback
+from news.models import News, Event
 
 
 class ServiceViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for Service model """
     queryset = Service.objects.filter(published=True)
     serializer_class = ServiceSerializer
+
+
+class ServicesViewSetPagination(PageNumberPagination):
+    """Пагинация для страницы все услуги"""
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+class ServicesAllViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for Service model (all services page)"""
+    queryset = Service.objects.filter(published=True)
+    serializer_class = ServicesAllSerializer
+    pagination_class = ServicesViewSetPagination
 
 
 class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
@@ -31,6 +48,18 @@ class ContactViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ContactSerializer
 
 
+class DepartmentContactsViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for DepartmentContacts model"""
+    queryset = DepartmentContacts.objects.all()
+    serializer_class = DepartmentContactsSerializer
+
+
+class PaymentInfoViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for PaymentInfo model"""
+    queryset = PaymentInfo.objects.all()
+    serializer_class = PaymentInfoSerializer
+
+
 class UserEmailViewSet(mixins.CreateModelMixin, GenericViewSet):
     """ API for UserEmail model"""
     queryset = UserEmail.objects.all()
@@ -43,6 +72,13 @@ class SocialNetworkViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SocialNetworkSerializer
 
 
+class EmployeeArticleViewSetPagination(PageNumberPagination):
+    """Пагинация для страниц НАШИ СОТРУДНИКИ, НОВОСТИ"""
+    page_size = 16
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for News model (main page)"""
     queryset = News.objects.filter(published=True)
@@ -53,13 +89,7 @@ class NewsAllViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for News model (for page with all news)"""
     queryset = News.objects.filter(published=True)
     serializer_class = NewsAllSerializer
-
-
-class EmployeeArticleViewSetPagination(PageNumberPagination):
-    """Пагинация для  страницы НАШИ СОТРУДНИКИ"""
-    page_size = 5
-    page_size_query_param = 'page_size'
-    max_page_size = 100
+    pagination_class = EmployeeArticleViewSetPagination
 
 
 class EmployeeArticleViewSet(viewsets.ReadOnlyModelViewSet):
@@ -81,10 +111,33 @@ class DocumentViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = DocumentSerializer
 
 
+class ManagementViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for Document model """
+    queryset = Management.objects.all()
+    serializer_class = ManagementSerializer
+
+
+class HistoryArticleViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for HistoryArticle model """
+    queryset = HistoryArticle.objects.all()
+    serializer_class = HistoryArticleSerializer
+
+
 class VacancyViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for Vacancy model """
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
+
+
+class FeedbackForVacancyViewSet(mixins.CreateModelMixin, GenericViewSet):
+    """ API for FeedbackForVacancy model """
+    queryset = FeedbackForVacancy.objects.all()
+    serializer_class = FeedbackForVacancySerializer
+
+class FeedbackViewSet(mixins.CreateModelMixin, GenericViewSet):
+    """ API for Feedback model """
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
 
 
 class PhotoViewSet(viewsets.ReadOnlyModelViewSet):
@@ -97,3 +150,9 @@ class VideoViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for PhotoCategory model """
     queryset = VideoCategory.objects.all()
     serializer_class = VideoCategorySerializer
+
+
+class EventViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for Event model """
+    queryset = Event.objects.filter(published=True)
+    serializer_class = EventSerializer

@@ -4,7 +4,7 @@ from django.db import models
 class PhotoCategory(models.Model):
     """Раздел фотоальбома"""
     title = models.CharField(max_length=200, verbose_name="Раздел фотоальбома")
-    slug = models.SlugField(unique=True, default='dfdsfd')
+    slug = models.SlugField(unique=True)
     cover = models.ImageField(upload_to='photo_library/covers', verbose_name="Изображение обложки")
 
     class Meta:
@@ -30,7 +30,7 @@ class PhotoLibrary(models.Model):
 class VideoCategory(models.Model):
     """Раздел видеоальбома"""
     title = models.CharField(max_length=200, verbose_name="Рубрика видео")
-    slug = models.SlugField(unique=True, default='fff')
+    slug = models.SlugField(unique=True)
     cover = models.ImageField(upload_to='video_library/covers', verbose_name="Обложки для видео")
 
     class Meta:

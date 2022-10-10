@@ -43,20 +43,20 @@ class Service(models.Model):
     brief_description = models.CharField(max_length=400, verbose_name="Краткое описание")
     description = models.TextField(verbose_name="Полное описание")
 
-    price_with_VAT_for_person = models.CharField(max_length=50, blank=True, null=True,
-                                                 verbose_name="Тариф с НДС для физ.лица", default=0,
-                                                 help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+    price_with_VAT_for_person = models.CharField(max_length=50, verbose_name="Тариф с НДС для физ.лица", default=0,
+                                                 help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
     price_without_VAT_for_person = models.CharField(max_length=50, blank=True, null=True,
                                                     verbose_name="Тариф без НДС для физ.лица", default=0,
-                                                    help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+                                                    help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
     price_with_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
                                                 verbose_name="Тариф с НДС для юр.лица", default=0,
-                                                help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
+                                                help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
     price_without_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
                                                    verbose_name="Тариф без НДС для юр.лица", default=0,
-                                                   help_text='Можно дописывать, например, "от", "индивидуально" и т.п.')
-    notes = models.CharField(max_length=200, verbose_name="Ед.измерения", blank=True, null=True)
-    image = models.ImageField(upload_to='services/', blank=True, null=True, verbose_name="Изображение")
+                                                   help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
+    notes = models.CharField(max_length=200, verbose_name="Ед.измерения",
+                             help_text='Пример заполнения: "шт.", "руб./час" и т.п.')
+    image = models.ImageField(upload_to='services/', verbose_name="Изображение")
     published = models.BooleanField('Добавить на сайт', default=True)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата добавления услуги")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата редактирования услуги")
@@ -65,7 +65,8 @@ class Service(models.Model):
                                    verbose_name='Прикрепленный файл',
                                    help_text="Если нужно прикрепить доп.информацию по услуге")
     is_primary_service = models.BooleanField(default=False, verbose_name='Приоритетная услуга для отображения',
-                            help_text='При наличии галочки данная услуга попадет в большой блок ЛУЧШИЕ УСЛУГИ ДЛЯ ВАС')
+                                             help_text='При наличии галочки данная услуга попадет в большой блок ЛУЧШИЕ УСЛУГИ ДЛЯ ВАС')
+
 
     def save(self, *args, **kwargs):
         """Добавление только одной услуги с полем is_primary_service=True"""
@@ -76,15 +77,14 @@ class Service(models.Model):
                 is_primary_service=True).update(is_primary_service=False)
             return super(Service, self).save(*args, **kwargs)
 
+
     class Meta:
         verbose_name = 'Услугу'
         verbose_name_plural = 'Услуги'
 
+
     def __str__(self):
         return self.title
-
-    # def get_absolute_url(self):
-    #     return reverse('main:service_detail', args=[self.slug])
 
 
 class Attachment(models.Model):
@@ -114,7 +114,6 @@ class Feedback(models.Model):
     date = models.DateTimeField('Дата и время заявки', auto_now_add=True)
 
     class Meta:
-        ordering = ['-date']
         verbose_name = 'Заявку'
         verbose_name_plural = 'ЗАЯВКИ ПЕРЕЗВОНИТЬ'
 

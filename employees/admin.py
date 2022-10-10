@@ -9,7 +9,7 @@ class ArticleAdditionalImageInline(admin.TabularInline):
 
 
 class EmployeeArticleAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("name_employee",)}
+    prepopulated_fields = {"slug": ('name_employee', 'title')}
     list_display = ('name_employee', 'title', 'published', 'created', 'updated')
     list_editable = ('published',)
     list_filter = ('published', 'created')

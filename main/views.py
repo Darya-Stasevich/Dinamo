@@ -2,18 +2,16 @@ from django.shortcuts import render
 
 from employees.models import Management
 from main.forms import UserEmailForm
-from main.models import Contact, SocialNetwork, Video
+from main.models import Contact, SocialNetwork
 
 
 def index(request):
     """Отображение главной страницы сайта"""
     contact = Contact.objects.last()
     url = SocialNetwork.objects.last()
-    video = Video.objects.all()
     context = {
         'contact': contact,
         'url': url,
-        'video': video,
     }
     if request.method == "POST":
         email = UserEmailForm(request.POST)

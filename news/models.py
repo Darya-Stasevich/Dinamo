@@ -24,9 +24,6 @@ class News(models.Model):
     def __str__(self):
         return f'{self.title}, дата создания: {self.created}'
 
-    # def get_absolute_url(self):
-    #     return reverse('news:news_detail', args=[self.id])
-
 
 class NewsAdditionalImage(models.Model):
     """Дополнительные изображения к новостям"""
@@ -42,5 +39,19 @@ class NewsAdditionalImage(models.Model):
         verbose_name_plural = 'Дополнительные изображения'
 
 
-# class Event(models.Model):
-#     pass
+class Event(models.Model):
+    """Страница событий/мероприятий"""
+
+    brief_description = models.CharField(max_length=400, verbose_name="Краткое описание события")
+    date = models.CharField(max_length=200, verbose_name="Дата проведения",
+                            help_text='Пример заполнения: 18 августа - 20 августа 2022')
+    image = models.ImageField(upload_to='events/', blank=True, null=True, verbose_name='Картинка для события')
+    published = models.BooleanField('Опубликовать на сайте', default=True)
+
+    class Meta:
+        verbose_name = 'Мероприятие'
+        verbose_name_plural = 'Мероприятия'
+
+    def __str__(self):
+        return f'{self.brief_description}, дата проведения: {self.date}'
+

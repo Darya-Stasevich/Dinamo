@@ -29,19 +29,27 @@ from .yasg import urlpatterns as doc_urls
 
 router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
+router.register('services_all', views.ServicesAllViewSet, basename='services_all')
 router.register('category_services', views.CategoryServiceViewSet)
 router.register('contact', views.ContactViewSet)
+router.register('department_contacts', views.DepartmentContactsViewSet)
+router.register('payment_info', views.PaymentInfoViewSet)
 router.register('news', views.NewsViewSet)
 router.register('news_all', views.NewsAllViewSet, basename='news_all')
 router.register('employee_article', views.EmployeeArticleViewSet)
 router.register('partners', views.PartnerViewSet)
 router.register('documents', views.DocumentViewSet)
 router.register('vacancies', views.VacancyViewSet)
+router.register('vacancy_form', views.FeedbackForVacancyViewSet)
 router.register('photo_album', views.PhotoViewSet)
 router.register('video_album', views.VideoViewSet)
 router.register('social_links', views.SocialNetworkViewSet)
 router.register('email_form', views.UserEmailViewSet)
-# router.register('email_form', views.UserEmailViewSet.as_view({'post': 'create'}), basename='email')
+router.register('feedback_form', views.FeedbackViewSet)
+router.register('management', views.ManagementViewSet)
+router.register('history_articles', views.HistoryArticleViewSet)
+router.register('events', views.EventViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

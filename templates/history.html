@@ -18,17 +18,14 @@
                 <div class="container">
                     <div class="additional__body">
                         <div class="additional__contacts">
-                            {% for cont in contact %}
                             <a href="#" class="contacts__telefon">
                                 {{ cont.number_phone_main }}
                             </a>
                             <a href="#" class="contacts__email">
                                 {{ cont.email_main }}
                             </a>
-                            {% endfor %}
                         </div>
                         <div class="additional__social">
-                            {% for url in urls %}
                             <a href="{{ url.social_Instagram }}" class="social__link">
                                 <img src="{% static 'history/img/icons/instagram.svg' %}" alt="Instagram">
                             </a>
@@ -44,7 +41,6 @@
                             <a href="{{ url.social_TG }}" class="social__link">
                                 <img src="{% static 'history/img/icons/telega.svg' %}" alt="">
                             </a>
-                            {% endfor %}
                         </div>
                         <div class="additional__map">
                             <a href="{% url 'about_stadium' %}" class="map__link">
@@ -144,17 +140,14 @@
                             </ul>
                         </nav>
                         <div class="header__contacts">
-                            {% for cont in contact %}
                             <a href="#" class="contacts__telefon">
                                 {{ cont.number_phone_main }}
                             </a>
                             <a href="#" class="contacts__email">
                                 {{ cont.email_main }}
                             </a>
-                            {% endfor %}
                         </div>
                         <div class="header__social">
-                            {% for url in urls %}
                             <a href="{{ url.social_Instagram }}" class="social__link">
                                 <img src="{% static 'history/img/icons/icon_inst_mobile.svg' %}" alt="Instagram">
                             </a>
@@ -170,7 +163,6 @@
                             <a href="{{ url.social_TG }}" class="social__link">
                                 <img src="{% static 'history/img/icons/Vectortelega-mobile.svg' %}" alt="">
                             </a>
-                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -946,7 +938,6 @@
                         Следите за нами в соц.сетях
                     </p>
                     <div class="footer__social-block">
-                        {% for url in urls %}
                         <a href="{{ url.social_Instagram }}" class="social-block__link">
                             <img src="{% static 'history/img/footer/instagramm.svg' %}" alt="">
                         </a>
@@ -962,7 +953,6 @@
                         <a href="{{ url.social_TG }}" class="social-block__link">
                             <img src="{% static 'history/img/icons/logos_telegram1.svg' %}" alt="">
                         </a>
-                        {% endfor %}
                     </div>
                 </div>
                 <form action="#" class="footer__form" method="post">
