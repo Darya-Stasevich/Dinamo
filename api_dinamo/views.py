@@ -1,5 +1,6 @@
 from rest_framework import viewsets, generics, mixins
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from employees.models import EmployeeArticle, Management
@@ -42,22 +43,40 @@ class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CategoryServiceSerializer
 
 
-class ContactViewSet(viewsets.ReadOnlyModelViewSet):
+class ContactViewSet(mixins.ListModelMixin,
+                           GenericViewSet):
     """ API for Contact model"""
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.queryset
+        serializer = self.get_serializer(queryset.first())
+        return Response(serializer.data)
 
-class DepartmentContactsViewSet(viewsets.ReadOnlyModelViewSet):
+
+class DepartmentContactsViewSet(mixins.ListModelMixin,
+                           GenericViewSet):
     """ API for DepartmentContacts model"""
     queryset = DepartmentContacts.objects.all()
     serializer_class = DepartmentContactsSerializer
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.queryset
+        serializer = self.get_serializer(queryset.first())
+        return Response(serializer.data)
 
-class PaymentInfoViewSet(viewsets.ReadOnlyModelViewSet):
+
+class PaymentInfoViewSet(mixins.ListModelMixin,
+                           GenericViewSet):
     """ API for PaymentInfo model"""
     queryset = PaymentInfo.objects.all()
     serializer_class = PaymentInfoSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.queryset
+        serializer = self.get_serializer(queryset.first())
+        return Response(serializer.data)
 
 
 class UserEmailViewSet(mixins.CreateModelMixin, GenericViewSet):
@@ -66,10 +85,16 @@ class UserEmailViewSet(mixins.CreateModelMixin, GenericViewSet):
     serializer_class = UserEmailSerializer
 
 
-class SocialNetworkViewSet(viewsets.ReadOnlyModelViewSet):
+class SocialNetworkViewSet(mixins.ListModelMixin,
+                           GenericViewSet):
     """ API for SocialNetwork model"""
     queryset = SocialNetwork.objects.all()
     serializer_class = SocialNetworkSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.queryset
+        serializer = self.get_serializer(queryset.first())
+        return Response(serializer.data)
 
 
 class EmployeeArticleViewSetPagination(PageNumberPagination):
@@ -133,6 +158,7 @@ class FeedbackForVacancyViewSet(mixins.CreateModelMixin, GenericViewSet):
     """ API for FeedbackForVacancy model """
     queryset = FeedbackForVacancy.objects.all()
     serializer_class = FeedbackForVacancySerializer
+
 
 class FeedbackViewSet(mixins.CreateModelMixin, GenericViewSet):
     """ API for Feedback model """
