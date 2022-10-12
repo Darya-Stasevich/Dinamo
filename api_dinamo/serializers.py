@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from employees.models import EmployeeArticle, Management
 from history.models import HistoryArticle
-from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo
+from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo, Managers
 from news.models import News, Event
 from photo_video.models import PhotoLibrary, PhotoCategory, VideoLibrary, VideoCategory
 from services.models import Service, CategoryService, Feedback
@@ -30,7 +30,15 @@ class DepartmentContactsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DepartmentContacts
-        exclude = ['id',]
+        exclude = ['id', ]
+
+
+class MarketingManagersSerializer(serializers.ModelSerializer):
+    """Сериализатор для контактов сотрудников отдела маркетинга"""
+
+    class Meta:
+        model = Managers
+        exclude = ['id', ]
 
 
 class PaymentInfoSerializer(serializers.ModelSerializer):
@@ -39,6 +47,7 @@ class PaymentInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentInfo
         exclude = ['id', ]
+
 
 class UserEmailSerializer(serializers.ModelSerializer):
     """Сериализатор для формы email в футер"""
@@ -53,7 +62,7 @@ class SocialNetworkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SocialNetwork
-        fields = ['social_TG', 'social_Youtube', 'social_Facebook', 'social_Instagram', 'social_VK']
+        fields = ['social_TG', 'social_Youtube', 'social_Facebook', 'social_Instagram', 'social_VK', ]
 
 
 class ManagementSerializer(serializers.ModelSerializer):
@@ -61,7 +70,7 @@ class ManagementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Management
-        exclude = ['id', ]
+        fields = '__all__'
 
 
 class HistoryArticleSerializer(serializers.ModelSerializer):
@@ -77,14 +86,24 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ['id', 'slug', 'title', 'image', 'is_primary_service',]
+        fields = ['id', 'slug', 'title', 'image', 'is_primary_service', ]
+
 
 class ServicesAllSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения услуг на странице ВСЕХ УСЛУГ"""
 
     class Meta:
         model = Service
-        fields = ['id', 'slug', 'category', 'title', 'image', 'brief_description', 'price_with_VAT_for_person']
+        fields = ['id', 'slug', 'category', 'title', 'image', 'brief_description', 'price_with_VAT_for_person', ]
+
+
+class ServiceDetailSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения данных об услуге"""
+
+    class Meta:
+        model = Service
+        exclude = ["published", "created", "updated", "is_primary_service", 'category', 'brief_description', 'image', ]
+        depth = 1
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -142,6 +161,7 @@ class VacancySerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacancy
         fields = ['id', 'title_of_vacancy', 'salary', 'experience', 'employment', 'requirements', ]
+
 
 class FeedbackForVacancySerializer(serializers.ModelSerializer):
     """Сериализатор для формы заявка на вакансию"""

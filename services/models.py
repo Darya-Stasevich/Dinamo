@@ -36,7 +36,7 @@ class Service(models.Model):
     category = models.ForeignKey(
         'CategoryService',
         on_delete=models.PROTECT,
-        verbose_name="Категория услуги"
+        verbose_name="Категория услуги", related_name='services'
     )
     title = models.CharField(max_length=100, verbose_name="Название услуги")
     slug = models.SlugField(unique=True)
@@ -45,14 +45,14 @@ class Service(models.Model):
 
     price_with_VAT_for_person = models.CharField(max_length=50, verbose_name="Тариф с НДС для физ.лица", default=0,
                                                  help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
-    price_without_VAT_for_person = models.CharField(max_length=50, blank=True, null=True,
-                                                    verbose_name="Тариф без НДС для физ.лица", default=0,
+    price_without_VAT_for_person = models.CharField(max_length=50, default=0,
+                                                    verbose_name="Тариф без НДС для физ.лица",
                                                     help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
-    price_with_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
-                                                verbose_name="Тариф с НДС для юр.лица", default=0,
+    price_with_VAT_for_legal = models.CharField(max_length=50, default=0,
+                                                verbose_name="Тариф с НДС для юр.лица",
                                                 help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
-    price_without_VAT_for_legal = models.CharField(max_length=50, blank=True, null=True,
-                                                   verbose_name="Тариф без НДС для юр.лица", default=0,
+    price_without_VAT_for_legal = models.CharField(max_length=50, default=0,
+                                                   verbose_name="Тариф без НДС для юр.лица",
                                                    help_text='Пример заполнения: "от 600 BYN", "индивидуально" и т.п.')
     notes = models.CharField(max_length=200, verbose_name="Ед.измерения",
                              help_text='Пример заполнения: "шт.", "руб./час" и т.п.')
@@ -67,7 +67,6 @@ class Service(models.Model):
     is_primary_service = models.BooleanField(default=False, verbose_name='Приоритетная услуга для отображения',
                                              help_text='При наличии галочки данная услуга попадет в большой блок ЛУЧШИЕ УСЛУГИ ДЛЯ ВАС')
 
-
     def save(self, *args, **kwargs):
         """Добавление только одной услуги с полем is_primary_service=True"""
         if not self.is_primary_service:
@@ -77,11 +76,9 @@ class Service(models.Model):
                 is_primary_service=True).update(is_primary_service=False)
             return super(Service, self).save(*args, **kwargs)
 
-
     class Meta:
         verbose_name = 'Услугу'
         verbose_name_plural = 'Услуги'
-
 
     def __str__(self):
         return self.title
@@ -90,8 +87,10 @@ class Service(models.Model):
 class Attachment(models.Model):
     """Прикрепленный файл с информацией об услуге"""
     file = models.FileField(upload_to="files/", verbose_name="Файл")
-    title = models.CharField(max_length=50, verbose_name="Название файла")
-    description = models.CharField(max_length=100, verbose_name="Краткое описание")
+    title = models.CharField(max_length=100, verbose_name="Название файла",
+                             help_text='Техническое задание на проведение мероприятия на территории Национального олимпийского стадиона «Динамо»"')
+    description = models.CharField(max_length=50, verbose_name="Краткое описание",
+                                   help_text='Пример заполения:"Скачать техническое задание"')
 
     class Meta:
         verbose_name = 'Файл для услуги'

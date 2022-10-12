@@ -16,7 +16,7 @@ class Contact(models.Model):
 
     def save(self, *args, **kwargs):
         self.pk = 1
-        return super(Contact, self).save(*args, **kwargs)
+        return super(self.__class__, self).save(*args, **kwargs)
 
 
 class DepartmentContacts(models.Model):
@@ -43,7 +43,7 @@ class DepartmentContacts(models.Model):
 
     def save(self, *args, **kwargs):
         self.pk = 1
-        return super(DepartmentContacts, self).save(*args, **kwargs)
+        return super(self.__class__, self).save(*args, **kwargs)
 
 
 class SocialNetwork(models.Model):
@@ -63,7 +63,7 @@ class SocialNetwork(models.Model):
 
     def save(self, *args, **kwargs):
         self.pk = 1
-        return super(SocialNetwork, self).save(*args, **kwargs)
+        return super(self.__class__, self).save(*args, **kwargs)
 
 
 class PaymentInfo(models.Model):
@@ -82,7 +82,7 @@ class PaymentInfo(models.Model):
 
     def save(self, *args, **kwargs):
         self.pk = 1
-        return super(PaymentInfo, self).save(*args, **kwargs)
+        return super(self.__class__, self).save(*args, **kwargs)
 
 
 class Partner(models.Model):
@@ -122,3 +122,27 @@ class Document(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Managers(models.Model):
+    """Сотрудники отдела маркетинга"""
+    name_1 = models.CharField('Имя сотрудника 1 ', max_length=50, help_text='Пример заполнения: Дарья, Юрий')
+    phone_number_1 = models.CharField('Телефон сотрудника 1', max_length=25)
+    name_2 = models.CharField('Имя сотрудника 2', max_length=50, blank=True, null=True,
+                              help_text='Пример заполнения: Дарья, Юрий')
+    phone_number_2 = models.CharField('Телефон сотрудника 2', blank=True, null=True, max_length=25)
+    name_3 = models.CharField('Имя сотрудника 3', max_length=50, blank=True, null=True,
+                              help_text='Пример заполнения 1: Дарья, Юрий')
+    phone_number_3 = models.CharField('Телефон сотрудника 3', blank=True, null=True, max_length=25)
+    email = models.EmailField(blank=False, verbose_name='Электронная почта отдела маркетинга')
+
+    class Meta:
+        verbose_name = 'Отдел маркетинга'
+        verbose_name_plural = 'Отдел маркетинга'
+
+    def __str__(self):
+        return f'Контакты отдела маркетинга для страницы услуг'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        return super(self.__class__, self).save(*args, **kwargs)

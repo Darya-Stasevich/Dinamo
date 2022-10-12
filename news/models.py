@@ -6,18 +6,23 @@ class News(models.Model):
     """Новости организации"""
     title = models.CharField(max_length=200, unique=True, verbose_name="Заголовок новости")
     slug = models.SlugField(unique=True)
-    brief_description = models.CharField(max_length=400, verbose_name="Краткое содержание новости")
-    description = models.TextField(verbose_name="Полное содержание новости")
+    cover_image = models.ImageField(upload_to='news/', verbose_name="Заглавная картинка для новости")
+    brief_description = models.CharField(max_length=500, verbose_name="Краткое содержание новости")
+    description_1 = models.TextField(verbose_name="Полное содержание новости, 1 абзац")
+    description_2 = models.TextField(verbose_name="Полное содержание новости, 2 абзац", blank=True, null=True)
+    description_3 = models.TextField(verbose_name="Полное содержание новости, 3 абзац", blank=True, null=True)
+    time_for_reading = models.IntegerField(verbose_name='Время прочтения новости')
+    text_source = models.CharField(max_length=50, verbose_name="Источник новости", blank=True, null=True,
+                                   help_text='Пример заполнения: Источник: sport.tut.by')
+    picture_source = models.CharField(max_length=50, verbose_name="Источник фотографий", blank=True, null=True,
+                                      help_text='Пример заполнения: Фото: ФК "Динамо-Минск"')
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания новости")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата редактирования новости")
-    cover_image = models.ImageField(upload_to='news/', verbose_name="Заглавная картинка для новости")
-    time_for_reading = models.IntegerField(verbose_name='Время прочтения новости')
     video_url = models.CharField(max_length=200, blank=True, null=True, verbose_name="Ссылка на видео к новости")
     views = models.IntegerField(default=0, blank=True, null=True, verbose_name="Количество просмотров")
     published = models.BooleanField('Опубликовать на сайте', default=True)
 
     class Meta:
-        ordering = ['-created']
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
 
@@ -54,4 +59,3 @@ class Event(models.Model):
 
     def __str__(self):
         return f'{self.brief_description}, дата проведения: {self.date}'
-

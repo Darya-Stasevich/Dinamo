@@ -5,14 +5,15 @@ from rest_framework.viewsets import GenericViewSet
 
 from employees.models import EmployeeArticle, Management
 from history.models import HistoryArticle
-from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo
+from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo, Managers
 from photo_video.models import PhotoCategory, VideoCategory
 from vacancies.models import Vacancy, FeedbackForVacancy
 from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
     PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer, \
     VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer, UserEmailSerializer, ManagementSerializer, \
     HistoryArticleSerializer, DepartmentContactsSerializer, PaymentInfoSerializer, EventSerializer, \
-    FeedbackForVacancySerializer, FeedbackSerializer, ServicesAllSerializer
+    FeedbackForVacancySerializer, FeedbackSerializer, ServicesAllSerializer, ServiceDetailSerializer, \
+    MarketingManagersSerializer
 from services.models import Service, CategoryService, Feedback
 from news.models import News, Event
 
@@ -35,6 +36,12 @@ class ServicesAllViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Service.objects.filter(published=True)
     serializer_class = ServicesAllSerializer
     pagination_class = ServicesViewSetPagination
+
+
+class ServiceDetailViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for Service model detailed"""
+    queryset = Service.objects.filter(published=True)
+    serializer_class = ServiceDetailSerializer
 
 
 class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
@@ -60,6 +67,18 @@ class DepartmentContactsViewSet(mixins.ListModelMixin,
     """ API for DepartmentContacts model"""
     queryset = DepartmentContacts.objects.all()
     serializer_class = DepartmentContactsSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.queryset
+        serializer = self.get_serializer(queryset.first())
+        return Response(serializer.data)
+
+
+class MarketingMnagersViewSet(mixins.ListModelMixin,
+                           GenericViewSet):
+    """ API for Managers model"""
+    queryset = Managers.objects.all()
+    serializer_class = MarketingManagersSerializer
 
     def list(self, request, *args, **kwargs):
         queryset = self.queryset
