@@ -45,6 +45,12 @@ class ServiceDetailViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ServiceDetailSerializer
 
 
+class RandomServicesViewSet(viewsets.ReadOnlyModelViewSet):
+    """API for 4 random services"""
+    queryset = Service.objects.order_by('?')[:4]
+    serializer_class = ServicesAllSerializer
+
+
 class CategoryServiceViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for CategoryService model """
     queryset = CategoryService.objects.all()
@@ -144,14 +150,14 @@ class NewsDetailViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class EmployeeArticleViewSet(viewsets.ReadOnlyModelViewSet):
-    """ API for EmployeeArticle model """
+    """ API for Article model """
     queryset = Article.objects.filter(published=True)
     serializer_class = EmployeeArticleSerializer
     pagination_class = EmployeeArticleViewSetPagination
 
 
 class EmployeeArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):
-    # """ API for EmployeeArticle model """
+    """ API for separate article about Employee """
     queryset = Article.objects.filter(published=True)
     serializer_class = EmployeeArticleDetailSerializer
 

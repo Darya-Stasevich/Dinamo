@@ -56,6 +56,7 @@ router.register('feedback_form', views.FeedbackViewSet)
 router.register('management', views.ManagementViewSet)
 router.register('history_articles', views.HistoryArticleViewSet)
 router.register('events', views.EventViewSet)
+router.register('services_random', views.RandomServicesViewSet)
 
 
 urlpatterns = [

@@ -17,6 +17,14 @@ class CategoryServiceSerializer(serializers.ModelSerializer):
         fields = ['id', 'slug', 'title', ]
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    """Сериализатор для категории услуг"""
+
+    class Meta:
+        model = CategoryService
+        fields = ['title', ]
+
+
 class ContactSerializer(serializers.ModelSerializer):
     """Сериализатор для контактов в футер"""
 
@@ -91,6 +99,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 class ServicesAllSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения услуг на странице ВСЕХ УСЛУГ"""
+    category = CategorySerializer()
 
     class Meta:
         model = Service
@@ -104,6 +113,20 @@ class ServiceDetailSerializer(serializers.ModelSerializer):
         model = Service
         exclude = ["published", "created", "updated", "is_primary_service", 'category', 'brief_description', 'image', ]
         depth = 1
+
+
+# class RandomServicesSerializer(serializers.ModelSerializer):
+#     # """сериализатор для вывода конкретного поста и 3-ёх случайных похожих на него постов"""
+#     services = serializers.SerializerMethodField('get_four_random_services')
+#
+#     def get_four_random_services(self, obj):
+#         qs = Service.objects.order_by('?')[:3]
+#         serializer = ServicesAllSerializer(instance=qs, many=True)
+#         return serializer.data
+#
+#     class Meta:
+#         model = Service
+#         fields = ['title', 'services']
 
 
 class NewsSerializer(serializers.ModelSerializer):
@@ -138,12 +161,14 @@ class EmployeeArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = ['id', 'name_employee', 'title', 'slug', 'cover_image', 'created', ]
 
+
 class ArticleBlockSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения блоков с биографией и фото сотрудника"""
 
     class Meta:
         model = ArticleBlock
         exclude = ['article', ]
+
 
 class EmployeeArticleDetailSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения одной статьи про сотрудника"""
