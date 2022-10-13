@@ -2,10 +2,6 @@ from django.contrib import admin
 
 from photo_video.models import PhotoLibrary, PhotoCategory, VideoLibrary, VideoCategory
 
-#
-# class PhotoCategoryAdmin(admin.ModelAdmin):
-#     prepopulated_fields = {"slug": ("title",)}
-#
 
 class PhotoImageInline(admin.StackedInline):
     model = PhotoLibrary

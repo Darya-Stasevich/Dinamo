@@ -3,17 +3,18 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from employees.models import EmployeeArticle, Management
+from employees.models import Management, Article
 from history.models import HistoryArticle
 from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo, Managers
-from photo_video.models import PhotoCategory, VideoCategory
+from photo_video.models import PhotoCategory, VideoCategory, PhotoLibrary
 from vacancies.models import Vacancy, FeedbackForVacancy
-from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, EmployeeArticleSerializer, \
+from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSerializer, \
     PartnerSerializer, DocumentSerializer, VacancySerializer, NewsAllSerializer, PhotoCategorySerializer, \
     VideoCategorySerializer, SocialNetworkSerializer, ContactSerializer, UserEmailSerializer, ManagementSerializer, \
     HistoryArticleSerializer, DepartmentContactsSerializer, PaymentInfoSerializer, EventSerializer, \
     FeedbackForVacancySerializer, FeedbackSerializer, ServicesAllSerializer, ServiceDetailSerializer, \
-    MarketingManagersSerializer
+    MarketingManagersSerializer, NewsDetailSerializer, PhotoLibrarySerializer, PhotoCategoryDetailSerializer, \
+    VideoCategoryDetailSerializer, EmployeeArticleSerializer, EmployeeArticleDetailSerializer
 from services.models import Service, CategoryService, Feedback
 from news.models import News, Event
 
@@ -136,11 +137,23 @@ class NewsAllViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = EmployeeArticleViewSetPagination
 
 
+class NewsDetailViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for News model (for separate page)"""
+    queryset = News.objects.filter(published=True)
+    serializer_class = NewsDetailSerializer
+
+
 class EmployeeArticleViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for EmployeeArticle model """
-    queryset = EmployeeArticle.objects.filter(published=True)
+    queryset = Article.objects.filter(published=True)
     serializer_class = EmployeeArticleSerializer
     pagination_class = EmployeeArticleViewSetPagination
+
+
+class EmployeeArticleDetailViewSet(viewsets.ReadOnlyModelViewSet):
+    # """ API for EmployeeArticle model """
+    queryset = Article.objects.filter(published=True)
+    serializer_class = EmployeeArticleDetailSerializer
 
 
 class PartnerViewSet(viewsets.ReadOnlyModelViewSet):
@@ -191,10 +204,22 @@ class PhotoViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PhotoCategorySerializer
 
 
+class PhotoDetailViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for separate PhotoLibrary """
+    queryset = PhotoCategory.objects.all()
+    serializer_class = PhotoCategoryDetailSerializer
+
+
 class VideoViewSet(viewsets.ReadOnlyModelViewSet):
     """ API for PhotoCategory model """
     queryset = VideoCategory.objects.all()
     serializer_class = VideoCategorySerializer
+
+
+class VideoDetailViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for separate VideoLibrary """
+    queryset = VideoCategory.objects.all()
+    serializer_class = VideoCategoryDetailSerializer
 
 
 class EventViewSet(viewsets.ReadOnlyModelViewSet):

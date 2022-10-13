@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 
 
 class News(models.Model):
@@ -18,6 +17,8 @@ class News(models.Model):
                                       help_text='Пример заполнения: Фото: ФК "Динамо-Минск"')
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания новости")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата редактирования новости")
+    video_title = models.CharField(max_length=200, blank=True, null=True, verbose_name="Подпись видео",
+                                   help_text='Пример заполнения: ВИДЕООТЧЕТ МАТЧА')
     video_url = models.CharField(max_length=200, blank=True, null=True, verbose_name="Ссылка на видео к новости")
     views = models.IntegerField(default=0, blank=True, null=True, verbose_name="Количество просмотров")
     published = models.BooleanField('Опубликовать на сайте', default=True)

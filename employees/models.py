@@ -26,18 +26,16 @@ class Management(models.Model):
         return self.name
 
 
-class EmployeeArticle(models.Model):
+class Article(models.Model):
     """Статья о сотруднике организации"""
-    name_employee = models.CharField(max_length=200, verbose_name="ФИО")
-    slug = models.SlugField(unique=True)
+    name_employee = models.CharField(max_length=200, verbose_name="Фамилия, имя")
     title = models.CharField(max_length=150, verbose_name='Название статьи',)
+    slug = models.SlugField(unique=True)
     cover_image = models.ImageField(upload_to='employees/',
                                     verbose_name="Главная картинка для статьи про сотрудника")
-    description = models.TextField(blank=True, null=True, verbose_name="Биография")   # переделать, разбить на блоки
     created = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания статьи")
     updated = models.DateTimeField(auto_now=True, verbose_name="Дата редактирования статьи")
     published = models.BooleanField('Опубликовать на сайте', default=True)
-
 
     class Meta:
         verbose_name = 'Статью о сотруднике'
@@ -47,16 +45,13 @@ class EmployeeArticle(models.Model):
         return f'{self.name_employee}, {self.title}'
 
 
-class ArticleAdditionalImage(models.Model):
-    """Дополнительные изображения к статье о сотруднике"""
-    article = models.ForeignKey(
-        EmployeeArticle,
-        on_delete=models.CASCADE,
-        verbose_name='Статья о сотруднике'
-    )
-    image = models.ImageField(upload_to='employees/', blank=True, null=True,
-                              verbose_name='Дополнительная картинка для статьи о сотруднике')
-
-    class Meta:
-        verbose_name = 'Дополнительное изображение'
-        verbose_name_plural = 'Дополнительные изображения'
+class ArticleBlock(models.Model):
+    """Текст и картинки статьи"""
+    text_1 = models.TextField(verbose_name="Абзац 1")
+    text_2 = models.TextField(blank=True, null=True, verbose_name="Абзац 2")
+    text_3 = models.TextField(blank=True, null=True, verbose_name="Абзац 3")
+    text_4 = models.TextField(blank=True, null=True, verbose_name="Абзац 4")
+    image_1 = models.ImageField(upload_to='employees/', blank=True, null=True, verbose_name="Фотография 1")
+    image_2 = models.ImageField(upload_to='employees/', blank=True, null=True, verbose_name="Фотография 2")
+    image_3 = models.ImageField(upload_to='employees/', blank=True, null=True,  verbose_name="Фотография 3")
+    article = models.ForeignKey('Article', on_delete=models.CASCADE, related_name='blocks')

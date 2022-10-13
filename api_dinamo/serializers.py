@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from employees.models import EmployeeArticle, Management
+from employees.models import Management, Article, ArticleBlock
 from history.models import HistoryArticle
 from main.models import Partner, Document, SocialNetwork, Contact, UserEmail, DepartmentContacts, PaymentInfo, Managers
 from news.models import News, Event
@@ -122,12 +122,37 @@ class NewsAllSerializer(serializers.ModelSerializer):
         fields = ['id', 'slug', 'cover_image', 'title', 'created', 'time_for_reading', ]
 
 
+class NewsDetailSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения одной новости"""
+
+    class Meta:
+        model = News
+        exclude = ["published", "created", "updated", "slug", 'brief_description', 'views', ]
+        depth = 1
+
+
 class EmployeeArticleSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения статей про сотрудников на странице НАШИ СОТРУДНИКИ"""
 
     class Meta:
-        model = EmployeeArticle
-        fields = ['id', 'slug', 'name_employee', 'title', 'created', 'cover_image', ]
+        model = Article
+        fields = ['id', 'name_employee', 'title', 'slug', 'cover_image', 'created', ]
+
+class ArticleBlockSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения блоков с биографией и фото сотрудника"""
+
+    class Meta:
+        model = ArticleBlock
+        exclude = ['article', ]
+
+class EmployeeArticleDetailSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения одной статьи про сотрудника"""
+
+    blocks = ArticleBlockSerializer(many=True)
+
+    class Meta:
+        model = Article
+        fields = ['id', 'name_employee', 'title', 'blocks', ]
 
 
 class PartnerSerializer(serializers.ModelSerializer):
@@ -187,13 +212,28 @@ class PhotoLibrarySerializer(serializers.ModelSerializer):
         fields = ['id', 'image', ]
 
 
-class PhotoCategorySerializer(serializers.ModelSerializer):
-    """Сериализатор для отображения альбомов с фотографиями"""
+class PhotoCategoryDetailSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения конкретного альбома с фотографиями"""
+
     photos = PhotoLibrarySerializer(many=True)
 
     class Meta:
         model = PhotoCategory
-        fields = ['id', 'slug', 'title', 'cover', 'photos', ]
+        fields = ['id', 'title', 'photos', ]
+
+
+class PhotoCategorySerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения фотоальбомов"""
+
+    photos_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = PhotoCategory
+        fields = ['id', 'slug', 'title', 'cover', 'photos_count', ]
+
+    def get_photos_count(self, obj):
+        queryset = PhotoLibrary.objects.filter(category=obj.id).count()
+        return queryset
 
 
 class VideoLibrarySerializer(serializers.ModelSerializer):
@@ -205,12 +245,25 @@ class VideoLibrarySerializer(serializers.ModelSerializer):
 
 
 class VideoCategorySerializer(serializers.ModelSerializer):
-    """Сериализатор для отображения альбомов с видео"""
+    """Сериализатор для отображения видеоальбомов"""
+    videos_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = VideoCategory
+        fields = ['id', 'slug', 'title', 'cover', 'videos_count', ]
+
+    def get_videos_count(self, obj):
+        queryset = VideoLibrary.objects.filter(category=obj.id).count()
+        return queryset
+
+
+class VideoCategoryDetailSerializer(serializers.ModelSerializer):
+    """Сериализатор для отображения конкретного видеоальбома с видео"""
     videos = VideoLibrarySerializer(many=True)
 
     class Meta:
         model = VideoCategory
-        fields = ['id', 'slug', 'title', 'cover', 'videos', ]
+        fields = ['id', 'title', 'videos', ]
 
 
 class EventSerializer(serializers.ModelSerializer):
