@@ -47,7 +47,7 @@ class Article(models.Model):
 
 class ArticleBlock(models.Model):
     """Текст и картинки статьи"""
-    text_1 = models.TextField(verbose_name="Абзац 1")
+    text_1 = models.TextField(verbose_name="Абзац 1", )
     text_2 = models.TextField(blank=True, null=True, verbose_name="Абзац 2")
     text_3 = models.TextField(blank=True, null=True, verbose_name="Абзац 3")
     text_4 = models.TextField(blank=True, null=True, verbose_name="Абзац 4")

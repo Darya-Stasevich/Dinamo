@@ -7,7 +7,7 @@ class News(models.Model):
     slug = models.SlugField(unique=True)
     cover_image = models.ImageField(upload_to='news/', verbose_name="Заглавная картинка для новости")
     brief_description = models.CharField(max_length=500, verbose_name="Краткое содержание новости")
-    description_1 = models.TextField(verbose_name="Полное содержание новости, 1 абзац")
+    description_1 = models.TextField(verbose_name="Полное содержание новости, 1 абзац", blank=True, null=True)
     description_2 = models.TextField(verbose_name="Полное содержание новости, 2 абзац", blank=True, null=True)
     description_3 = models.TextField(verbose_name="Полное содержание новости, 3 абзац", blank=True, null=True)
     time_for_reading = models.IntegerField(verbose_name='Время прочтения новости')
