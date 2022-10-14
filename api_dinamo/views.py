@@ -14,7 +14,7 @@ from .serializers import ServiceSerializer, CategoryServiceSerializer, NewsSeria
     HistoryArticleSerializer, DepartmentContactsSerializer, PaymentInfoSerializer, EventSerializer, \
     FeedbackForVacancySerializer, FeedbackSerializer, ServicesAllSerializer, ServiceDetailSerializer, \
     MarketingManagersSerializer, NewsDetailSerializer, PhotoLibrarySerializer, PhotoCategoryDetailSerializer, \
-    VideoCategoryDetailSerializer, EmployeeArticleSerializer, EmployeeArticleDetailSerializer
+    VideoCategoryDetailSerializer, EmployeeArticleSerializer, EmployeeArticleDetailSerializer, ByCategorySerializer
 from services.models import Service, CategoryService, Feedback
 from news.models import News, Event
 
@@ -37,6 +37,18 @@ class ServicesAllViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Service.objects.filter(published=True)
     serializer_class = ServicesAllSerializer
     pagination_class = ServicesViewSetPagination
+
+
+class ServicesByCategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    """ API for Service model (all services page)"""
+    queryset = CategoryService.objects.all()
+    serializer_class = ByCategorySerializer
+#
+#     def retrieve(self, request, *args, **kwargs):
+#         print(request)
+#         instance = self.get_object()
+#         serializer = self.get_serializer(instance)
+#         return Response(serializer.data)
 
 
 class ServiceDetailViewSet(viewsets.ReadOnlyModelViewSet):

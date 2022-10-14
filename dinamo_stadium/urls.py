@@ -31,7 +31,7 @@ router = routers.DefaultRouter()
 router.register('services', views.ServiceViewSet)
 router.register('services_all', views.ServicesAllViewSet, basename='services_all')
 router.register('service_detail', views.ServiceDetailViewSet, basename='service_detail')
-# router.register('services_by_category', views.CategoryViewSet, basename='services_by_category')
+router.register('services_by_category', views.ServicesByCategoryViewSet, basename='services_by_category')
 router.register('category_services', views.CategoryServiceViewSet)
 router.register('contact', views.ContactViewSet, basename='contact')
 router.register('department_contacts', views.DepartmentContactsViewSet)
@@ -56,7 +56,7 @@ router.register('feedback_form', views.FeedbackViewSet)
 router.register('management', views.ManagementViewSet)
 router.register('history_articles', views.HistoryArticleViewSet)
 router.register('events', views.EventViewSet)
-router.register('services_random', views.RandomServicesViewSet)
+router.register('services_random', views.RandomServicesViewSet, basename='services_random' )
 
 
 urlpatterns = [

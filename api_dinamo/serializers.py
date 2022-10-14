@@ -115,18 +115,13 @@ class ServiceDetailSerializer(serializers.ModelSerializer):
         depth = 1
 
 
-# class RandomServicesSerializer(serializers.ModelSerializer):
-#     # """сериализатор для вывода конкретного поста и 3-ёх случайных похожих на него постов"""
-#     services = serializers.SerializerMethodField('get_four_random_services')
-#
-#     def get_four_random_services(self, obj):
-#         qs = Service.objects.order_by('?')[:3]
-#         serializer = ServicesAllSerializer(instance=qs, many=True)
-#         return serializer.data
-#
-#     class Meta:
-#         model = Service
-#         fields = ['title', 'services']
+class ByCategorySerializer(serializers.ModelSerializer):
+    """Сериализатор для услуг по категориям"""
+    services = ServicesAllSerializer(many=True)
+
+    class Meta:
+        model = CategoryService
+        fields = ['services', ]
 
 
 class NewsSerializer(serializers.ModelSerializer):
